@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row timeForm">
+        <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+            <div class="searchBox col-sm-3">
+                <input id="someinput" type="text" placeholder="Status" class="noBorder fullWidthBlock" [(ngModel)]="model.status" ngControl="name" #name="ngForm" />
+                <div class="line"></div>
+                <br />
+                <ul id="menu" class="drop searchList">
+                </ul>
+            </div>
+            <div class="searchBox col-sm-2">
+                <input type="text" placeholder="task" class="noBorder fullWidthBlock" [(ngModel)]="model.name" ngControl="name" #name="ngForm" />
+                <div class="line"></div>
+            </div>
+            <div class="searchBox col-sm-3">
+                <div class="timeControls">
+                    <input id="timeBoxStart" type="time" placeholder="9:00A.M." class="noBorder timeBox" [(ngModel)]="model.startTime" ngControl="startTime" #startTime="ngForm" />
+                    <span>-</span>
+                    <input id="timeBoxEnd" type="time" placeholder="12:00P.M." class="noBorder timeBox" [(ngModel)]="model.finishTime" ngControl="finishTime" #finishTime="ngForm" />
+                </div>
+                <div class="line"></div>
+            </div>
+            <div class="searchBox col-sm-2">
+                <input type="text" placeholder="comments" class="noBorder fullWidthBlock" [(ngModel)]="model.comments" ngControl="comments" #comments="ngForm" />
+                <div class="line"></div>
+            </div>
+            <div class="searchBox col-sm-2">
+                <button type="submit" class="btn btn-primary-outline" [disabled]="!heroForm.form.valid"><i class="fa fa-check"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+$(function() {
+    $('#timeBoxStart').timeEntry({});
+    $('#timeBoxEnd').timeEntry({});
+});
+</script>
