@@ -32,9 +32,13 @@ System.register(['angular2/core', './task.component'], function(exports_1) {
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: '<track-panel></track-panel>',
+                        templateUrl: 'app/app.component.html',
                         directives: [task_component_1.TaskComponent]
-                    }), 
+                    }),
+                    RouteConfig([
+                        { path: '/track', name: 'Track', component: task_component_1.TaskComponent },
+                        { path: '/wip', name: 'WIP', component: HeroListComponent },
+                    ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
                 return AppComponent;

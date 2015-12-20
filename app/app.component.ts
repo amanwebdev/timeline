@@ -10,7 +10,11 @@ import {TaskComponent} from './task.component'
 // })
 @Component({
   selector: 'my-app',
-  template: '<track-panel></track-panel>',
+  templateUrl: 'app/app.component.html',
   directives: [TaskComponent]
 })
+@RouteConfig([
+  {path:'/track', name: 'Track', component: TaskComponent},
+  {path:'/wip',        name: 'WIP',       component: HeroListComponent},
+])
 export class AppComponent { }
