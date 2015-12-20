@@ -77,3 +77,7 @@ input.noBorder {
 	display:inline;
 	max-width:35%;
 }
+.navList{
+    position: absolute;
+    right:61%;
+}
