@@ -1,3 +1,4 @@
+/// <reference path="../../typings/tsd.d.ts" />
 System.register(['angular2/core', './task'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -29,7 +30,6 @@ System.register(['angular2/core', './task'], function(exports_1) {
                 TaskComponent.prototype.onSubmit = function () { this.submitted = true; };
                 TaskComponent = __decorate([
                     core_1.Component({
-                        selector: 'track-panel',
                         templateUrl: 'app/task.component.html'
                     }), 
                     __metadata('design:paramtypes', [])

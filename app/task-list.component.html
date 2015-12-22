@@ -1,0 +1,20 @@
+<div>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Status</th>
+            <th>Name</th>
+            <th>Start Time</th>
+            <th>Finish Time</th>
+            <th>comments</th>
+        </tr>
+        <tr *ngFor="#wip of wipList">
+        	<td>{{wip.id}}</td>
+        	<td>{{wip.status}}</td>
+        	<td>{{wip.name}}</td>
+        	<td>{{wip.startTime}}</td>
+        	<td>{{wip.finishTime}}</td>
+        	<td>{{wip.comments}}</td>
+        </tr>
+    </table>
+</div>
