@@ -8,9 +8,9 @@
         "experimentalDecorators": true,
         "removeComments": false,
         "noImplicitAny": false,
-        "outDir":"app/"
+        "outDir":"public/app/"
     },
     "exclude": [
-        "node_modules"
+        "node_modules","public/node_modules","public/js"
     ]
 }

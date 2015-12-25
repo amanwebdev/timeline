@@ -1,3 +1,5 @@
+/// <reference path="../../../typings/tsd.d.ts" />
+
 import {Injectable} from 'angular2/core';
 import {Task} from './task';
 
