@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row timeForm">
-        <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+        <form (ngSubmit)="onSubmit(heroForm.value.name)" #heroForm="ngForm">
             <div class="searchBox col-sm-3">
                 <input id="someinput" type="text" placeholder="Status" class="noBorder fullWidthBlock" [(ngModel)]="model.status" ngControl="name" #name="ngForm" />
                 <div class="line"></div>

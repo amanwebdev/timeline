@@ -2,9 +2,11 @@
 
 import {bootstrap}    from 'angular2/platform/browser';
 import {ROUTER_PROVIDERS} from 'angular2/router';
+import {HTTP_PROVIDERS} from 'angular2/http';
 import {WipService}      from  './wip.service';
 import {AppComponent} from './app.component';
+import {Http} from 'angular2/http';
 
 bootstrap(AppComponent, [
-  ROUTER_PROVIDERS,WipService
+  ROUTER_PROVIDERS,WipService,HTTP_PROVIDERS
 ]);
