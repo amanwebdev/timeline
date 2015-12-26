@@ -1,3 +1,5 @@
+/// <reference path="../typings/tsd.d.ts" />
+
 var db = require('../db.js')
 
 var express = require('express');
@@ -30,14 +32,14 @@ function createTask(task) {
 }
 
 function getTaskList(response){
-    db.get(db.READ1, function(err, connection) {
-        if (err) console.log(err.message);
-        var query = "select * from task;";
-        connection.query(query, function(err, result) {
-            if (err) console.log(err.message);
+	db.get(db.READ1, function(err, connection) {
+		if (err) console.log(err.message);
+		var query = "select * from task;";
+		connection.query(query, function(err, result) {
+			if (err) console.log(err.message);
             response.json(result);
-            console.log(result[0].name);
-            console.log(result[1].name);
-        });
-    });
+			console.log(result[0].name);
+			console.log(result[1].name);
+		});
+	});
 }

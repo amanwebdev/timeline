@@ -11,6 +11,6 @@
         "outDir":"public/app/"
     },
     "exclude": [
-        "node_modules","public/node_modules","public/js"
+        "typings","routes","node_modules","public/node_modules","public/js"
     ]
 }

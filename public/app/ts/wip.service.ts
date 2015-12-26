@@ -1,11 +1,27 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 
 import {Injectable} from 'angular2/core';
+import {Http} from 'angular2/http';
+
 import {Task} from './task';
 
 @Injectable()
 export class WipService {
-  getWipList() { return wipListPromise; }
+	private taskList:Array<Task>;
+	constructor(private http: Http) {}
+
+	getWipList() { 
+		this.http.get('/track/taskList').
+			subscribe(res=>
+				this.taskList = 
+				res.json()
+				.map(t=>new Task(1,t.status,t.name,new Date(),new Date(),t.comments))
+				);
+		if(this.taskList)
+	  	 console.log(this.taskList
+	  		);
+		return Promise.resolve(this.taskList);
+	}
 
   getWip(id: number | string) {
     return wipListPromise
@@ -22,4 +38,4 @@ var WIP_LIST = [
 	new Task(6,'STARTED','Task 6', new Date(),new Date(),"Shitty task 6!"),
 ];
 
-var wipListPromise = Promise.resolve(WIP_LIST);
+var wipListPromise = Promise.resolve(this.taskList);
