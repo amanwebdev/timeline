@@ -4,12 +4,13 @@
             <li class="list-group-item">
                 <span class="taskName">{{wip.name}}</span>
                 <span>progress</span>
-                <progress class="progress progress-success taskProgress" value="125" max="100">25%</progress>
+                <progress class="progress progress-success taskProgress" value="{{wip.checkListProgress}}" max="100">25%</progress>
                 <span>time</span>
-                <progress class="progress progress-warn taskProgress" value="25" max="100">95%</progress>
+                <progress class="progress progress-warn taskProgress" value="{{wip.timeProgress}}" max="100">95%</progress>
+
             </li>
-            <li class="list-group-item">
-               <checklist></checklist>
+            <li class="list-group-item"  [class.hidden]="!wip.hasCheckList">
+               <checklist [checkList]="wip.checkList"></checklist>
             </li>
         </div>
     </ul>

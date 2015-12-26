@@ -4,10 +4,11 @@ import {Injectable} from 'angular2/core';
 import {Http} from 'angular2/http';
 
 import {Task} from './task';
+import {Ongoing} from './ongoing';
 
 @Injectable()
 export class WipService {
-	private taskList:Array<Task>;
+	private taskList:Array<Ongoing>;
 	constructor(private http: Http) {}
 
 	getWipList() { 
@@ -16,10 +17,12 @@ export class WipService {
 				this.taskList = 
 				res.json()
 				.map(t=>new Task(t.id,t.status,t.name,new Date(),new Date(),t.comments))
-				);
-		if(this.taskList)
+				.map(t=>new Ongoing(t)));
+		if(this.taskList){
+			this.taskList[0].hasCheckList=true;
 	  	 console.log(this.taskList
 	  		);
+	  	}
 		return Promise.resolve(this.taskList);
 	}
 

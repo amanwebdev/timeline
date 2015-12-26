@@ -1,5 +1,5 @@
 /// <reference path="../../../typings/tsd.d.ts" />
-System.register(['angular2/core'], function(exports_1) {
+System.register(['./checkList', 'angular2/core'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
         switch (arguments.length) {
@@ -11,10 +11,13 @@ System.register(['angular2/core'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var checkList_1, core_1;
     var CheckListComponent;
     return {
         setters:[
+            function (checkList_1_1) {
+                checkList_1 = checkList_1_1;
+            },
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
@@ -23,6 +26,10 @@ System.register(['angular2/core'], function(exports_1) {
                 function CheckListComponent() {
                 }
                 CheckListComponent.prototype.ngOnInit = function () { };
+                __decorate([
+                    core_1.Input(), 
+                    __metadata('design:type', checkList_1.CheckList)
+                ], CheckListComponent.prototype, "checkList");
                 CheckListComponent = __decorate([
                     core_1.Component({
                         selector: 'checklist',

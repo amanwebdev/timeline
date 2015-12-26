@@ -1,5 +1,5 @@
 /// <reference path="../../../typings/tsd.d.ts" />
-System.register(['angular2/core', 'angular2/http', './task'], function(exports_1) {
+System.register(['angular2/core', 'angular2/http', './task', './ongoing'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
         switch (arguments.length) {
@@ -11,7 +11,7 @@ System.register(['angular2/core', 'angular2/http', './task'], function(exports_1
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, task_1;
+    var core_1, http_1, task_1, ongoing_1;
     var WipService, WIP_LIST, wipListPromise;
     return {
         setters:[
@@ -23,6 +23,9 @@ System.register(['angular2/core', 'angular2/http', './task'], function(exports_1
             },
             function (task_1_1) {
                 task_1 = task_1_1;
+            },
+            function (ongoing_1_1) {
+                ongoing_1 = ongoing_1_1;
             }],
         execute: function() {
             WipService = (function () {
@@ -35,10 +38,13 @@ System.register(['angular2/core', 'angular2/http', './task'], function(exports_1
                         subscribe(function (res) {
                         return _this.taskList =
                             res.json()
-                                .map(function (t) { return new task_1.Task(t.id, t.status, t.name, new Date(), new Date(), t.comments); });
+                                .map(function (t) { return new task_1.Task(t.id, t.status, t.name, new Date(), new Date(), t.comments); })
+                                .map(function (t) { return new ongoing_1.Ongoing(t); });
                     });
-                    if (this.taskList)
+                    if (this.taskList) {
+                        this.taskList[0].hasCheckList = true;
                         console.log(this.taskList);
+                    }
                     return Promise.resolve(this.taskList);
                 };
                 WipService.prototype.getWip = function (id) {

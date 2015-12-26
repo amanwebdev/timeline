@@ -1,7 +1,10 @@
 /// <reference path="../../../typings/tsd.d.ts" />
+import { Item }    from './item';
 
 export class CheckList {
-  constructor(
-    private taskId:number
-  ) {}
+	constructor(
+		public taskId:number,
+		public name:string,
+		public itemList:Array<Item>
+	) {}
 }

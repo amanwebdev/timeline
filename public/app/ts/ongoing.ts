@@ -1,12 +1,22 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 import { Task }    from './task';
-
+import { CheckList }    from './checkList';
+import { Item }    from './item';
 export class Ongoing {
-	private timeProgress:number;
+  public name:string;
+  public checkListProgress:number;
+	public timeProgress:number;
+  public hasCheckList:boolean;
+  public checkList:CheckList;
   constructor(
     private task:Task
-  ) { 
-  	 this.setProgress();
+  ) {
+    this.name=task.name;
+    this.checkListProgress=25;
+    this.timeProgress=50;
+    this.hasCheckList=false;
+    this.checkList = new CheckList(1,"first checklist",[new Item(1,"first item")]);
+    this.setProgress();
   }
   private setProgress(){
   	// var currTime = new Date();
