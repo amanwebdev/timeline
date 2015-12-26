@@ -15,12 +15,9 @@ export class TaskComponent {
 	constructor(private http: Http) {}
 	onSubmit(value) { 
 		console.log("form value:"+JSON.stringify(this.model));
-		var path = '/api/achievements';
-		this.http.post('/api/achievements', JSON.stringify(this.model)).
+		this.http.post('/track', JSON.stringify(this.model)).
 		subscribe(res => {
       		console.log(res.text());
       	});
-
-		console.log(this.http.get('/api/achievements'));
 	}
 }

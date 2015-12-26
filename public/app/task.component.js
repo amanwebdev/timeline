@@ -34,12 +34,10 @@ System.register(['angular2/core', 'angular2/http', './task'], function(exports_1
                 }
                 TaskComponent.prototype.onSubmit = function (value) {
                     console.log("form value:" + JSON.stringify(this.model));
-                    var path = '/api/achievements';
-                    this.http.post('/api/achievements', JSON.stringify(this.model)).
+                    this.http.post('/track', JSON.stringify(this.model)).
                         subscribe(function (res) {
                         console.log(res.text());
                     });
-                    console.log(this.http.get('/api/achievements'));
                 };
                 TaskComponent = __decorate([
                     core_1.Component({
