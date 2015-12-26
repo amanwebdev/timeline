@@ -1,20 +1,52 @@
-<div>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Status</th>
-            <th>Name</th>
-            <th>Start Time</th>
-            <th>Finish Time</th>
-            <th>Comments</th>
-        </tr>
-        <tr *ngFor="#wip of wipList">
-        	<td>{{wip.id}}</td>
-        	<td>{{wip.status}}</td>
-        	<td>{{wip.name}}</td>
-        	<td>{{wip.startTime | date:'shortTime'}}</td>
-        	<td>{{wip.finishTime | date:'shortTime'}}</td>
-        	<td>{{wip.comments}}</td>
-        </tr>
-    </table>
+<div class="taskListComp">
+    <ul class="list-group taskList" style="width:80%;">
+        <div *ngFor="#wip of wipList">
+            <li class="list-group-item">
+                <span class="taskName">{{wip.name}}</span>
+                <span>progress</span>
+                <progress class="progress progress-success taskProgress" value="125" max="100">25%</progress>
+                <span>time</span>
+                <progress class="progress progress-warn taskProgress" value="25" max="100">95%</progress>
+            </li>
+            <li class="list-group-item">
+                <div class="input-group checkListWidth">
+                    <input type="text" class="form-control" placeholder="Check list...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-secondary" type="button">Add items</button>
+                    </span>
+                </div>
+                <div class="input-group checkListItem">
+                    <span class="input-group-addon">
+                        <input type="checkbox">
+                    </span>
+                    <input type="text" class="form-control" placeHolder="Item...">
+                </div>
+                <div class="input-group checkListItem">
+                    <span class="input-group-addon">
+                        <input type="checkbox">
+                    </span>
+                    <input type="text" class="form-control" placeHolder="Item...">
+                </div>
+                <button type="button" class="btn btn-primary">Save</button>
+            </li>
+        </div>
+    </ul>
+    <!-- <table>
+     <tr>
+         <th>ID</th>
+         <th>Status</th>
+         <th>Name</th>
+         <th>Start Time</th>
+         <th>Finish Time</th>
+         <th>Comments</th>
+     </tr>
+     <tr *ngFor="#wip of wipList">
+         <td>{{wip.id}}</td>
+         <td>{{wip.status}}</td>
+         <td>{{wip.name}}</td>
+         <td>{{wip.startTime | date:'shortTime'}}</td>
+         <td>{{wip.finishTime | date:'shortTime'}}</td>
+         <td>{{wip.comments}}</td>
+     </tr>
+ </table> -->
 </div>

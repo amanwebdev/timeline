@@ -1,17 +1,22 @@
 .ng-valid[required] {
-  border-left: 5px solid #42A948; /* green */
-}
-.ng-invalid {
-  border-left: 5px solid #a94442; /* red */
+    border-left: 5px solid #42A948;
+    /* green */
 }
 
-.timeForm,.timeNav{
-	width:80%;
-	margin:auto;
+.ng-invalid {
+    border-left: 5px solid #a94442;
+    /* red */
 }
+
+.timeForm,
+.timeNav {
+    width: 80%;
+    margin: auto;
+}
+
 .searchBox {
-	position:relative;
-    top:100px;
+    position: relative;
+    top: 100px;
 }
 
 .searchList {
@@ -59,9 +64,11 @@
 input.noBorder:focus + .line {
     width: 90%;
 }
+
 .timeControls:focus + .line {
     width: 90%;
 }
+
 input.noBorder {
     border: none;
     border-bottom: solid 1px rgb(33, 129, 198);
@@ -69,15 +76,45 @@ input.noBorder {
     height: 40px;
     font-size: 14px;
 }
-.fullWidthBlock{
-	width: 100%;
+
+.fullWidthBlock {
+    width: 100%;
     display: block;
 }
-.timeBox{
-	display:inline;
-	max-width:35%;
+
+.timeBox {
+    display: inline;
+    max-width: 35%;
 }
-.navList{
+
+.navList {
     position: absolute;
-    right:61%;
+    right: 61%;
+}
+
+.taskProgress {
+    display: inline-block;
+    width: 20%;
+    margin-bottom: -3px;
+}
+.taskName{
+	width: 31%;
+	display: inline-block;
+}
+.taskList{
+	width:80%;
+	margin:auto;
+}
+.taskListComp{
+	position: relative;
+	top:50px;
+}
+.checkListWidth{
+    width: 60%;
+    margin-top:20px;
+}
+.checkListItem{
+    width:60%;
+    margin-top:20px;
+    margin-bottom: :20px;
 }

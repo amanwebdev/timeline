@@ -15,7 +15,7 @@ export class WipService {
 			subscribe(res=>
 				this.taskList = 
 				res.json()
-				.map(t=>new Task(1,t.status,t.name,new Date(),new Date(),t.comments))
+				.map(t=>new Task(t.id,t.status,t.name,new Date(),new Date(),t.comments))
 				);
 		if(this.taskList)
 	  	 console.log(this.taskList

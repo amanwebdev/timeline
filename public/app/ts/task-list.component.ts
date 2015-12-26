@@ -15,7 +15,7 @@ export class TaskListComponent {
     private _router: Router,
     private _service: WipService) { }
 
-
+	
 	ngOnInit() {
 		this._service.getWipList().then(wipList => this.wipList = wipList)
 	}

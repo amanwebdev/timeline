@@ -35,7 +35,7 @@ System.register(['angular2/core', 'angular2/http', './task'], function(exports_1
                         subscribe(function (res) {
                         return _this.taskList =
                             res.json()
-                                .map(function (t) { return new task_1.Task(1, t.status, t.name, new Date(), new Date(), t.comments); });
+                                .map(function (t) { return new task_1.Task(t.id, t.status, t.name, new Date(), new Date(), t.comments); });
                     });
                     if (this.taskList)
                         console.log(this.taskList);
