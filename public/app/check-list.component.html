@@ -1,15 +1,17 @@
 <div>
-    <div class="input-group checkListWidth">
-        <input type="text" class="form-control" placeholder="Check list..." [(ngModel)]="checkList.name">
-        <span class="input-group-btn">
+    <form (ngSubmit)="onSubmit()" #checkListForm="ngForm">
+        <div class="input-group checkListWidth">
+            <input type="text" class="form-control" placeholder="Check list..." [(ngModel)]="checkList.name" ngControl="name" #name="ngForm">
+            <span class="input-group-btn">
              <button class="btn btn-secondary" type="button">Add items</button>
          </span>
-    </div>
-    <div class="input-group checkListItem" *ngFor="#item of checkList.itemList">
-        <span class="input-group-addon">
-            <input type="checkbox">
+        </div>
+        <div class="input-group checkListItem" *ngFor="#item of checkList.itemList">
+            <span class="input-group-addon">
+            <input type="checkbox" [(ngModel)]="item.done"  ngControl="itemStatus" #itemStatus="ngForm">
         </span>
-        <input type="text" class="form-control" placeHolder="Item..." [(ngModel)]="item.text">
-    </div>
-    <button type="button" class="btn btn-primary">Save</button>
+            <input type="text" class="form-control" placeHolder="Item..." [(ngModel)]="item.text" ngControl="itemText" #itemText="ngForm">
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
 </div>

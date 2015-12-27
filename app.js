@@ -6,6 +6,7 @@ var db = require('./db');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var taskRoute = require('./routes/track');
+var checkListRoute = require('./routes/taskList');
 
 
 app.use(cookieParser());
@@ -20,6 +21,8 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 app.use('/track', taskRoute);
+app.use('/checklist', checkListRoute);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');

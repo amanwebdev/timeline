@@ -17,7 +17,7 @@ System.register(['./checkList', './item'], function(exports_1) {
                     this.checkListProgress = 25;
                     this.timeProgress = 50;
                     this.hasCheckList = false;
-                    this.checkList = new checkList_1.CheckList(1, "first checklist", [new item_1.Item(1, "first item")]);
+                    this.checkList = new checkList_1.CheckList(this.task.id, "first checklist", [new item_1.Item(1, "first item", true)]);
                     this.setProgress();
                 }
                 Ongoing.prototype.setProgress = function () {

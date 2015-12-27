@@ -15,7 +15,7 @@ export class Ongoing {
     this.checkListProgress=25;
     this.timeProgress=50;
     this.hasCheckList=false;
-    this.checkList = new CheckList(1,"first checklist",[new Item(1,"first item")]);
+    this.checkList = new CheckList(this.task.id,"first checklist",[new Item(1,"first item",true)]);
     this.setProgress();
   }
   private setProgress(){
