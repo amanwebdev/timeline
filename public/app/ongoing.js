@@ -1,14 +1,7 @@
-System.register(['./checkList', './item'], function(exports_1) {
-    var checkList_1, item_1;
+System.register([], function(exports_1) {
     var Ongoing;
     return {
-        setters:[
-            function (checkList_1_1) {
-                checkList_1 = checkList_1_1;
-            },
-            function (item_1_1) {
-                item_1 = item_1_1;
-            }],
+        setters:[],
         execute: function() {
             Ongoing = (function () {
                 function Ongoing(task) {
@@ -16,10 +9,15 @@ System.register(['./checkList', './item'], function(exports_1) {
                     this.name = task.name;
                     this.checkListProgress = 25;
                     this.timeProgress = 50;
-                    this.hasCheckList = false;
-                    this.checkList = new checkList_1.CheckList(this.task.id, "first checklist", [new item_1.Item(1, "first item", true)]);
+                    this.checkList = task.checkList;
+                    //this.checkList = new CheckList(1,this.task.id,"first checklist",[new Item(1,"first item",true)]);
+                    //this.setCheckList();
                     this.setProgress();
                 }
+                Ongoing.prototype.setCheckList = function () {
+                    // this._service.getCheckList(1)
+                    //           .subscribe(checkList => this.checkList = checkList);
+                };
                 Ongoing.prototype.setProgress = function () {
                     // var currTime = new Date();
                     // var startTime = new Date(this.task.startTime);

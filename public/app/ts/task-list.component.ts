@@ -19,6 +19,7 @@ export class TaskListComponent {
 
 	
 	ngOnInit() {
-		this._service.getWipList().then(wipList => this.wipList = wipList)
+		this._service.getWipList()
+				.subscribe(wipList=>this.wipList=wipList);
 	}
 }

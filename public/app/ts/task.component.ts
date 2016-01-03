@@ -25,6 +25,6 @@ export class TaskComponent {
 
 	gotoWip() {
 		let route = ['WIP'];
-		this._router.navigate(route);
+		//this._router.navigate(route);
 	}
 }

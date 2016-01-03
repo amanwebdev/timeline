@@ -1,5 +1,5 @@
 /// <reference path="../../../typings/tsd.d.ts" />
-System.register(['angular2/core', 'angular2/http', './task', './ongoing'], function(exports_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './task', './checkList', './ongoing'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
         switch (arguments.length) {
@@ -11,7 +11,7 @@ System.register(['angular2/core', 'angular2/http', './task', './ongoing'], funct
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, task_1, ongoing_1;
+    var core_1, http_1, task_1, checkList_1, ongoing_1;
     var WipService, WIP_LIST, wipListPromise;
     return {
         setters:[
@@ -21,8 +21,12 @@ System.register(['angular2/core', 'angular2/http', './task', './ongoing'], funct
             function (http_1_1) {
                 http_1 = http_1_1;
             },
+            function (_1) {},
             function (task_1_1) {
                 task_1 = task_1_1;
+            },
+            function (checkList_1_1) {
+                checkList_1 = checkList_1_1;
             },
             function (ongoing_1_1) {
                 ongoing_1 = ongoing_1_1;
@@ -33,23 +37,23 @@ System.register(['angular2/core', 'angular2/http', './task', './ongoing'], funct
                     this.http = http;
                 }
                 WipService.prototype.getWipList = function () {
-                    var _this = this;
-                    this.http.get('/track/taskList').
-                        subscribe(function (res) {
-                        return _this.taskList =
-                            res.json()
-                                .map(function (t) { return new task_1.Task(t.id, t.status, t.name, new Date(), new Date(), t.comments); })
-                                .map(function (t) { return new ongoing_1.Ongoing(t); });
+                    return this.http.get('/track/taskList')
+                        .map(function (res) { return res.json(); })
+                        .map(function (tasks) {
+                        var result = [];
+                        if (tasks) {
+                            tasks.forEach(function (t) { return result.push(new ongoing_1.Ongoing(new task_1.Task(t.id, t.status, t.name, new Date(), new Date(), t.comments, t.checkList))); });
+                        }
+                        return result;
                     });
-                    if (this.taskList) {
-                        this.taskList[0].hasCheckList = true;
-                        console.log(this.taskList);
-                    }
-                    return Promise.resolve(this.taskList);
+                };
+                WipService.prototype.getCheckList = function (taskId) {
+                    return this.http.get('/checklist/' + taskId)
+                        .map(function (res) { return res.json(); })
+                        .map(function (c) { return new checkList_1.CheckList(c.id, taskId, c.name, c.itemList); });
                 };
                 WipService.prototype.getWip = function (id) {
-                    return wipListPromise
-                        .then(function (wipList) { return wipList.filter(function (task) { return task.id === +id; })[0]; });
+                    return 0;
                 };
                 WipService = __decorate([
                     core_1.Injectable(), 

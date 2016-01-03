@@ -35,7 +35,8 @@ System.register(['angular2/core', 'angular2/router', './wip.service', './check-l
                 }
                 TaskListComponent.prototype.ngOnInit = function () {
                     var _this = this;
-                    this._service.getWipList().then(function (wipList) { return _this.wipList = wipList; });
+                    this._service.getWipList()
+                        .subscribe(function (wipList) { return _this.wipList = wipList; });
                 };
                 TaskListComponent = __decorate([
                     core_1.Component({

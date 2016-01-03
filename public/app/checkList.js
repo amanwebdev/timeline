@@ -4,7 +4,8 @@ System.register([], function(exports_1) {
         setters:[],
         execute: function() {
             CheckList = (function () {
-                function CheckList(taskId, name, itemList) {
+                function CheckList(id, taskId, name, itemList) {
+                    this.id = id;
                     this.taskId = taskId;
                     this.name = name;
                     this.itemList = itemList;

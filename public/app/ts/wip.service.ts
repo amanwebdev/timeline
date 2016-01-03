@@ -2,33 +2,37 @@
 
 import {Injectable} from 'angular2/core';
 import {Http} from 'angular2/http';
-
+import 'rxjs/add/operator/map';
 import {Task} from './task';
+import {CheckList} from './checkList';
 import {Ongoing} from './ongoing';
 
 @Injectable()
 export class WipService {
-	private taskList:Array<Ongoing>;
 	constructor(private http: Http) {}
 
 	getWipList() { 
-		this.http.get('/track/taskList').
-			subscribe(res=>
-				this.taskList = 
-				res.json()
-				.map(t=>new Task(t.id,t.status,t.name,new Date(),new Date(),t.comments))
-				.map(t=>new Ongoing(t)));
-		if(this.taskList){
-			this.taskList[0].hasCheckList=true;
-	  	 console.log(this.taskList
-	  		);
-	  	}
-		return Promise.resolve(this.taskList);
+		return this.http.get('/track/taskList')
+				.map(res=>res.json())
+				.map((tasks:Array<any>) => {
+					let result:Array<Ongoing>=[];
+					if(tasks){
+						 tasks.forEach(
+						 	t=>result.push(
+							new Ongoing(
+								new Task(t.id,t.status,t.name,new Date(),
+									new Date(),t.comments,t.checkList))));
+					}
+					return result;
+				});
 	}
-
+	getCheckList(taskId){
+		return this.http.get('/checklist/'+taskId)
+			.map(res=> res.json())
+			.map(c=>new CheckList(c.id,taskId,c.name,c.itemList));
+	}
   getWip(id: number | string) {
-    return wipListPromise
-      .then(wipList => wipList.filter(task => task.id === +id)[0]);
+    return 0;
   }
 }
 

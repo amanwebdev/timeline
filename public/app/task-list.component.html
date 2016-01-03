@@ -1,5 +1,5 @@
 <div class="taskListComp">
-    <ul class="list-group taskList" style="width:80%;">
+    <ul class="list-group taskList">
         <div *ngFor="#wip of wipList">
             <li class="list-group-item">
                 <span class="taskName">{{wip.name}}</span>
@@ -9,27 +9,9 @@
                 <progress class="progress progress-warn taskProgress" value="{{wip.timeProgress}}" max="100">95%</progress>
 
             </li>
-            <li class="list-group-item"  [class.hidden]="!wip.hasCheckList">
+            <li class="list-group-item"  [class.hidden]="wip.checkList">
                <checklist [checkList]="wip.checkList"></checklist>
             </li>
         </div>
     </ul>
-    <!-- <table>
-     <tr>
-         <th>ID</th>
-         <th>Status</th>
-         <th>Name</th>
-         <th>Start Time</th>
-         <th>Finish Time</th>
-         <th>Comments</th>
-     </tr>
-     <tr *ngFor="#wip of wipList">
-         <td>{{wip.id}}</td>
-         <td>{{wip.status}}</td>
-         <td>{{wip.name}}</td>
-         <td>{{wip.startTime | date:'shortTime'}}</td>
-         <td>{{wip.finishTime | date:'shortTime'}}</td>
-         <td>{{wip.comments}}</td>
-     </tr>
- </table> -->
 </div>

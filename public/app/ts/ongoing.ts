@@ -2,11 +2,11 @@
 import { Task }    from './task';
 import { CheckList }    from './checkList';
 import { Item }    from './item';
+
 export class Ongoing {
   public name:string;
   public checkListProgress:number;
 	public timeProgress:number;
-  public hasCheckList:boolean;
   public checkList:CheckList;
   constructor(
     private task:Task
@@ -14,9 +14,14 @@ export class Ongoing {
     this.name=task.name;
     this.checkListProgress=25;
     this.timeProgress=50;
-    this.hasCheckList=false;
-    this.checkList = new CheckList(this.task.id,"first checklist",[new Item(1,"first item",true)]);
+    this.checkList = task.checkList;
+    //this.checkList = new CheckList(1,this.task.id,"first checklist",[new Item(1,"first item",true)]);
+    //this.setCheckList();
     this.setProgress();
+  }
+  private setCheckList(){
+   // this._service.getCheckList(1)
+   //           .subscribe(checkList => this.checkList = checkList);
   }
   private setProgress(){
   	// var currTime = new Date();

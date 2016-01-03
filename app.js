@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var taskRoute = require('./routes/track');
 var checkListRoute = require('./routes/taskList');
-
+var testRoute = require("./routes/test");
 
 app.use(cookieParser());
 app.use(logger('dev'));
@@ -22,6 +22,7 @@ app.get('/', function(req, res) {
 });
 app.use('/track', taskRoute);
 app.use('/checklist', checkListRoute);
+app.use('/test',testRoute);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -31,10 +32,10 @@ app.use(function(req, res, next) {
 });
 
 // Make our db accessible to our router
-app.use(function(req, res, next) {
+/*app.use(function(req, res, next) {
     req.db = db;
     next();
-});
+});*/
 // error handlers
 // development error handler
 // will print stacktrace
@@ -60,7 +61,7 @@ app.use(function(err, req, res, next) {
 
 
 // Connect to MySQL on start
-db.connect(db.MODE_PRODUCTION, function(err) {
+/*db.connect(db.MODE_PRODUCTION, function(err) {
     if (err) {
         console.log('Unable to connect to MySQL.')
         process.exit(1)
@@ -69,12 +70,15 @@ db.connect(db.MODE_PRODUCTION, function(err) {
             console.log('Listening on port 3000...')
         })
     }
-})
+})*/
 
 
-var server = app.listen(3000, function() {
+/*var server = app.listen(3000, function() {
     var host = server.address().address;
     var port = server.address().port;
 
     console.log('Example app listening at http://%s:%s', host, port);
-});
+});*/
+
+
+module.exports = app;
