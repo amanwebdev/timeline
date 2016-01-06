@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        ListItem.belongsTo(models.Checklist);
+        ListItem.belongsTo(models.CheckList);
       }
     }
   });

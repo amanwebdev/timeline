@@ -1,5 +1,5 @@
 /// <reference path="../../../typings/tsd.d.ts" />
-System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './task', './checkList', './ongoing'], function(exports_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './task', './item', './checkList', './ongoing'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
         switch (arguments.length) {
@@ -11,8 +11,31 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './t
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, task_1, checkList_1, ongoing_1;
+    var core_1, http_1, task_1, item_1, checkList_1, ongoing_1;
     var WipService, WIP_LIST, wipListPromise;
+    function toOngoing(t) {
+        var ongoing = new ongoing_1.Ongoing(new task_1.Task(t.id, t.status, t.name, t.startTime, t.finishTime, t.comments, parseCheckList(t)));
+        return ongoing;
+    }
+    function parseCheckList(task) {
+        var checkList;
+        if (task.checkList) {
+        }
+        else {
+            checkList = new checkList_1.CheckList(task.id, "Check list...", parseListItems());
+        }
+        return checkList;
+    }
+    function parseListItems(checkList) {
+        var listItems;
+        if (checkList) {
+        }
+        else {
+            listItems = new Array();
+            listItems.push(new item_1.Item("Item...", false));
+        }
+        return listItems;
+    }
     return {
         setters:[
             function (core_1_1) {
@@ -24,6 +47,9 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './t
             function (_1) {},
             function (task_1_1) {
                 task_1 = task_1_1;
+            },
+            function (item_1_1) {
+                item_1 = item_1_1;
             },
             function (checkList_1_1) {
                 checkList_1 = checkList_1_1;
@@ -42,7 +68,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './t
                         .map(function (tasks) {
                         var result = [];
                         if (tasks) {
-                            tasks.forEach(function (t) { return result.push(new ongoing_1.Ongoing(new task_1.Task(t.id, t.status, t.name, new Date(), new Date(), t.comments, t.checkList))); });
+                            tasks.forEach(function (t) { return result.push(toOngoing(t)); });
                         }
                         return result;
                     });

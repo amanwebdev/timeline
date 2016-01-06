@@ -5,10 +5,10 @@ System.register([], function(exports_1) {
         setters:[],
         execute: function() {
             Item = (function () {
-                function Item(checkListId, text, done) {
-                    this.checkListId = checkListId;
+                function Item(text, done, checkListId) {
                     this.text = text;
                     this.done = done;
+                    this.checkListId = checkListId;
                 }
                 return Item;
             })();

@@ -1,15 +1,14 @@
 <div class="taskListComp">
     <ul class="list-group taskList">
         <div *ngFor="#wip of wipList">
-            <li class="list-group-item">
+            <li class="list-group-item" (click)="toggleCheckList(wip.checkList)">
                 <span class="taskName">{{wip.name}}</span>
                 <span>progress</span>
                 <progress class="progress progress-success taskProgress" value="{{wip.checkListProgress}}" max="100">25%</progress>
                 <span>time</span>
                 <progress class="progress progress-warn taskProgress" value="{{wip.timeProgress}}" max="100">95%</progress>
-
             </li>
-            <li class="list-group-item"  [class.hidden]="wip.checkList">
+            <li class="list-group-item" [class.hidden]="wip.checkList.hide">
                <checklist [checkList]="wip.checkList"></checklist>
             </li>
         </div>

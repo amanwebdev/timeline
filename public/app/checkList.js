@@ -4,11 +4,12 @@ System.register([], function(exports_1) {
         setters:[],
         execute: function() {
             CheckList = (function () {
-                function CheckList(id, taskId, name, itemList) {
-                    this.id = id;
+                function CheckList(taskId, name, itemList, id) {
                     this.taskId = taskId;
                     this.name = name;
                     this.itemList = itemList;
+                    this.id = id;
+                    this.hide = true;
                 }
                 return CheckList;
             })();

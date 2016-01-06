@@ -2,8 +2,8 @@
 
 export class Item {
 	constructor(
-		public checkListId:number,
 		public text:string,
-		public done:boolean
+		public done:boolean,
+		public checkListId?:number
 	) {}
 }

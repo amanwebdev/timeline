@@ -2,10 +2,11 @@ var db = require('../db.js')
 
 var express = require('express');
 var router = express.Router();
+var models = require('../models');
 
 router.post('/', function(request, response) {
     console.log("received  request for saving checklist" + request.body);
-    saveCheckList(request.body);
+    saveCheckList(JSON.parse(request.body,response));
     response.send("success!");
 });
 router.get('/:id', function(request, response) {
@@ -17,67 +18,33 @@ router.get('/', function(request, response) {
     response.send("success!");
     //getCheckList(response);
 });
-function saveCheckList(data){
-    console.log("saving checklist"+data);
-	var checkListObj = JSON.parse(data);
-	var checkListId;
-	db.get(db.WRITE, function(err, connection) {
-        if (err) console.log(err.message);
-        var query = "insert into checklist (taskId,name) values" +
-            "('" + checkListObj.taskId + "','" + checkListObj.name  + "')";
-        connection.query(query, function(err, result) {
-            if (err) console.log(err.message);
-            console.log(result.insertId);
-            saveItems(checkListObj.itemList,result.insertId);
-        });
-    })
-    getCheckList(1);
-    
-}
-function saveItems(items,checkListId){
-    for(var i=0;i<items.length; i++){saveItem(items[i],checkListId)}
-}
-function saveItem(item,checkListId){
-    console.log("saving list item:"+JSON.stringify(item));
-    db.get(db.WRITE, function(err, connection) {
-        if (err) console.log(err.message);
-        var query = "insert into listItem (checklistId,text,done) values" +
-            "('" + checkListId + "','" + item.text + "','" + item.done  + "')";
-        connection.query(query, function(err, result) {
-            if (err) console.log(err.message);
-        });
-    });
-}
-function getCheckList(taskId,response){
-    var checkList;
-    console.log("retreiving check list for task id:"+taskId);
-    db.get(db.READ1, function(err, connection) {
-        if (err) console.log(err.message);
-        var query = "select * from checklist where taskId="+taskId+";";
-        connection.query(query, function(err, result) {
-            if (err) console.log(err.message);
-            console.log(result[0]);
-            checkList = result[0];
-            console.log("experimenting"+JSON.stringify(checkList));
-            getListItems(result[0],response);
-        });
-    });
-}
-function getListItems(checkList,response){
-    console.log("retreiving  list items for list id:"+checkList.id);
-    db.get(db.READ1, function(err, connection) {
-        if (err) console.log(err.message);
-        var query = "select * from listItem where checklistId="+10+";";
-        connection.query(query, function(err, result) {
-            if (err) console.log(err.message);
-            console.log(result);
-            checkList.itemList=[];
-            if(result){
-                for(var i=0;i<result.length; i++){checkList.itemList.push(result[i])}
+
+function saveCheckList(checkList,response){
+    models.CheckList.create({
+        name:checkList.name,
+        TaskId:checkList.taskId
+    }).then(function(){
+        models.CheckList.findOrCreate(
+            {where:{name:checkList.name,TaskId:checkList.taskId}})
+        .spread(function(list, created) {
+            if(created){
+                for(item in checkList.itemList){
+                    saveListItem(item,checkList.id);
+                }
+                response.send("success!");
             }
-            console.log("saved items in checkList:"+JSON.stringify(checkList));
-            response.json(checkList);
         });
+    });
+}
+function saveListItem(listItem,clId){
+    models.ListItem.create({
+        text:listItem.text,
+        done:listItem.done,
+        checkListId:clId
+    }).then(function(){
+        models.ListItem.findOrCreate(
+            {where:{text:listItem.text,checkListId:clId}}
+        );
     });
 }
 module.exports = router;

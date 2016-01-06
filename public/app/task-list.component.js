@@ -38,6 +38,9 @@ System.register(['angular2/core', 'angular2/router', './wip.service', './check-l
                     this._service.getWipList()
                         .subscribe(function (wipList) { return _this.wipList = wipList; });
                 };
+                TaskListComponent.prototype.toggleCheckList = function (checkList) {
+                    checkList.hide = !checkList.hide;
+                };
                 TaskListComponent = __decorate([
                     core_1.Component({
                         templateUrl: 'app/task-list.component.html',

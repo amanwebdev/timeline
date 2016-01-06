@@ -47,7 +47,7 @@ System.register(['angular2/core', 'angular2/http', 'angular2/router', './task'],
                 };
                 TaskComponent.prototype.gotoWip = function () {
                     var route = ['WIP'];
-                    //this._router.navigate(route);
+                    this._router.navigate(route);
                 };
                 TaskComponent = __decorate([
                     core_1.Component({

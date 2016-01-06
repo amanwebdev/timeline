@@ -2,10 +2,11 @@
 import { Item }    from './item';
 
 export class CheckList {
+	public hide:boolean = true;
 	constructor(
-		public id:number,
 		public taskId:number,
 		public name:string,
-		public itemList:Array<Item>
+		public itemList:Array<Item>,
+		public id?:number
 	) {}
 }

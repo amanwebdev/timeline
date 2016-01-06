@@ -4,6 +4,7 @@ import {Injectable} from 'angular2/core';
 import {Http} from 'angular2/http';
 import 'rxjs/add/operator/map';
 import {Task} from './task';
+import {Item} from './item';
 import {CheckList} from './checkList';
 import {Ongoing} from './ongoing';
 
@@ -17,11 +18,7 @@ export class WipService {
 				.map((tasks:Array<any>) => {
 					let result:Array<Ongoing>=[];
 					if(tasks){
-						 tasks.forEach(
-						 	t=>result.push(
-							new Ongoing(
-								new Task(t.id,t.status,t.name,new Date(),
-									new Date(),t.comments,t.checkList))));
+						 tasks.forEach(t=>result.push(toOngoing(t)));
 					}
 					return result;
 				});
@@ -35,7 +32,37 @@ export class WipService {
     return 0;
   }
 }
+function toOngoing(t:Task){
+	var ongoing:Ongoing = new Ongoing(
+				new Task(t.id,
+					t.status,
+					t.name,
+					t.startTime,
+					t.finishTime,
+					t.comments,
+					parseCheckList(t)
+					));
+	return ongoing;
+}
+function parseCheckList(task:Task){
+	var checkList:CheckList;
+	if(task.checkList){
 
+	}else{
+		checkList = new CheckList(task.id, "Check list...",parseListItems());
+	} 
+	return checkList;
+}
+function parseListItems(checkList?:CheckList){
+	var listItems:Item[];
+	if(checkList){
+
+	}else{
+		listItems = new Array<Item>();
+		listItems.push(new Item("Item...",false));
+	}
+	return listItems;
+}
 var WIP_LIST = [
 	new Task(1,'STARTED','Task 1', new Date(),new Date(),"Shitty task 1!"),
 	new Task(2,'STARTED','Task 2', new Date(),new Date(),"Shitty task 2!"),
