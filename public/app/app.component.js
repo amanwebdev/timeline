@@ -1,5 +1,5 @@
 /// <reference path="../../../typings/tsd.d.ts" />
-System.register(['angular2/core', 'angular2/router', './task.component', './task-list.component'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', './task.component', './task-list.component', './history.component'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
         switch (arguments.length) {
@@ -11,7 +11,7 @@ System.register(['angular2/core', 'angular2/router', './task.component', './task
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, task_component_1, task_list_component_1;
+    var core_1, router_1, task_component_1, task_list_component_1, history_component_1;
     var AppComponent;
     return {
         setters:[
@@ -26,6 +26,9 @@ System.register(['angular2/core', 'angular2/router', './task.component', './task
             },
             function (task_list_component_1_1) {
                 task_list_component_1 = task_list_component_1_1;
+            },
+            function (history_component_1_1) {
+                history_component_1 = history_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -39,7 +42,8 @@ System.register(['angular2/core', 'angular2/router', './task.component', './task
                     }),
                     router_1.RouteConfig([
                         { path: '/track', name: 'Track', component: task_component_1.TaskComponent, useAsDefault: true },
-                        { path: '/wip', name: 'WIP', component: task_list_component_1.TaskListComponent }
+                        { path: '/wip', name: 'WIP', component: task_list_component_1.TaskListComponent },
+                        { path: '/history', name: 'History', component: history_component_1.HistoryComponent }
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

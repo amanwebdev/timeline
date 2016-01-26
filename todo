@@ -1,0 +1,14 @@
+TODO:
+
+WIP Page:
+	1.	 Add status in task pane.
+	2.	 Add file attachments. If possible add google drive/dropbox link.
+	3.	 Add pagination to list items.
+	4.	 Add start/stop/delay buttons.
+	5.	 Change estimate to time worked.
+
+History Page:
+	1.	Add history panes.
+
+Task Page:
+	1. Change time range to hours estimate.

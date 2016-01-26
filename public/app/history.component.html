@@ -1,0 +1,126 @@
+<div class="row">
+    <div class="col-md-3">
+        <div class="taskNameList padLeft0 padRight0 top50 left50 mr50 mb50">
+            <ul class="list-group mb0">
+                <li class="list-group-item">Task 1</li>
+                <li class="list-group-item">Task 2</li>
+                <li class="list-group-item">Task 3</li>
+                <li class="list-group-item">Task 4</li>
+                <li class="list-group-item">Task 5</li>
+            </ul>
+        </div>
+        <nav class="taskListNav left30">
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="col-md-9 taskDesc padTop20">
+        <div class="taskDescTable width100P">
+            <div class="taskTitle"><span class="inlineBlock width85p">Task 1</span><span
+            class="inlineBlock posRel right0p">27 Jan, 2016</span></div>
+            <div class="mt10"><span class="descTitle">Description:</span> Finish UI changes on history page.</div>
+
+        	<div class="mt5">
+        		<table>
+					<tr>
+						<th align="left" class="width20p">Started At:</th>
+						<td>2:00 PM</td>
+						<th align="left" class="borderLeft padLeft10 width30p">Finished At:</th>
+						<td>4:00 PM</td>
+					</tr>
+					<tr>
+						<th align="left" class="width20p">Time Logged:</th>
+						<td>1h</td>
+						<th align="left" class="borderLeft padLeft10 width30p">Time Estimated:</th>
+						<td>2h</td>
+					</tr>
+				</table>
+            </div>
+          
+            <div class="mt10">
+                <span class="descTitle">Check list</span>
+                <button type="button" (click)="toggleChecklist()"></button>:
+                <div class="borderBottom"></div>
+                <div class="posRel left115p ml70" [hidden]="!showChecklist">
+                    <h5 class="bbDashed width80p">First Check list</h5>
+                    <div class="checkbox">
+                        <div>
+                            <input class="styled" id="checkbox1" disabled="" type="checkbox">
+                            <label for="checkbox1">
+                                Can't check this
+                            </label>
+                        </div>
+                        <div>
+                            <input class="styled" id="checkbox2" disabled="" type="checkbox">
+                            <label for="checkbox2">
+                                Can't check this
+                            </label>
+                        </div>
+                        <div>
+                            <input class="styled" id="checkbox3" disabled="" type="checkbox">
+                            <label for="checkbox3">
+                                Can't check this
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt5">
+                <div class="descTitle">Progress Graph:</div>
+                <div class="posRel left130p">
+                    <progress-graph [data]="graphData"></progress-graph>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+.taskDesc {
+    border: 4px solid rgb(221, 221, 221);
+    width: 60%;
+    position: relative;
+    top: 50px;
+    border-radius: 7px;
+}
+
+.taskNameList {
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+}
+
+.taskListNav {
+    position: relative;
+}
+
+.tableHeader {
+    text-align: center;
+}
+
+.taskDescTable {
+    margin: 0 auto;
+}
+
+.taskTitle{
+	border-bottom: 1px solid #ddd;
+}
+.descTitle{
+	font-weight: bold;
+	font-size: 16px;
+}
+</style>
