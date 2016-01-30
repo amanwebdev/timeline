@@ -9,49 +9,33 @@
                 <li class="list-group-item">Task 5</li>
             </ul>
         </div>
-        <nav class="taskListNav left30">
-            <ul class="pagination">
-                <li>
-                    <a href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li>
-                    <a href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
+        <nav class="taskListNav top30">
+            <ul class="pager">
+                <li><a href="#">Previous</a></li>
+                <li><a href="#">Next</a></li>
             </ul>
         </nav>
     </div>
     <div class="col-md-9 taskDesc padTop20">
         <div class="taskDescTable width100P">
-            <div class="taskTitle"><span class="inlineBlock width85p">Task 1</span><span
-            class="inlineBlock posRel right0p">27 Jan, 2016</span></div>
+            <div class="taskTitle"><span class="inlineBlock width85p">Task 1</span><span class="inlineBlock posRel right0p">27 Jan, 2016</span></div>
             <div class="mt10"><span class="descTitle">Description:</span> Finish UI changes on history page.</div>
-
-        	<div class="mt5">
-        		<table>
-					<tr>
-						<th align="left" class="width20p">Started At:</th>
-						<td>2:00 PM</td>
-						<th align="left" class="borderLeft padLeft10 width30p">Finished At:</th>
-						<td>4:00 PM</td>
-					</tr>
-					<tr>
-						<th align="left" class="width20p">Time Logged:</th>
-						<td>1h</td>
-						<th align="left" class="borderLeft padLeft10 width30p">Time Estimated:</th>
-						<td>2h</td>
-					</tr>
-				</table>
+            <div class="mt5">
+                <table>
+                    <tr>
+                        <th align="left" class="width20p">Started At:</th>
+                        <td>2:00 PM</td>
+                        <th align="left" class="borderLeft padLeft10 width30p">Finished At:</th>
+                        <td>4:00 PM</td>
+                    </tr>
+                    <tr>
+                        <th align="left" class="width20p">Time Logged:</th>
+                        <td>1h</td>
+                        <th align="left" class="borderLeft padLeft10 width30p">Time Estimated:</th>
+                        <td>2h</td>
+                    </tr>
+                </table>
             </div>
-          
             <div class="mt10">
                 <span class="descTitle">Check list</span>
                 <button type="button" (click)="toggleChecklist()"></button>:
@@ -116,11 +100,12 @@
     margin: 0 auto;
 }
 
-.taskTitle{
-	border-bottom: 1px solid #ddd;
+.taskTitle {
+    border-bottom: 1px solid #ddd;
 }
-.descTitle{
-	font-weight: bold;
-	font-size: 16px;
+
+.descTitle {
+    font-weight: bold;
+    font-size: 16px;
 }
 </style>
