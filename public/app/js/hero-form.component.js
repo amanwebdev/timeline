@@ -33,7 +33,7 @@ System.register(['angular2/core', './hero'], function(exports_1) {
                 HeroFormComponent = __decorate([
                     core_1.Component({
                         selector: 'hero-form',
-                        templateUrl: 'app/hero-form.component.html'
+                        templateUrl: 'app/templates/hero-form.component.html'
                     }), 
                     __metadata('design:paramtypes', [])
                 ], HeroFormComponent);

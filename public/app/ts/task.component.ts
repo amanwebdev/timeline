@@ -8,7 +8,7 @@ import {Task} from './task';
 
 @Component({
 	selector: 'track-panel',
-	templateUrl: 'app/task.component.html'
+	templateUrl: 'app/templates/task.component.html'
 })
 export class TaskComponent {
 	statusList = ['STARTED', 'FINISHED', 'BETWEEN', 'CARRY-FORWARD'];

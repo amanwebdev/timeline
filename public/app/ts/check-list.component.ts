@@ -8,7 +8,7 @@ import {Component, OnInit, Input}   from 'angular2/core';
 
 @Component({
 	selector: 'checklist',
-	templateUrl: 'app/check-list.component.html'
+	templateUrl: 'app/templates/check-list.component.html'
 })
 export class CheckListComponent {
 	@Input() checkList:CheckList;

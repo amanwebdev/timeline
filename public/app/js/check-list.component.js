@@ -44,7 +44,7 @@ System.register(['angular2/http', './checkList', 'angular2/core'], function(expo
                 CheckListComponent = __decorate([
                     core_1.Component({
                         selector: 'checklist',
-                        templateUrl: 'app/check-list.component.html'
+                        templateUrl: 'app/templates/check-list.component.html'
                     }), 
                     __metadata('design:paramtypes', [http_1.Http])
                 ], CheckListComponent);

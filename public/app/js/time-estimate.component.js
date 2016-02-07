@@ -33,7 +33,7 @@ System.register(['angular2/core'], function(exports_1) {
                 TimeEstimate = __decorate([
                     core_1.Component({
                         selector: 'time-estimate',
-                        templateUrl: 'app/time-estimate.component.html'
+                        templateUrl: 'app/templates/time-estimate.component.html'
                     }), 
                     __metadata('design:paramtypes', [])
                 ], TimeEstimate);

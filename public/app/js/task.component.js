@@ -52,7 +52,7 @@ System.register(['angular2/core', 'angular2/http', 'angular2/router', './task'],
                 TaskComponent = __decorate([
                     core_1.Component({
                         selector: 'track-panel',
-                        templateUrl: 'app/task.component.html'
+                        templateUrl: 'app/templates/task.component.html'
                     }), 
                     __metadata('design:paramtypes', [http_1.Http, router_1.Router])
                 ], TaskComponent);

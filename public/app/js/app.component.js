@@ -37,7 +37,7 @@ System.register(['angular2/core', 'angular2/router', './task.component', './task
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'time-sheet-app',
-                        templateUrl: 'app/app.component.html',
+                        templateUrl: 'app/templates/app.component.html',
                         directives: [task_component_1.TaskComponent, task_list_component_1.TaskListComponent, router_1.ROUTER_DIRECTIVES]
                     }),
                     router_1.RouteConfig([

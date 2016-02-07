@@ -6,7 +6,7 @@ import {ProgressGraphComponent} from './progress-graph.component';
 
 @Component({
 	selector: 'history',
-	templateUrl: 'app/history.component.html',
+	templateUrl: 'app/templates/history.component.html',
 	directives: [ProgressGraphComponent]
 })
 export class HistoryComponent {

@@ -5,7 +5,7 @@ import {NgForm}    from 'angular2/common';
 import { Hero }    from './hero';
 @Component({
   selector: 'hero-form',
-  templateUrl: 'app/hero-form.component.html'
+  templateUrl: 'app/templates/hero-form.component.html'
 })
 export class HeroFormComponent {
   powers = ['Really Smart', 'Super Flexible',

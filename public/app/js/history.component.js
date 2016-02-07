@@ -41,7 +41,7 @@ System.register(['angular2/core', './progress-graph.component'], function(export
                 HistoryComponent = __decorate([
                     core_1.Component({
                         selector: 'history',
-                        templateUrl: 'app/history.component.html',
+                        templateUrl: 'app/templates/history.component.html',
                         directives: [progress_graph_component_1.ProgressGraphComponent]
                     }), 
                     __metadata('design:paramtypes', [])

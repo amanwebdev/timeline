@@ -10,7 +10,7 @@ import {Ongoing} from './ongoing';
 import {CheckList} from './checkList';
 
 @Component({
-  templateUrl: 'app/task-list.component.html',
+	templateUrl: 'app/templates/task-list.component.html',
   directives: [CheckListComponent]
 })
 export class TaskListComponent {

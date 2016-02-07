@@ -8,7 +8,7 @@ import {HistoryComponent} from './history.component';
 
 @Component({
   selector: 'time-sheet-app',
-  templateUrl: 'app/app.component.html',
+  templateUrl: 'app/templates/app.component.html',
   directives: [TaskComponent, TaskListComponent, ROUTER_DIRECTIVES]
 })
 @RouteConfig([

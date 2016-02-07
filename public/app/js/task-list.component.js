@@ -43,7 +43,7 @@ System.register(['angular2/core', 'angular2/router', './wip.service', './check-l
                 };
                 TaskListComponent = __decorate([
                     core_1.Component({
-                        templateUrl: 'app/task-list.component.html',
+                        templateUrl: 'app/templates/task-list.component.html',
                         directives: [check_list_component_1.CheckListComponent]
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, wip_service_1.WipService])

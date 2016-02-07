@@ -36,7 +36,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http'], function(
                 LogInFormComponent = __decorate([
                     core_1.Component({
                         selector: 'login-form',
-                        templateUrl: 'app/login-form.component.html',
+                        templateUrl: 'app/templates/login-form.component.html',
                     }), 
                     __metadata('design:paramtypes', [http_1.Http, router_1.Router])
                 ], LogInFormComponent);
