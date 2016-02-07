@@ -14,7 +14,8 @@ export class TaskComponent {
 	statusList = ['STARTED', 'FINISHED', 'BETWEEN', 'CARRY-FORWARD'];
 	status = 'STARTED';
 	model = new Task(1, 'STARTED', 'Task 1', new Date(), new Date(), "Shitty task!");
-
+	hours: number = 1;
+	minutes: number = 20;
 	constructor(private http: Http, private _router: Router) { }
 
 	onSubmit(value) {

@@ -13,12 +13,7 @@
                 <div class="line"></div>
             </div>
             <div class="searchBox col-sm-3">
-                <div class="timeControls">
-                    <input id="timeBoxStart" type="time" placeholder="9:00A.M." class="noBorder timeBox" [(ngModel)]="model.startTime" ngControl="startTime" #startTime="ngForm" />
-                    <span>-</span>
-                    <input id="timeBoxEnd" type="time" placeholder="12:00P.M." class="noBorder timeBox" [(ngModel)]="model.finishTime" ngControl="finishTime" #finishTime="ngForm" />
-                </div>
-                <div class="line"></div>
+               <time-estimate [hours]="hours" [minutes]="minutes"></time-estimate>
             </div>
             <div class="searchBox col-sm-2">
                 <input type="text" placeholder="comments" class="noBorder fullWidthBlock" [(ngModel)]="model.comments" ngControl="comments" #comments="ngForm" />

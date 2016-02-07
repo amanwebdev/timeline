@@ -12,7 +12,7 @@
                 <a class="nav-link" [routerLink]="['WIP']">WIP</a>
             </li>
             <li class="nav-item">
-               <a class="nav-link"  [routerLink]="['History']">History</a>
+                <a class="nav-link" [routerLink]="['History']">History</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Stats</a>
@@ -21,7 +21,22 @@
                 <a class="nav-link" href="#">About</a>
             </li>
         </ul>
+        <span class="nav-item" (click)="$event.preventDefault()" class="pull-xs-right">
+                <span dropdown [isOpen]="true">
+                    <a href id="simple-dropdown" dropdownToggle>User</a>
+                    <ul class="dropdown-menu" aria-labelledby="simple-dropdown">
+                        <li>
+                            <a class="dropdown-item" href="#">Profile</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Settings</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Log out</a>
+                        </li>
+                    </ul>
+                </span>
+        </span>
     </div>
 </nav>
-
 <router-outlet></router-outlet>

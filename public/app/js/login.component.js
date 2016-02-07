@@ -39,7 +39,7 @@ System.register(['angular2/core', 'angular2/router', './app.component', './login
                     }),
                     router_1.RouteConfig([
                         { path: '/login', name: 'LogIn', component: login_form_component_1.LogInFormComponent, useAsDefault: true },
-                        { path: '/app/...', name: 'App', component: app_component_1.AppComponent },
+                        { path: '/...', name: 'App', component: app_component_1.AppComponent },
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], LogInComponent);

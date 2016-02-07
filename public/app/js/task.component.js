@@ -35,6 +35,8 @@ System.register(['angular2/core', 'angular2/http', 'angular2/router', './task'],
                     this.statusList = ['STARTED', 'FINISHED', 'BETWEEN', 'CARRY-FORWARD'];
                     this.status = 'STARTED';
                     this.model = new task_1.Task(1, 'STARTED', 'Task 1', new Date(), new Date(), "Shitty task!");
+                    this.hours = 1;
+                    this.minutes = 20;
                 }
                 TaskComponent.prototype.onSubmit = function (value) {
                     var _this = this;

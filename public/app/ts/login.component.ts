@@ -14,6 +14,6 @@ import {LogInFormComponent} from './login-form.component';
 })
 @RouteConfig([
 	{ path: '/login', name: 'LogIn', component: LogInFormComponent, useAsDefault: true },
-	{ path: '/app/...', name: 'App', component: AppComponent},
+	{ path: '/...', name: 'App', component: AppComponent},
 ])
 export class LogInComponent {}
