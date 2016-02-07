@@ -63,10 +63,12 @@
 
 input.noBorder:focus + .line {
     width: 90%;
+    z-index: 1;
 }
 
 .timeControls:focus + .line {
     width: 90%;
+    z-index: 1;
 }
 
 input.noBorder {

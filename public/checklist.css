@@ -28,6 +28,12 @@
 .top30{
 	top:30px;
 }
+.top25{
+	top:25px;
+}
+.top25p{
+	top:25%;
+}
 .left130p{
 	left:130px;
 }
@@ -39,6 +45,9 @@
 }
 .left30{
 	left:30px;
+}
+.left30p{
+	left:30%;
 }
 .padLeft0{
 	padding-left: 0px;
@@ -64,8 +73,14 @@
 .width60p{
 	width:60%;
 }
+.width50p{
+	width:50%;
+}
 .width45p{
 	width:45%;
+}
+.width40p{
+	width:40%;
 }
 .width30p{
 	width:30%;
@@ -88,9 +103,24 @@
 .inlineBlock{
 	display:inline-block;
 }
+.block{
+	display:block;
+}
 .posRel{
 	position: relative;
 }
+.posAbs{
+	position:absolute;
+}
 .right0p{
 	right:0px;
+}
+.right15{
+	right:15px;
+}
+.marginAuto{
+	margin:auto;
+}
+.textCenter{
+	text-align:center;
 }

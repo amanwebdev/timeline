@@ -1,0 +1,30 @@
+<table>
+    <tbody>
+        <tr class="text-center">
+            <td><a><span class="glyphicon glyphicon-chevron-up"></span></a></td>
+            <td>&nbsp;</td>
+            <td><a><span class="glyphicon glyphicon-chevron-up"></span></a></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="form-group">
+                <input style="width:50px;" type="text" class="form-control text-center" [readonly]="readonlyInput"maxlength="2" [(ngModel)]="hours">
+            </td>
+            <td>
+                <span class="padLeft10 padRight10">HH</span>
+            </td>
+            <td class="form-group">
+                <input style="width:50px;" type="text"class="form-control text-center" [readonly]="readonlyInput"maxlength="2" [(ngModel)]="minutes">
+            </td>
+            <td>
+                <span class="padLeft10">MM</span>
+            </td>
+        </tr>
+        <tr class="text-center">
+            <td><a class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></td>
+            <td>&nbsp;</td>
+            <td><a class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
