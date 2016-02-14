@@ -8,5 +8,18 @@ import {Component, Input}   from 'angular2/core';
 export class TimeEstimate {
 	@Input() private hours:number;
 	@Input() private minutes:number;
-	constructor(){}		
+	constructor(){}
+
+	public incrementHours(){
+		++this.hours;
+	}
+	public decrementHours(){
+		--this.hours;
+	}
+	public incrementMinutes(){
+		++this.minutes;
+	}
+	public decrementMinutes(){
+		--this.minutes;
+	}
 }

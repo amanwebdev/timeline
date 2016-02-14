@@ -22,6 +22,18 @@ System.register(['angular2/core'], function(exports_1) {
             TimeEstimate = (function () {
                 function TimeEstimate() {
                 }
+                TimeEstimate.prototype.incrementHours = function () {
+                    ++this.hours;
+                };
+                TimeEstimate.prototype.decrementHours = function () {
+                    --this.hours;
+                };
+                TimeEstimate.prototype.incrementMinutes = function () {
+                    ++this.minutes;
+                };
+                TimeEstimate.prototype.decrementMinutes = function () {
+                    --this.minutes;
+                };
                 __decorate([
                     core_1.Input(), 
                     __metadata('design:type', Number)

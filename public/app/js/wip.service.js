@@ -12,9 +12,9 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './t
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, http_1, task_1, item_1, checkList_1, ongoing_1;
-    var WipService, WIP_LIST, wipListPromise;
+    var WipService, wipListPromise;
     function toOngoing(t) {
-        var ongoing = new ongoing_1.Ongoing(new task_1.Task(t.id, t.status, t.name, t.startTime, t.finishTime, t.comments, parseCheckList(t)));
+        var ongoing = new ongoing_1.Ongoing(new task_1.Task());
         return ongoing;
     }
     function parseCheckList(task) {
@@ -73,6 +73,14 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './t
                         return result;
                     });
                 };
+                WipService.prototype.saveWip = function (task, action) {
+                    console.log("form value:" + JSON.stringify(task));
+                    this.http.post('/track', JSON.stringify(task)).
+                        subscribe(function (res) {
+                        console.log(res.text());
+                        action();
+                    });
+                };
                 WipService.prototype.getCheckList = function (taskId) {
                     return this.http.get('/checklist/' + taskId)
                         .map(function (res) { return res.json(); })
@@ -88,14 +96,6 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './t
                 return WipService;
             })();
             exports_1("WipService", WipService);
-            WIP_LIST = [
-                new task_1.Task(1, 'STARTED', 'Task 1', new Date(), new Date(), "Shitty task 1!"),
-                new task_1.Task(2, 'STARTED', 'Task 2', new Date(), new Date(), "Shitty task 2!"),
-                new task_1.Task(3, 'STARTED', 'Task 3', new Date(), new Date(), "Shitty task 3!"),
-                new task_1.Task(4, 'STARTED', 'Task 4', new Date(), new Date(), "Shitty task 4!"),
-                new task_1.Task(5, 'STARTED', 'Task 5', new Date(), new Date(), "Shitty task 5!"),
-                new task_1.Task(6, 'STARTED', 'Task 6', new Date(), new Date(), "Shitty task 6!"),
-            ];
             wipListPromise = Promise.resolve(this.taskList);
         }
     }

@@ -6,6 +6,7 @@ import {RouteParams, Router, RouteConfig, ROUTER_DIRECTIVES} from 'angular2/rout
 import {Http} from 'angular2/http';
 import {AppComponent} from './app.component';
 import {LogInFormComponent} from './login-form.component';
+import {SignUpFormComponent} from './signup-form.component';
 
 @Component({
 	selector: 'time-sheet',
@@ -14,6 +15,7 @@ import {LogInFormComponent} from './login-form.component';
 })
 @RouteConfig([
 	{ path: '/login', name: 'LogIn', component: LogInFormComponent, useAsDefault: true },
-	{ path: '/...', name: 'App', component: AppComponent},
+	{ path: '/register', name: 'SignUp', component: SignUpFormComponent},
+	{ path: '/app/...', name: 'App', component: AppComponent},
 ])
 export class LogInComponent {}

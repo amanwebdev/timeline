@@ -1,22 +1,20 @@
 <div class="container posAbs width40p top25p left30p">
-    <h3 class="textCenter">Welcome to Time Sheet!</h3>
+    <h3 class="textCenter">Sign up for a Time Sheet account!</h3>
     <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
         <div class="form-group">
             <div class="posRel">
-                <input id="username" type="text" placeholder="Username" class="noBorder block width100P" [(ngModel)]="username"/>
+                <input id="username" type="text" placeholder="Username" class="noBorder block width100P" [(ngModel)]="username" />
                 <div class="line focusWidth100p"></div>
             </div>
             <div class="posRel">
-                <input id="password" type="text" placeholder="Password" class="noBorder block width100P" [(ngModel)]="password"/>
+                <input id="password" type="text" placeholder="Password" class="noBorder block width100P" [(ngModel)]="password" />
                 <div class="line focusWidth100p"></div>
             </div>
         </div>
         <div>
-            <button type="submit" class="btn btn-default" [disabled]="!loginForm.form.valid">Sign In</button>
+            <button type="submit" class="btn btn-default" [disabled]="!loginForm.form.valid">Sign Up</button>
             <span class="posAbs right15 padTop10" >
-                <a (click)="signUp()">Sign Up</a>
-                <span>or</span>
-                <a href="#">Reset your password?</a>
+                <a (click)="backToLogin()">back to login</a>
             </span>
         </div>
     </form>

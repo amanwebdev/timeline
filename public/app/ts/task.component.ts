@@ -5,30 +5,21 @@ import {NgForm}    from 'angular2/common';
 import {Http} from 'angular2/http';
 import {RouteParams, Router} from 'angular2/router';
 import {Task} from './task';
+import {TimeEstimate} from './time-estimate.component';
+import {WipService}      from  './wip.service';
 
 @Component({
 	selector: 'track-panel',
-	templateUrl: 'app/templates/task.component.html'
+	templateUrl: 'app/templates/task.component.html',
+	directives: [TimeEstimate]
 })
 export class TaskComponent {
-	statusList = ['STARTED', 'FINISHED', 'BETWEEN', 'CARRY-FORWARD'];
-	status = 'STARTED';
-	model = new Task(1, 'STARTED', 'Task 1', new Date(), new Date(), "Shitty task!");
-	hours: number = 1;
-	minutes: number = 20;
-	constructor(private http: Http, private _router: Router) { }
+	model = new Task();
+
+	constructor(private http: Http, private _router: Router, private _wipService: WipService) { }
 
 	onSubmit(value) {
-		console.log("form value:" + JSON.stringify(this.model));
-		this.http.post('/track', JSON.stringify(this.model)).
-			subscribe(res => {
-				console.log(res.text());
-				this.gotoWip();
-			});
+		this._wipService.saveWip(value, () => this._router.navigate(['WIP']));
 	}
 
-	gotoWip() {
-		let route = ['WIP'];
-		this._router.navigate(route);
-	}
 }

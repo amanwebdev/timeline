@@ -33,7 +33,7 @@ function createTask(task, response) {
         comments: task.comments,
         UserUsername: 'admin'
     }).then(function(task) {
-        //response.json(task);
+        response.json(task);
     })
 }
 

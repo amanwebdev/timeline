@@ -12,22 +12,16 @@
                 <input type="text" placeholder="task" class="noBorder fullWidthBlock" [(ngModel)]="model.name" ngControl="name" #name="ngForm" />
                 <div class="line"></div>
             </div>
-            <div class="searchBox col-sm-3">
-               <time-estimate [hours]="hours" [minutes]="minutes"></time-estimate>
+            <div class="searchBox col-sm-4 top70 left20">
+               <time-estimate [hours]="model.hours" [minutes]="model.minutes" class="posRel top"></time-estimate>
             </div>
             <div class="searchBox col-sm-2">
                 <input type="text" placeholder="comments" class="noBorder fullWidthBlock" [(ngModel)]="model.comments" ngControl="comments" #comments="ngForm" />
                 <div class="line"></div>
             </div>
-            <div class="searchBox col-sm-2">
+            <div class="searchBox col-sm-1">
                 <button type="submit" class="btn btn-primary-outline" [disabled]="!heroForm.form.valid"><i class="fa fa-check"></i></button>
             </div>
         </form>
     </div>
 </div>
-<script>
-$(function() {
-    $('#timeBoxStart').timeEntry({});
-    $('#timeBoxEnd').timeEntry({});
-});
-</script>

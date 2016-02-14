@@ -22,6 +22,9 @@
 .ml70{
 	margin-left:70px;
 }
+.top70{
+	top:70px;
+}
 .top50{
 	top: 50px;
 }
@@ -49,6 +52,9 @@
 .left30p{
 	left:30%;
 }
+.left20{
+	left:20px;
+}
 .padLeft0{
 	padding-left: 0px;
 }
@@ -58,11 +64,17 @@
 .padTop20{
 	padding-top:20px;
 }
+.padTop10{
+	padding-top:10px;	
+}
 .padRight0{
 	padding-right: 0px;
 }
 .padRight40{
 	padding-right:40px;
+}
+.padRight10{
+	padding-right:10px;
 }
 .width100P{
 	width:100%;

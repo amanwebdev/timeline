@@ -1,9 +1,9 @@
 <table>
     <tbody>
         <tr class="text-center">
-            <td><a><span class="glyphicon glyphicon-chevron-up"></span></a></td>
+            <td><a class="btn btn-link" (click)="incrementHours()"><span class="fa fa-angle-up"></span></a></td>
             <td>&nbsp;</td>
-            <td><a><span class="glyphicon glyphicon-chevron-up"></span></a></td>
+            <td><a class="btn btn-link" (click)="incrementMinutes()"><span class="fa fa-angle-up"></span></a></td>
             <td></td>
         </tr>
         <tr>
@@ -21,9 +21,9 @@
             </td>
         </tr>
         <tr class="text-center">
-            <td><a class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></td>
+            <td><a class="btn btn-link" (click)="decrementHours()"><span class="fa fa-angle-down"></span></a></td>
             <td>&nbsp;</td>
-            <td><a class="btn btn-link"><span class="glyphicon glyphicon-chevron-down"></span></a></td>
+            <td><a class="btn btn-link" (click)="decrementMinutes()"><span class="fa fa-angle-down"></span></a></td>
             <td></td>
         </tr>
     </tbody>

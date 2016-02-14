@@ -12,7 +12,7 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', './user.se
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, router_1, http_1, user_service_1;
-    var LogInFormComponent;
+    var SignUpFormComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -28,30 +28,30 @@ System.register(['angular2/core', 'angular2/router', 'angular2/http', './user.se
                 user_service_1 = user_service_1_1;
             }],
         execute: function() {
-            LogInFormComponent = (function () {
-                function LogInFormComponent(http, _router, _userService) {
+            SignUpFormComponent = (function () {
+                function SignUpFormComponent(http, _router, _userService) {
                     this.http = http;
                     this._router = _router;
                     this._userService = _userService;
                 }
-                LogInFormComponent.prototype.onSubmit = function () {
+                SignUpFormComponent.prototype.onSubmit = function () {
                     var _this = this;
-                    this._userService.login(this.username, this.password, function () { return _this._router.navigate(['App']); });
+                    this._userService.register(this.username, this.password, function () { return _this._router.navigate(['App']); });
                 };
-                LogInFormComponent.prototype.signUp = function () {
-                    this._router.navigate(['SignUp']);
+                SignUpFormComponent.prototype.backToLogin = function () {
+                    this._router.navigate(['LogIn']);
                 };
-                LogInFormComponent = __decorate([
+                SignUpFormComponent = __decorate([
                     core_1.Component({
-                        selector: 'login-form',
-                        templateUrl: 'app/templates/login-form.component.html',
+                        selector: 'signup-form',
+                        templateUrl: 'app/templates/signup-form.component.html',
                     }), 
                     __metadata('design:paramtypes', [http_1.Http, router_1.Router, user_service_1.UserService])
-                ], LogInFormComponent);
-                return LogInFormComponent;
+                ], SignUpFormComponent);
+                return SignUpFormComponent;
             })();
-            exports_1("LogInFormComponent", LogInFormComponent);
+            exports_1("SignUpFormComponent", SignUpFormComponent);
         }
     }
 });
-//# sourceMappingURL=login-form.component.js.map
+//# sourceMappingURL=signup-form.component.js.map
