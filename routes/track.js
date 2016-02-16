@@ -5,8 +5,8 @@ var router = express.Router();
 var models = require('../models');
 
 router.post('/', function(request, response) {
-    console.log("received post request" + request.body);
-    createTask(JSON.parse(request.body), response);
+     console.log("create request made with body:" + JSON.stringify(request.body));
+    createTask(request.body, response);
 });
 router.get('/taskList', function(request, response) {
     console.log("received get request");
@@ -31,6 +31,8 @@ function createTask(task, response) {
         startTime: task.startTime,
         finishTime: task.finishTime,
         comments: task.comments,
+        hours: task.hours,
+        minutes: task.minutes,
         UserUsername: 'admin'
     }).then(function(task) {
         response.json(task);

@@ -25,7 +25,7 @@ export class WipService {
 	}
 	saveWip(task,action : ()=>any){
 		console.log("form value:" + JSON.stringify(task));
-		this.http.post('/track', JSON.stringify(task)).
+		this.http.post('/track', this.processBeforeSave(task)).
 			subscribe(res => {
 				console.log(res.text());
 				action();
@@ -38,6 +38,10 @@ export class WipService {
 	}
 	getWip(id: number | string) {
 		return 0;
+	}
+	private processBeforeSave(task:Task):string{
+		task.startTime = new Date();
+		return JSON.stringify(task);
 	}
 }
 function toOngoing(t: Task) {

@@ -7,15 +7,16 @@ import {Http} from 'angular2/http';
 import {AppComponent} from './app.component';
 import {LogInFormComponent} from './login-form.component';
 import {SignUpFormComponent} from './signup-form.component';
+import {LoggedInRouterOutlet} from './LoggedInOutlet';
 
 @Component({
 	selector: 'time-sheet',
 	template: `<router-outlet></router-outlet>`,
-	directives: [AppComponent, LogInFormComponent, ROUTER_DIRECTIVES]
+	directives: [AppComponent, LogInFormComponent, LoggedInRouterOutlet]
 })
 @RouteConfig([
-	{ path: '/login', name: 'LogIn', component: LogInFormComponent, useAsDefault: true },
+	{ path: '/login', name: 'LogIn', component: LogInFormComponent },
 	{ path: '/register', name: 'SignUp', component: SignUpFormComponent},
-	{ path: '/app/...', name: 'App', component: AppComponent},
+	{ path: '/app/...', name: 'App', component: AppComponent, useAsDefault: true },
 ])
 export class LogInComponent {}

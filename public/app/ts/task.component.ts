@@ -19,7 +19,7 @@ export class TaskComponent {
 	constructor(private http: Http, private _router: Router, private _wipService: WipService) { }
 
 	onSubmit(value) {
-		this._wipService.saveWip(value, () => this._router.navigate(['WIP']));
+		this._wipService.saveWip(this.model, () => this._router.navigate(['WIP']));
 	}
 
 }

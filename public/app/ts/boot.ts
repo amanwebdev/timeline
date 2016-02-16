@@ -5,9 +5,9 @@ import {ROUTER_PROVIDERS} from 'angular2/router';
 import {Http, HTTP_PROVIDERS} from 'angular2/http';
 import {WipService}      from  './wip.service';
 import {UserService}      from  './user.service';
-import {LogInComponent} from './login.component';
+import {AppComponent} from './app.component';
 import {ElementRef} from 'angular2/core';
 
-bootstrap(LogInComponent, [
+bootstrap(AppComponent, [
 	ROUTER_PROVIDERS, WipService, UserService, HTTP_PROVIDERS, ElementRef
 ]);

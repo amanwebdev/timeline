@@ -75,7 +75,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './t
                 };
                 WipService.prototype.saveWip = function (task, action) {
                     console.log("form value:" + JSON.stringify(task));
-                    this.http.post('/track', JSON.stringify(task)).
+                    this.http.post('/track', this.processBeforeSave(task)).
                         subscribe(function (res) {
                         console.log(res.text());
                         action();
@@ -88,6 +88,10 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './t
                 };
                 WipService.prototype.getWip = function (id) {
                     return 0;
+                };
+                WipService.prototype.processBeforeSave = function (task) {
+                    task.startTime = new Date();
+                    return JSON.stringify(task);
                 };
                 WipService = __decorate([
                     core_1.Injectable(), 
