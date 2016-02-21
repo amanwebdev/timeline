@@ -25,14 +25,15 @@ router.get('/user', function(request, reponse) {
 module.exports = router;
 
 function createTask(task, response) {
+    console.log("time estimate:"+task.timeEstimate.hours+","+task.timeEstimate.minutes);
     models.Task.create({
         name: task.name,
         status: task.status,
         startTime: task.startTime,
         finishTime: task.finishTime,
         comments: task.comments,
-        hours: task.hours,
-        minutes: task.minutes,
+        hours: task.timeEstimate.hours,
+        minutes: task.timeEstimate.minutes,
         UserUsername: 'admin'
     }).then(function(task) {
         response.json(task);

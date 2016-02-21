@@ -2,7 +2,6 @@
 import { Item }    from './item';
 
 export class CheckList {
-	public hide:boolean = true;
 	constructor(
 		public taskId:number,
 		public name:string,

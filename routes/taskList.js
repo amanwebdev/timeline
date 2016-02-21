@@ -19,6 +19,17 @@ router.get('/', function(request, response) {
     //getCheckList(response);
 });
 
+function getCheckList(response) {
+    models.CheckList.findAll({
+        where: {
+            UserUsername: 'admin'
+        }
+    }).then(function(tasks){
+        response.json(tasks);
+    });
+}
+
+
 function saveCheckList(checkList,response){
     models.CheckList.create({
         name:checkList.name,

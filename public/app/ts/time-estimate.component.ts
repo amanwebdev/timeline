@@ -1,25 +1,43 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 
-import {Component, Input}   from 'angular2/core';
-@Component({
-	selector: 'time-estimate',
-	templateUrl: 'app/templates/time-estimate.component.html'
-})
-export class TimeEstimate {
-	@Input() private hours:number;
-	@Input() private minutes:number;
-	constructor(){}
+import {Component, Input, Self, EventEmitter, Output}   from 'angular2/core';
+import {NgControl, ControlValueAccessor, NgModel} from 'angular2/common';
 
-	public incrementHours(){
-		++this.hours;
+import {TimeEstimate} from './time-estimate';
+
+@Component({
+	selector: 'time-estimate, time-estimate',
+	templateUrl: 'app/templates/time-estimate.component.html',
+
+})
+export class TimeEstimateComponent {
+	@Output() estimateChange: EventEmitter<any>;
+
+	timeEstimate: TimeEstimate;
+
+	constructor() {
+		this.estimateChange = new EventEmitter();
 	}
-	public decrementHours(){
-		--this.hours;
+	public setValue(value:TimeEstimate) {
+		console.log("Tryin to set time estimate :" + JSON.stringify(value));
+		if (value && value instanceof TimeEstimate) {
+			this.timeEstimate = value;
+			console.log("Setting time estimate:" + JSON.stringify(value));
+		}
 	}
-	public incrementMinutes(){
-		++this.minutes;
+	public incrementHours(): void {
+		++this.timeEstimate.hours;
 	}
-	public decrementMinutes(){
-		--this.minutes;
+	public decrementHours(): void {
+		--this.timeEstimate.hours;
+	}
+	public incrementMinutes() {
+		++this.timeEstimate.minutes;
+	}
+	public decrementMinutes(): void {
+		--this.timeEstimate.minutes;
+	}
+	private emitChange(): void {
+		this.estimateChange.emit(this.timeEstimate);
 	}
 }

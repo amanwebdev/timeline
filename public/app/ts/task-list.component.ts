@@ -1,30 +1,63 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 
-import {NgForm}    from 'angular2/common';
+import { NgForm } from 'angular2/common';
+import { Router } from 'angular2/router';
+import { Component, OnInit } from 'angular2/core';
+
+import { Item } from './item';
 import { Task }    from './task';
-import {Component, OnInit}   from 'angular2/core';
-import {Router}              from 'angular2/router';
-import {WipService}      from  './wip.service';
-import {CheckListComponent} from './check-list.component';
-import {Ongoing} from './ongoing';
-import {CheckList} from './checkList';
+import { Ongoing } from './ongoing';
+import { CheckList } from './checkList';
+import { WipService } from './wip.service';
+import { CheckListComponent } from './check-list.component';
+
+import { PAGINATION_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 
 @Component({
 	templateUrl: 'app/templates/task-list.component.html',
-  directives: [CheckListComponent]
+	directives: [CheckListComponent, PAGINATION_DIRECTIVES]
 })
 export class TaskListComponent {
+	public currentPageItems: Ongoing[];
 	public wipList: Ongoing[];
-	constructor(
-    private _router: Router,
-    private _service: WipService) { }
+	private totalItems: number;
+	private currentPage: number = 0;
+	private itemsPerPage: number = 5;
 
-	
+	constructor(private _router: Router, private _service: WipService) { }
+
 	ngOnInit() {
 		this._service.getWipList()
-				.subscribe(wipList=>this.wipList=wipList);
+			.subscribe(wipList=> {
+				this.wipList = wipList
+				if (this.wipList) {
+					this.totalItems = this.wipList.length;
+					this.updateCurrentPageItems();
+				}
+			});
 	}
-	toggleCheckList(checkList:CheckList){
-		checkList.hide=!checkList.hide;
+
+	public toggleCheckList(wip: Ongoing): void {
+		if (!wip.checkList) {
+			wip.checkList
+				= new CheckList(wip.taskId, "Checklist...",
+					[new Item("Item...", false)]);
+		}
+		wip.hideCheckList = !wip.hideCheckList;
+	}
+
+	public pageChanged(event: any): void {
+		this.currentPage = event.page;
+		this.updateCurrentPageItems();
+	}
+
+	private updateCurrentPageItems(): void {
+		if (this.wipList) {
+			this.currentPageItems = this.wipList
+				.slice(this.currentPage, this.currentPage + this.itemsPerPage);
+
+			console.log("total page items:" + this.wipList.length
+				+ ", current page:" + this.currentPage + ", items per page:" + this.itemsPerPage);
+		}
 	}
 }

@@ -1,26 +1,23 @@
 <div class="container">
     <div class="row timeForm">
-        <form (ngSubmit)="onSubmit(heroForm.value.name)" #heroForm="ngForm">
+        <form (ngSubmit)="onSubmit(taskForm.value)" [ngFormModel]="taskForm">
             <div class="searchBox col-sm-3">
-                <input id="someinput" type="text" placeholder="Status" class="noBorder fullWidthBlock" [(ngModel)]="model.status" ngControl="name" #name="ngForm" />
+                <input id="someinput" type="text" placeholder="Status" class="noBorder fullWidthBlock" [(ngModel)]="model.status"  [ngFormControl]="taskForm.controls.status" />
                 <div class="line"></div>
-                <br />
-                <ul id="menu" class="drop searchList">
-                </ul>
             </div>
             <div class="searchBox col-sm-2">
-                <input type="text" placeholder="task" class="noBorder fullWidthBlock" [(ngModel)]="model.name" ngControl="name" #name="ngForm" />
+                <input type="text" placeholder="task" class="noBorder fullWidthBlock" [(ngModel)]="model.name"  [ngFormControl]="taskForm.controls.name" />
                 <div class="line"></div>
             </div>
             <div class="searchBox col-sm-4 top70 left20">
-               <time-estimate [hours]="model.hours" [minutes]="model.minutes" class="posRel top"></time-estimate>
+               <time-estimate [(ngModel)]="model.timeEstimate" class="posRel top" [ngFormControl]="taskForm.controls.timeEstimate"></time-estimate>
             </div>
             <div class="searchBox col-sm-2">
-                <input type="text" placeholder="comments" class="noBorder fullWidthBlock" [(ngModel)]="model.comments" ngControl="comments" #comments="ngForm" />
+                <input type="text" placeholder="comments" class="noBorder fullWidthBlock" [(ngModel)]="model.comments" [ngFormControl]="taskForm.controls.comments" />
                 <div class="line"></div>
             </div>
             <div class="searchBox col-sm-1">
-                <button type="submit" class="btn btn-primary-outline" [disabled]="!heroForm.form.valid"><i class="fa fa-check"></i></button>
+                <button type="submit" class="btn btn-primary-outline" [disabled]="!taskForm.valid"><i class="fa fa-check"></i></button>
             </div>
         </form>
     </div>

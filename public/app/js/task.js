@@ -5,8 +5,6 @@ System.register([], function(exports_1) {
         execute: function() {
             Task = (function () {
                 function Task() {
-                    this.hours = 0;
-                    this.minutes = 0;
                 }
                 return Task;
             })();

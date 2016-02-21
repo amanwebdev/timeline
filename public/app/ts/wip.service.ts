@@ -7,6 +7,7 @@ import {Task} from './task';
 import {Item} from './item';
 import {CheckList} from './checkList';
 import {Ongoing} from './ongoing';
+import { contentHeaders } from './common/headers';
 
 @Injectable()
 export class WipService {
@@ -18,14 +19,14 @@ export class WipService {
 			.map((tasks: Array<any>) => {
 				let result: Array<Ongoing> = [];
 				if (tasks) {
-					tasks.forEach(t=> result.push(toOngoing(t)));
+					tasks.forEach(t=> result.push(new Ongoing(t)));
 				}
 				return result;
 			});
 	}
 	saveWip(task,action : ()=>any){
-		console.log("form value:" + JSON.stringify(task));
-		this.http.post('/track', this.processBeforeSave(task)).
+		console.log("stringified value:" + this.processBeforeSave(task));
+		this.http.post('/track', this.processBeforeSave(task), { headers: contentHeaders }).
 			subscribe(res => {
 				console.log(res.text());
 				action();
@@ -44,10 +45,7 @@ export class WipService {
 		return JSON.stringify(task);
 	}
 }
-function toOngoing(t: Task) {
-	var ongoing: Ongoing = new Ongoing(new Task());
-	return ongoing;
-}
+
 function parseCheckList(task: Task) {
 	var checkList: CheckList;
 	if (task.checkList) {

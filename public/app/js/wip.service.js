@@ -1,5 +1,5 @@
 /// <reference path="../../../typings/tsd.d.ts" />
-System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './task', './item', './checkList', './ongoing'], function(exports_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './item', './checkList', './ongoing', './common/headers'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
         switch (arguments.length) {
@@ -11,12 +11,8 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './t
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, task_1, item_1, checkList_1, ongoing_1;
+    var core_1, http_1, item_1, checkList_1, ongoing_1, headers_1;
     var WipService, wipListPromise;
-    function toOngoing(t) {
-        var ongoing = new ongoing_1.Ongoing(new task_1.Task());
-        return ongoing;
-    }
     function parseCheckList(task) {
         var checkList;
         if (task.checkList) {
@@ -45,9 +41,6 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './t
                 http_1 = http_1_1;
             },
             function (_1) {},
-            function (task_1_1) {
-                task_1 = task_1_1;
-            },
             function (item_1_1) {
                 item_1 = item_1_1;
             },
@@ -56,6 +49,9 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './t
             },
             function (ongoing_1_1) {
                 ongoing_1 = ongoing_1_1;
+            },
+            function (headers_1_1) {
+                headers_1 = headers_1_1;
             }],
         execute: function() {
             WipService = (function () {
@@ -68,14 +64,14 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './t
                         .map(function (tasks) {
                         var result = [];
                         if (tasks) {
-                            tasks.forEach(function (t) { return result.push(toOngoing(t)); });
+                            tasks.forEach(function (t) { return result.push(new ongoing_1.Ongoing(t)); });
                         }
                         return result;
                     });
                 };
                 WipService.prototype.saveWip = function (task, action) {
-                    console.log("form value:" + JSON.stringify(task));
-                    this.http.post('/track', this.processBeforeSave(task)).
+                    console.log("stringified value:" + this.processBeforeSave(task));
+                    this.http.post('/track', this.processBeforeSave(task), { headers: headers_1.contentHeaders }).
                         subscribe(function (res) {
                         console.log(res.text());
                         action();

@@ -9,7 +9,6 @@ System.register([], function(exports_1) {
                     this.name = name;
                     this.itemList = itemList;
                     this.id = id;
-                    this.hide = true;
                 }
                 return CheckList;
             })();

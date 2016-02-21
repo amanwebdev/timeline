@@ -1,5 +1,5 @@
 /// <reference path="../../../typings/tsd.d.ts" />
-System.register(['angular2/core', 'angular2/router', './task.component', './task-list.component', './history.component', 'ng2-bootstrap/ng2-bootstrap', './LoggedInOutlet', './login-form.component', './signup-form.component'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', './task.component', './task-list.component', './history.component', 'ng2-bootstrap/ng2-bootstrap'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
         switch (arguments.length) {
@@ -11,7 +11,7 @@ System.register(['angular2/core', 'angular2/router', './task.component', './task
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, task_component_1, task_list_component_1, history_component_1, ng2_bootstrap_1, LoggedInOutlet_1, login_form_component_1, signup_form_component_1;
+    var core_1, router_1, task_component_1, task_list_component_1, history_component_1, ng2_bootstrap_1;
     var AppComponent;
     return {
         setters:[
@@ -32,15 +32,6 @@ System.register(['angular2/core', 'angular2/router', './task.component', './task
             },
             function (ng2_bootstrap_1_1) {
                 ng2_bootstrap_1 = ng2_bootstrap_1_1;
-            },
-            function (LoggedInOutlet_1_1) {
-                LoggedInOutlet_1 = LoggedInOutlet_1_1;
-            },
-            function (login_form_component_1_1) {
-                login_form_component_1 = login_form_component_1_1;
-            },
-            function (signup_form_component_1_1) {
-                signup_form_component_1 = signup_form_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -50,14 +41,12 @@ System.register(['angular2/core', 'angular2/router', './task.component', './task
                     core_1.Component({
                         selector: 'time-sheet',
                         templateUrl: 'app/templates/app.component.html',
-                        directives: [task_component_1.TaskComponent, task_list_component_1.TaskListComponent, ng2_bootstrap_1.DROPDOWN_DIRECTIVES, router_1.RouterLink, LoggedInOutlet_1.LoggedInRouterOutlet]
+                        directives: [task_component_1.TaskComponent, task_list_component_1.TaskListComponent, ng2_bootstrap_1.DROPDOWN_DIRECTIVES, router_1.ROUTER_DIRECTIVES]
                     }),
                     router_1.RouteConfig([
                         { path: '/track', name: 'Track', component: task_component_1.TaskComponent, useAsDefault: true },
                         { path: '/wip', name: 'WIP', component: task_list_component_1.TaskListComponent },
-                        { path: '/history', name: 'History', component: history_component_1.HistoryComponent },
-                        { path: '/login', name: 'LogIn', component: login_form_component_1.LogInFormComponent },
-                        { path: '/register', name: 'SignUp', component: signup_form_component_1.SignUpFormComponent },
+                        { path: '/history', name: 'History', component: history_component_1.HistoryComponent }
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

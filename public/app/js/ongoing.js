@@ -6,13 +6,12 @@ System.register([], function(exports_1) {
             Ongoing = (function () {
                 function Ongoing(task) {
                     this.task = task;
+                    this.hideCheckList = true;
+                    this.taskId = task.id;
                     this.name = task.name;
                     this.checkListProgress = 25;
                     this.timeProgress = 50;
                     this.checkList = task.checkList;
-                    //this.checkList = new CheckList(1,this.task.id,"first checklist",[new Item(1,"first item",true)]);
-                    //this.setCheckList();
-                    this.setProgress();
                 }
                 Ongoing.prototype.setCheckList = function () {
                     // this._service.getCheckList(1)

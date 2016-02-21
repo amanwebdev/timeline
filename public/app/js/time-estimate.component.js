@@ -1,5 +1,5 @@
 /// <reference path="../../../typings/tsd.d.ts" />
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core', './time-estimate'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
         switch (arguments.length) {
@@ -11,47 +11,57 @@ System.register(['angular2/core'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
-    var TimeEstimate;
+    var core_1, time_estimate_1;
+    var TimeEstimateComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (time_estimate_1_1) {
+                time_estimate_1 = time_estimate_1_1;
             }],
         execute: function() {
-            TimeEstimate = (function () {
-                function TimeEstimate() {
+            TimeEstimateComponent = (function () {
+                function TimeEstimateComponent() {
+                    this.estimateChange = new core_1.EventEmitter();
                 }
-                TimeEstimate.prototype.incrementHours = function () {
-                    ++this.hours;
+                TimeEstimateComponent.prototype.setValue = function (value) {
+                    console.log("Tryin to set time estimate :" + JSON.stringify(value));
+                    if (value && value instanceof time_estimate_1.TimeEstimate) {
+                        this.timeEstimate = value;
+                        console.log("Setting time estimate:" + JSON.stringify(value));
+                    }
                 };
-                TimeEstimate.prototype.decrementHours = function () {
-                    --this.hours;
+                TimeEstimateComponent.prototype.incrementHours = function () {
+                    ++this.timeEstimate.hours;
                 };
-                TimeEstimate.prototype.incrementMinutes = function () {
-                    ++this.minutes;
+                TimeEstimateComponent.prototype.decrementHours = function () {
+                    --this.timeEstimate.hours;
                 };
-                TimeEstimate.prototype.decrementMinutes = function () {
-                    --this.minutes;
+                TimeEstimateComponent.prototype.incrementMinutes = function () {
+                    ++this.timeEstimate.minutes;
+                };
+                TimeEstimateComponent.prototype.decrementMinutes = function () {
+                    --this.timeEstimate.minutes;
+                };
+                TimeEstimateComponent.prototype.emitChange = function () {
+                    this.estimateChange.emit(this.timeEstimate);
                 };
                 __decorate([
-                    core_1.Input(), 
-                    __metadata('design:type', Number)
-                ], TimeEstimate.prototype, "hours");
-                __decorate([
-                    core_1.Input(), 
-                    __metadata('design:type', Number)
-                ], TimeEstimate.prototype, "minutes");
-                TimeEstimate = __decorate([
+                    core_1.Output(), 
+                    __metadata('design:type', core_1.EventEmitter)
+                ], TimeEstimateComponent.prototype, "estimateChange");
+                TimeEstimateComponent = __decorate([
                     core_1.Component({
-                        selector: 'time-estimate',
-                        templateUrl: 'app/templates/time-estimate.component.html'
+                        selector: 'time-estimate, time-estimate',
+                        templateUrl: 'app/templates/time-estimate.component.html',
                     }), 
                     __metadata('design:paramtypes', [])
-                ], TimeEstimate);
-                return TimeEstimate;
+                ], TimeEstimateComponent);
+                return TimeEstimateComponent;
             })();
-            exports_1("TimeEstimate", TimeEstimate);
+            exports_1("TimeEstimateComponent", TimeEstimateComponent);
         }
     }
 });

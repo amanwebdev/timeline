@@ -1,5 +1,5 @@
 /// <reference path="../../../typings/tsd.d.ts" />
-System.register(['angular2/core', 'angular2/router', './app.component', './login-form.component', './signup-form.component'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', './app.component', './login-form.component', './signup-form.component', './LoggedInOutlet'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
         switch (arguments.length) {
@@ -11,7 +11,7 @@ System.register(['angular2/core', 'angular2/router', './app.component', './login
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, app_component_1, login_form_component_1, signup_form_component_1;
+    var core_1, router_1, app_component_1, login_form_component_1, signup_form_component_1, LoggedInOutlet_1;
     var LogInComponent;
     return {
         setters:[
@@ -29,6 +29,9 @@ System.register(['angular2/core', 'angular2/router', './app.component', './login
             },
             function (signup_form_component_1_1) {
                 signup_form_component_1 = signup_form_component_1_1;
+            },
+            function (LoggedInOutlet_1_1) {
+                LoggedInOutlet_1 = LoggedInOutlet_1_1;
             }],
         execute: function() {
             LogInComponent = (function () {
@@ -38,12 +41,12 @@ System.register(['angular2/core', 'angular2/router', './app.component', './login
                     core_1.Component({
                         selector: 'time-sheet',
                         template: "<router-outlet></router-outlet>",
-                        directives: [app_component_1.AppComponent, login_form_component_1.LogInFormComponent, router_1.ROUTER_DIRECTIVES]
+                        directives: [app_component_1.AppComponent, login_form_component_1.LogInFormComponent, LoggedInOutlet_1.LoggedInRouterOutlet]
                     }),
                     router_1.RouteConfig([
-                        { path: '/login', name: 'LogIn', component: login_form_component_1.LogInFormComponent, useAsDefault: true },
+                        { path: '/login', name: 'LogIn', component: login_form_component_1.LogInFormComponent },
                         { path: '/register', name: 'SignUp', component: signup_form_component_1.SignUpFormComponent },
-                        { path: '/app/...', name: 'App', component: app_component_1.AppComponent },
+                        { path: '/app/...', name: 'App', component: app_component_1.AppComponent, useAsDefault: true },
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], LogInComponent);

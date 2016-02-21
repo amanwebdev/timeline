@@ -1,6 +1,7 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 import { CheckList }    from './checkList';
 import { User }    from './user';
+import { TimeEstimate } from './time-estimate.ts';
 
 export class Task {
 	public id: number;
@@ -11,7 +12,8 @@ export class Task {
 	public comments: string;
 	public checkList: CheckList;
 	public user: User;
-	public hours: number = 0;
-	public minutes: number = 0;
-	constructor() { }
+	public timeEstimate: TimeEstimate;
+	constructor() { 
+		
+	}
 }

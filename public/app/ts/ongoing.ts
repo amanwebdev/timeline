@@ -4,20 +4,21 @@ import { CheckList }    from './checkList';
 import { Item }    from './item';
 
 export class Ongoing {
+  public taskId:number;
   public name:string;
   public checkListProgress:number;
 	public timeProgress:number;
   public checkList:CheckList;
+  public hideCheckList:boolean = true;
+
   constructor(
     private task:Task
   ) {
+    this.taskId=task.id;
     this.name=task.name;
     this.checkListProgress=25;
     this.timeProgress=50;
     this.checkList = task.checkList;
-    //this.checkList = new CheckList(1,this.task.id,"first checklist",[new Item(1,"first item",true)]);
-    //this.setCheckList();
-    this.setProgress();
   }
   private setCheckList(){
    // this._service.getCheckList(1)
