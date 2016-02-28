@@ -5,6 +5,7 @@ import { Http } from 'angular2/http';
 import { Task }    from './task';
 import { CheckList }    from './checkList';
 import { Component, OnInit, Input }   from 'angular2/core';
+import { Item } from './item';
 
 @Component({
 	selector: 'checklist',
@@ -26,6 +27,6 @@ export class CheckListComponent {
 	}
 
 	addNewItem() : any {
-		this.checklist.itemList.push(new Item("Item...",false));
+		this.checkList.itemList.push(new Item("Item...", false));
 	}
 }

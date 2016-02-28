@@ -1,5 +1,5 @@
 /// <reference path="../../../typings/tsd.d.ts" />
-System.register(['angular2/http', './checkList', 'angular2/core'], function(exports_1) {
+System.register(['angular2/http', './checkList', 'angular2/core', './item'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
         switch (arguments.length) {
@@ -11,7 +11,7 @@ System.register(['angular2/http', './checkList', 'angular2/core'], function(expo
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var http_1, checkList_1, core_1;
+    var http_1, checkList_1, core_1, item_1;
     var CheckListComponent;
     return {
         setters:[
@@ -23,6 +23,9 @@ System.register(['angular2/http', './checkList', 'angular2/core'], function(expo
             },
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (item_1_1) {
+                item_1 = item_1_1;
             }],
         execute: function() {
             CheckListComponent = (function () {
@@ -38,7 +41,7 @@ System.register(['angular2/http', './checkList', 'angular2/core'], function(expo
                     });
                 };
                 CheckListComponent.prototype.addNewItem = function () {
-                    this.checklist.itemList.push(new Item("Item...", false));
+                    this.checkList.itemList.push(new item_1.Item("Item...", false));
                 };
                 __decorate([
                     core_1.Input(), 

@@ -22,6 +22,9 @@
 .mr50{
 	margin-right:100px;
 }
+.mr10{
+	margin-right:10px;
+}
 .ml70{
 	margin-left:70px;
 }
@@ -58,6 +61,9 @@
 .left20{
 	left:20px;
 }
+.leftN100p{
+	left:-100px;
+}
 .padLeft0{
 	padding-left: 0px;
 }
@@ -86,7 +92,7 @@
 	width:100%;
 }
 .width85p{
-	width:85%;
+	width:85% !important;
 }
 .width60p{
 	width:60%;
@@ -144,4 +150,10 @@
 }
 .height45p{
 	height:45%;
+}
+.borderTransparent{
+	border-color:transparent;
+}
+.font1P5{
+	font-size:1.5em;
 }
