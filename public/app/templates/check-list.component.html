@@ -1,9 +1,9 @@
-<div>
+<div class="checkList">
     <form (ngSubmit)="onSubmit()" #checkListForm="ngForm">
         <div class="input-group checkListWidth">
             <input type="text" class="form-control" placeholder="Check list..." [(ngModel)]="checkList.name" ngControl="name" #name="ngForm">
             <span class="input-group-btn">
-             <button class="btn btn-secondary" type="button">Add items</button>
+             <button class="btn btn-secondary" type="button" (click)="addNewItem()">Add items</button>
          </span>
         </div>
         <div class="input-group checkListItem" *ngFor="#item of checkList.itemList">
@@ -12,6 +12,47 @@
         </span>
             <input type="text" class="form-control" placeHolder="Item..." [(ngModel)]="item.text" ngControl="itemText" #itemText="ngForm">
         </div>
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary mt50">Save</button>
     </form>
 </div>
+<div class="inlineBlock padLeft45">
+<table>
+    <tr>
+        <th>Started At :</th>
+        <td>5:00 PM</td>
+    </tr>
+     <tr>
+        <th>Comments :</th>
+        <td>Trivial task of fixing nothing but bunch of errors</td>
+    </tr>
+     <tr>
+        <th>Labels :</th>
+        <td>Project 1, Bug, Internal</td>
+    </tr>
+</table>
+</div>
+<style>
+.checkList{
+    display:inline-block;
+    width:50%;
+    padding:10px;
+    padding-right:50px;
+    /*box-shadow: 0px 1px 1px 1px rgb(221,221,221);*/
+    border-right: 5px dashed lightblue;
+}
+.checkListWidth{
+    width: 100%;
+    margin-top:20px;
+}
+.checkListItem{
+    width:100%;
+    margin-top:20px;
+    margin-bottom: :20px;
+}
+table{
+    position:absolute;
+    top:20px;
+    height:150px;
+    width:45%;
+}
+</style>

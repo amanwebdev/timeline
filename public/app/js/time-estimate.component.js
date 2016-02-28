@@ -35,15 +35,19 @@ System.register(['angular2/core', './time-estimate'], function(exports_1) {
                 };
                 TimeEstimateComponent.prototype.incrementHours = function () {
                     ++this.timeEstimate.hours;
+                    this.emitChange();
                 };
                 TimeEstimateComponent.prototype.decrementHours = function () {
                     --this.timeEstimate.hours;
+                    this.emitChange();
                 };
                 TimeEstimateComponent.prototype.incrementMinutes = function () {
                     ++this.timeEstimate.minutes;
+                    this.emitChange();
                 };
                 TimeEstimateComponent.prototype.decrementMinutes = function () {
                     --this.timeEstimate.minutes;
+                    this.emitChange();
                 };
                 TimeEstimateComponent.prototype.emitChange = function () {
                     this.estimateChange.emit(this.timeEstimate);

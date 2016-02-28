@@ -111,15 +111,7 @@ input.noBorder {
 	position: relative;
 	top:50px;
 }
-.checkListWidth{
-    width: 60%;
-    margin-top:20px;
-}
-.checkListItem{
-    width:60%;
-    margin-top:20px;
-    margin-bottom: :20px;
-}
+
 .hidden{
     display:none;
 }

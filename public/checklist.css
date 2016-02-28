@@ -1,6 +1,9 @@
 .mt10{
 	margin-top:10px;
 }
+.mt50{
+	margin-top:50px;
+}
 .mt5{
 	margin-top:5px;
 }
@@ -60,6 +63,9 @@
 }
 .padLeft10{
 	padding-left: 10px;
+}
+.padLeft45{
+	padding-left:45px;
 }
 .padTop20{
 	padding-top:20px;
@@ -135,4 +141,7 @@
 }
 .textCenter{
 	text-align:center;
+}
+.height45p{
+	height:45%;
 }

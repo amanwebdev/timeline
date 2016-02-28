@@ -27,15 +27,19 @@ export class TimeEstimateComponent {
 	}
 	public incrementHours(): void {
 		++this.timeEstimate.hours;
+		this.emitChange();
 	}
 	public decrementHours(): void {
 		--this.timeEstimate.hours;
+		this.emitChange();
 	}
 	public incrementMinutes() {
 		++this.timeEstimate.minutes;
+		this.emitChange();
 	}
 	public decrementMinutes(): void {
 		--this.timeEstimate.minutes;
+		this.emitChange();
 	}
 	private emitChange(): void {
 		this.estimateChange.emit(this.timeEstimate);

@@ -63,6 +63,8 @@ System.register(['angular2/router', 'angular2/core', './item', './checkList', '.
                     wip.hideCheckList = !wip.hideCheckList;
                 };
                 TaskListComponent.prototype.pageChanged = function (event) {
+                    console.log('Page changed to: ' + event.page);
+                    console.log('Number items per page: ' + event.itemsPerPage);
                     this.currentPage = event.page;
                     this.updateCurrentPageItems();
                 };

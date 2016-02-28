@@ -1,7 +1,7 @@
 <div class="taskListComp">
     <ul class="list-group taskList">
         <div *ngFor="#wip of currentPageItems">
-            <li class="list-group-item" (click)="toggleCheckList(wip.checkList)">
+            <li class="list-group-item" (click)="toggleCheckList(wip)">
                 <span class="taskName">{{wip.name}}</span>
                 <span>progress</span>
                 <progress class="progress progress-success taskProgress" value="{{wip.checkListProgress}}" max="100">25%</progress>
@@ -12,6 +12,8 @@
                 <checklist [checkList]="wip.checkList"></checklist>
             </li>
         </div>
-        <pager [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)" [disabled]="currentPageItems" [hidden]="!wipList"></pager>
+        <pager [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [(ngModel)]="currentPage" onPageChanged="pageChanged($event)" [disabled]="currentPageItems" [hidden]="!wipList"></pager>
     </ul>
 </div>
+<style>
+</style>

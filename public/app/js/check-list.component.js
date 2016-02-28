@@ -37,6 +37,9 @@ System.register(['angular2/http', './checkList', 'angular2/core'], function(expo
                         console.log(res.text());
                     });
                 };
+                CheckListComponent.prototype.addNewItem = function () {
+                    this.checklist.itemList.push(new Item("Item...", false));
+                };
                 __decorate([
                     core_1.Input(), 
                     __metadata('design:type', checkList_1.CheckList)
