@@ -31,6 +31,9 @@ System.register(['angular2/http', './checkList', 'angular2/core', './item'], fun
             CheckListComponent = (function () {
                 function CheckListComponent(http) {
                     this.http = http;
+                    this.editableClass = "editable";
+                    this.editFieldClass = "editableField";
+                    this.editDisabled = true;
                 }
                 CheckListComponent.prototype.ngOnInit = function () { };
                 CheckListComponent.prototype.onSubmit = function (value) {
@@ -42,6 +45,15 @@ System.register(['angular2/http', './checkList', 'angular2/core', './item'], fun
                 };
                 CheckListComponent.prototype.addNewItem = function () {
                     this.checkList.itemList.push(new item_1.Item("Item...", false));
+                };
+                CheckListComponent.prototype.editField = function (editableField) {
+                    this.editDisabled = false;
+                    this.editableClass = "editableActive";
+                    editableField.focus();
+                };
+                CheckListComponent.prototype.cancelEdit = function () {
+                    this.editDisabled = true;
+                    this.editableClass = "editable";
                 };
                 __decorate([
                     core_1.Input(), 

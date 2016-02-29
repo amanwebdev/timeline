@@ -13,7 +13,9 @@ import { Item } from './item';
 })
 export class CheckListComponent {
 	@Input() checkList: CheckList;
-
+	editableClass: String = "editable";
+	editFieldClass : String = "editableField";
+	editDisabled: Boolean = true;
 	constructor(private http: Http) {}
 
 	ngOnInit() { }
@@ -28,5 +30,15 @@ export class CheckListComponent {
 
 	addNewItem() : any {
 		this.checkList.itemList.push(new Item("Item...", false));
+	}
+
+	editField(editableField) : any{
+		this.editDisabled = false;
+		this.editableClass = "editableActive";
+		editableField.focus();
+	}
+	cancelEdit() : any{
+		this.editDisabled = true;
+		this.editableClass = "editable";
 	}
 }
