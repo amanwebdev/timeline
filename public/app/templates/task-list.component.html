@@ -3,9 +3,9 @@
         <div *ngFor="#wip of currentPageItems">
             <li class="list-group-item" (click)="toggleCheckList(wip)">
                 <span class="taskName">{{wip.name}}</span>
-                <span>progress</span>
+                <span class="label label-success">progress</span>
                 <progress class="progress progress-success taskProgress" value="{{wip.checkListProgress}}" max="100">25%</progress>
-                <span>time</span>
+                <span class="label label-success">time</span>
                 <progress class="progress progress-warn taskProgress" value="{{wip.timeProgress}}" max="100">95%</progress>
             </li>
             <li class="list-group-item" *ngIf="wip.checkList" [class.hidden]="wip.hideCheckList">
@@ -16,4 +16,8 @@
     </ul>
 </div>
 <style>
+.progress{
+    height:1%;
+    margin:0 auto;
+}
 </style>
