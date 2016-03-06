@@ -6,6 +6,7 @@ import { Task }    from './task';
 import { CheckList }    from './checkList';
 import { Component, OnInit, Input }   from 'angular2/core';
 import { Item } from './item';
+import { ArrayOps } from './common/arrayOp';
 
 @Component({
 	selector: 'checklist',
@@ -28,16 +29,18 @@ export class CheckListComponent {
 			});
 	}
 
-	addNewItem() : any {
+	addNewItem() : void {
 		this.checkList.itemList.push(new Item("Item...", false));
 	}
-
-	editField(editableField) : any{
+	deleteItem(item) : any{
+		ArrayOps.remove(this.checkList.itemList, item);
+	}
+	editField(editableField) : void{
 		this.editDisabled = false;
 		this.editableClass = "editableActive";
 		editableField.focus();
 	}
-	cancelEdit() : any{
+	cancelEdit() : void{
 		this.editDisabled = true;
 		this.editableClass = "editable";
 	}

@@ -11,7 +11,7 @@
             <input type="checkbox" [(ngModel)]="item.done"  ngControl="itemStatus" #itemStatus="ngForm">
             </span>
             <input type="text" class="form-control mr10 width85p" placeHolder="Item..." [(ngModel)]="item.text" ngControl="itemText" #itemText="ngForm">
-            <button class="removeBtn btn btn-primary-outline"><i class="fa fa-trash font1P5"></i></button>
+            <button class="removeBtn btn btn-primary-outline" (click)="deleteItem(item)"><i class="fa fa-trash font1P5"></i></button>
         </div>
         <button type="submit" class="btn btn-primary mt50">Save</button>
     </form>
