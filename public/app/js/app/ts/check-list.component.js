@@ -55,11 +55,15 @@ System.register(['angular2/http', './checkList', 'angular2/core', './item', './c
                     arrayOp_1.ArrayOps.remove(this.checkList.itemList, item);
                 };
                 CheckListComponent.prototype.itemListNavNext = function () {
-                    ++this.itemPage;
+                    if (this.itemPage != this.checkList.itemList.length) {
+                        ++this.itemPage;
+                    }
                     this.updateVisibleList();
                 };
                 CheckListComponent.prototype.itemListNavPrev = function () {
-                    --this.itemPage;
+                    if (this.itemPage != 0) {
+                        --this.itemPage;
+                    }
                     this.updateVisibleList();
                 };
                 CheckListComponent.prototype.updateVisibleList = function () {

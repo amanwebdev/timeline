@@ -3,20 +3,46 @@
         <div class="input-group checkListWidth">
             <input type="text" class="form-control" placeholder="Check list..." [(ngModel)]="checkList.name" ngControl="name" #name="ngForm">
             <span class="input-group-btn">
-             <button class="btn btn-secondary" type="button" (click)="addNewItem()">Add items</button>
-         </span>
+                <button class="btn btn-secondary" type="button" (click)="addNewItem()">Add items</button>
+            </span>
         </div>
-        <div class="input-group checkListItem" *ngFor="#item of checkList.itemList">
+        <div class="input-group checkListItem" *ngFor="#item of visibleItemList">
             <span class="input-group-addon">
-            <input type="checkbox" [(ngModel)]="item.done"  ngControl="itemStatus" #itemStatus="ngForm">
+                <input type="checkbox" [(ngModel)]="item.done"  ngControl="itemStatus" #itemStatus="ngForm">
             </span>
             <input type="text" class="form-control mr10 width85p" placeHolder="Item..." [(ngModel)]="item.text" ngControl="itemText" #itemText="ngForm">
             <button class="removeBtn btn btn-primary-outline" (click)="deleteItem(item)"><i class="fa fa-trash font1P5"></i></button>
         </div>
-        <button type="submit" class="btn btn-primary mt50">Save</button>
+        <div class="mt50 width85p">
+            <button class="btn btn-primary" type="submit">Save</button>
+            <span class="itemNav">
+                <button class="itemNavBtn" type="button" (click)="itemListNavPrev()">
+                    <i style="" class="fa fa-angle-left fa-3x"></i>
+                </button>
+                <button class="itemNavBtn" type="button" (click)="itemListNavNext()">
+                    <i class="fa fa-angle-right fa-3x"></i>
+                </button>
+            </span>
+        </div>
     </form>
 </div>
 <style>
+.itemNav {
+    float: right;
+    position: relative;
+    top: -30%;
+}
+
+.itemNavBtn {
+    background-color: transparent;
+    border: medium none;
+    color: blue;
+}
+
+.itemNavBtn:hover {
+    color: #025aa5;
+}
+
 .checkList {
     display: inline-block;
     width: 50%;
