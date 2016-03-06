@@ -1,5 +1,5 @@
 /// <reference path="../../../typings/tsd.d.ts" />
-System.register(['angular2/http', './checkList', 'angular2/core', './item'], function(exports_1) {
+System.register(['angular2/http', './checkList', 'angular2/core', './item', './common/arrayOp'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
         switch (arguments.length) {
@@ -11,7 +11,7 @@ System.register(['angular2/http', './checkList', 'angular2/core', './item'], fun
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var http_1, checkList_1, core_1, item_1;
+    var http_1, checkList_1, core_1, item_1, arrayOp_1;
     var CheckListComponent;
     return {
         setters:[
@@ -26,14 +26,14 @@ System.register(['angular2/http', './checkList', 'angular2/core', './item'], fun
             },
             function (item_1_1) {
                 item_1 = item_1_1;
+            },
+            function (arrayOp_1_1) {
+                arrayOp_1 = arrayOp_1_1;
             }],
         execute: function() {
             CheckListComponent = (function () {
                 function CheckListComponent(http) {
                     this.http = http;
-                    this.editableClass = "editable";
-                    this.editFieldClass = "editableField";
-                    this.editDisabled = true;
                 }
                 CheckListComponent.prototype.ngOnInit = function () { };
                 CheckListComponent.prototype.onSubmit = function (value) {
@@ -46,14 +46,8 @@ System.register(['angular2/http', './checkList', 'angular2/core', './item'], fun
                 CheckListComponent.prototype.addNewItem = function () {
                     this.checkList.itemList.push(new item_1.Item("Item...", false));
                 };
-                CheckListComponent.prototype.editField = function (editableField) {
-                    this.editDisabled = false;
-                    this.editableClass = "editableActive";
-                    editableField.focus();
-                };
-                CheckListComponent.prototype.cancelEdit = function () {
-                    this.editDisabled = true;
-                    this.editableClass = "editable";
+                CheckListComponent.prototype.deleteItem = function (item) {
+                    arrayOp_1.ArrayOps.remove(this.checkList.itemList, item);
                 };
                 __decorate([
                     core_1.Input(), 

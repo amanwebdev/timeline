@@ -1,5 +1,5 @@
 /// <reference path="../../../typings/tsd.d.ts" />
-System.register(['angular2/router', 'angular2/core', './item', './checkList', './wip.service', './check-list.component', 'ng2-bootstrap/ng2-bootstrap'], function(exports_1) {
+System.register(['angular2/router', 'angular2/core', './item', './checkList', './wip.service', './check-list.component', './editable.component', 'ng2-bootstrap/ng2-bootstrap'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
         switch (arguments.length) {
@@ -11,7 +11,7 @@ System.register(['angular2/router', 'angular2/core', './item', './checkList', '.
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var router_1, core_1, item_1, checkList_1, wip_service_1, check_list_component_1, ng2_bootstrap_1;
+    var router_1, core_1, item_1, checkList_1, wip_service_1, check_list_component_1, editable_component_1, ng2_bootstrap_1;
     var TaskListComponent;
     return {
         setters:[
@@ -32,6 +32,9 @@ System.register(['angular2/router', 'angular2/core', './item', './checkList', '.
             },
             function (check_list_component_1_1) {
                 check_list_component_1 = check_list_component_1_1;
+            },
+            function (editable_component_1_1) {
+                editable_component_1 = editable_component_1_1;
             },
             function (ng2_bootstrap_1_1) {
                 ng2_bootstrap_1 = ng2_bootstrap_1_1;
@@ -81,7 +84,7 @@ System.register(['angular2/router', 'angular2/core', './item', './checkList', '.
                 TaskListComponent = __decorate([
                     core_1.Component({
                         templateUrl: 'app/templates/task-list.component.html',
-                        directives: [check_list_component_1.CheckListComponent, ng2_bootstrap_1.PAGINATION_DIRECTIVES]
+                        directives: [check_list_component_1.CheckListComponent, editable_component_1.EditableComponent, ng2_bootstrap_1.PAGINATION_DIRECTIVES]
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, wip_service_1.WipService])
                 ], TaskListComponent);

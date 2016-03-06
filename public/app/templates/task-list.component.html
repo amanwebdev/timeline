@@ -10,17 +10,43 @@
             </li>
             <li *ngIf="wip.checkList" [class]="wip.checkListClass">
                 <checklist [checkList]="wip.checkList"></checklist>
+                <div class="inlineBlock padLeft45">
+                    <table>
+                        <tr>
+                            <th>Started At :</th>
+                            <td>
+                                <editable [model]="wip.startTime"></editable>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Comments :</th>
+                            <td><editable [model]="wip.comments"></editable></td>
+                        </tr>
+                        <tr>
+                            <th>Labels :</th>
+                            <td><editable [model]="wip.labels"></editable></td>
+                        </tr>
+                    </table>
+                </div>
             </li>
         </div>
         <pager [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [(ngModel)]="currentPage" onPageChanged="pageChanged($event)" [disabled]="currentPageItems" [hidden]="!wipList"></pager>
     </ul>
 </div>
 <style>
-.progress{
-    height:1%;
-    margin:0 auto;
+.progress {
+    height: 1%;
+    margin: 0 auto;
 }
-.taskList div li:first-child:hover{
-    cursor:pointer;
+
+.taskList div li:first-child:hover {
+    cursor: pointer;
+}
+
+table {
+    position: absolute;
+    top: 20px;
+    height: 150px;
+    width: 45%;
 }
 </style>

@@ -10,12 +10,13 @@ import { Ongoing } from './ongoing';
 import { CheckList } from './checkList';
 import { WipService } from './wip.service';
 import { CheckListComponent } from './check-list.component';
+import { EditableComponent } from './editable.component';
 
 import { PAGINATION_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 
 @Component({
 	templateUrl: 'app/templates/task-list.component.html',
-	directives: [CheckListComponent, PAGINATION_DIRECTIVES]
+	directives: [CheckListComponent, EditableComponent, PAGINATION_DIRECTIVES]
 })
 export class TaskListComponent {
 	public currentPageItems: Ongoing[];

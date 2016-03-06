@@ -16,60 +16,7 @@
         <button type="submit" class="btn btn-primary mt50">Save</button>
     </form>
 </div>
-<div class="inlineBlock padLeft45">
-    <table>
-        <tr>
-            <th>Started At :</th>
-            <td>
-                <div [class]="editableClass">
-                    <input type="text" placeholder="5:00 PM" [class]="editFieldClass" [disabled]="editDisabled" #startTime />
-                    <button class="editBtn btn btn-primary-outline" (click)="editField(startTime)">
-                        <i class="fa  fa-pencil-square-o"></i>
-                    </button>
-                    <button class="closeBtn btn btn-primary-outline" (click)="cancelEdit()">
-                        <i class="fa fa-times"></i>
-                    </button>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <th>Comments :</th>
-            <td>Trivial task of fixing nothing but bunch of errors</td>
-        </tr>
-        <tr>
-            <th>Labels :</th>
-            <td>Project 1, Bug, Internal</td>
-        </tr>
-    </table>
-</div>
 <style>
-.editable, .editableActive{
-    overflow:auto;
-}
-.editableField {
-    border-color: transparent;
-    background-color: transparent;
-}
-.editBtn, .closeBtn{
-    display: none;
-    float:right;
-    color:rgba(0, 0, 0, 0.48);
-    border-color:transparent;
-}
-.editable:hover{
-    border:1px solid #ddd;
-}
-.editableActive{
-    border:1px solid #ddd;
-}
-.editable:hover > .editBtn, .editableActive:hover > .closeBtn {
-    display: inline-block;
-}
-.editBtn:hover,.closeBtn:hover{
-    background-color:rgba(85, 104, 120, 0.68);
-    color:white;
-    border-color:transparent;
-}
 .checkList {
     display: inline-block;
     width: 50%;
@@ -97,12 +44,5 @@
     position: absolute;
     border-color: transparent;
     width: 10%;
-}
-
-table {
-    position: absolute;
-    top: 20px;
-    height: 150px;
-    width: 45%;
 }
 </style>

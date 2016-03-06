@@ -12,6 +12,9 @@ export class Ongoing {
   public hideCheckList:boolean = true;
   public taskClass: string = "list-group-item";
   public checkListClass: string = "list-group-item hidden";
+  public startTime: string = "5:00 PM";
+  public comments: string = "Trivial task of fixing nothing but bunch of errors";
+  public labels: string = "Project 1, Bug, Internal";
 
   constructor(
     private task:Task
