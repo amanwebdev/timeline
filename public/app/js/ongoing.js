@@ -7,6 +7,8 @@ System.register([], function(exports_1) {
                 function Ongoing(task) {
                     this.task = task;
                     this.hideCheckList = true;
+                    this.taskClass = "list-group-item";
+                    this.checkListClass = "list-group-item hidden";
                     this.taskId = task.id;
                     this.name = task.name;
                     this.checkListProgress = 25;

@@ -61,6 +61,8 @@ System.register(['angular2/router', 'angular2/core', './item', './checkList', '.
                             = new checkList_1.CheckList(wip.taskId, "Checklist...", [new item_1.Item("Item...", false)]);
                     }
                     wip.hideCheckList = !wip.hideCheckList;
+                    wip.taskClass = wip.hideCheckList ? "list-group-item" : "list-group-item noBottomBorder";
+                    wip.checkListClass = wip.hideCheckList ? "list-group-item hidden" : "list-group-item noTopBorder";
                 };
                 TaskListComponent.prototype.pageChanged = function (event) {
                     console.log('Page changed to: ' + event.page);

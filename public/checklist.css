@@ -121,6 +121,12 @@
 .borderBottom{
 	border-bottom:1px solid #DDD;
 }
+.noBottomBorder{
+	border-bottom-color: transparent;
+}
+.noTopBorder{
+	border-top-color: transparent;
+}
 .bbDashed{
 	border-bottom: 1px dashed #DDD;
 }
@@ -129,6 +135,9 @@
 }
 .block{
 	display:block;
+}
+.hidden{
+    display:none;
 }
 .posRel{
 	position: relative;

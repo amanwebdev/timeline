@@ -10,6 +10,8 @@ export class Ongoing {
 	public timeProgress:number;
   public checkList:CheckList;
   public hideCheckList:boolean = true;
+  public taskClass: string = "list-group-item";
+  public checkListClass: string = "list-group-item hidden";
 
   constructor(
     private task:Task
