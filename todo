@@ -6,9 +6,11 @@ WIP Page:
 	3.	 Add pagination to list items.
 	4.	 Add start/stop/delay buttons.
 	5.	 Change estimate to time worked.
+	Add message "Looks like you've just started" when tasks are few.
 
 History Page:
 	1.	Add history panes.
 
 Task Page:
 	1. Change time range to hours estimate.
+

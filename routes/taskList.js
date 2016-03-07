@@ -5,8 +5,8 @@ var router = express.Router();
 var models = require('../models');
 
 router.post('/', function(request, response) {
-    console.log("received  request for saving checklist" + request.body);
-    saveCheckList(JSON.parse(request.body,response));
+    console.log("received  request for saving checklist" + JSON.stringify(request.body));
+    saveCheckList(request.body,response);
     response.send("success!");
 });
 router.get('/:id', function(request, response) {

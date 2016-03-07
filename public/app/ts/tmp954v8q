@@ -7,7 +7,6 @@ import { CheckList }    from './checkList';
 import { Component, OnInit, Input }   from 'angular2/core';
 import { Item } from './item';
 import { ArrayOps } from './common/arrayOp';
-import { contentHeaders } from './common/headers';
 
 const MAX_ITEMS: number = 3;
 
@@ -29,7 +28,7 @@ export class CheckListComponent {
 
 	onSubmit(value) {
 		console.log("checkList value:" + JSON.stringify(this.checkList));
-		this.http.post('/checklist', JSON.stringify(this.checkList) , { headers: contentHeaders }).
+		this.http.post('/checklist', JSON.stringify(this.checkList)).
 			subscribe(res => {
 				console.log(res.text());
 			});
@@ -44,7 +43,7 @@ export class CheckListComponent {
 	}
 	itemListNavNext() : any{
 		//check for this!! tired right now!! 15, 0,1,2
-		if (this.itemPage != (this.checkList.itemList.length/3)-1) { 
+		if (this.itemPage != this.checkList.itemList.length-3) { 
 			++this.itemPage; 
 		}
 		this.updateVisibleList();

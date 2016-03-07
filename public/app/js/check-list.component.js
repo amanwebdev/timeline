@@ -1,5 +1,5 @@
 /// <reference path="../../../typings/tsd.d.ts" />
-System.register(['angular2/http', './checkList', 'angular2/core', './item', './common/arrayOp'], function(exports_1) {
+System.register(['angular2/http', './checkList', 'angular2/core', './item', './common/arrayOp', './common/headers'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
         switch (arguments.length) {
@@ -11,7 +11,7 @@ System.register(['angular2/http', './checkList', 'angular2/core', './item', './c
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var http_1, checkList_1, core_1, item_1, arrayOp_1;
+    var http_1, checkList_1, core_1, item_1, arrayOp_1, headers_1;
     var MAX_ITEMS, CheckListComponent;
     return {
         setters:[
@@ -29,6 +29,9 @@ System.register(['angular2/http', './checkList', 'angular2/core', './item', './c
             },
             function (arrayOp_1_1) {
                 arrayOp_1 = arrayOp_1_1;
+            },
+            function (headers_1_1) {
+                headers_1 = headers_1_1;
             }],
         execute: function() {
             MAX_ITEMS = 3;
@@ -42,24 +45,29 @@ System.register(['angular2/http', './checkList', 'angular2/core', './item', './c
                 };
                 CheckListComponent.prototype.onSubmit = function (value) {
                     console.log("checkList value:" + JSON.stringify(this.checkList));
-                    this.http.post('/checklist', JSON.stringify(this.checkList)).
+                    this.http.post('/checklist', JSON.stringify(this.checkList), { headers: headers_1.contentHeaders }).
                         subscribe(function (res) {
                         console.log(res.text());
                     });
                 };
                 CheckListComponent.prototype.addNewItem = function () {
-                    this.checkList.itemList.push(new item_1.Item("Item...", false));
+                    this.checkList.itemList.unshift(new item_1.Item("Item...", false));
                     this.updateVisibleList();
                 };
                 CheckListComponent.prototype.deleteItem = function (item) {
                     arrayOp_1.ArrayOps.remove(this.checkList.itemList, item);
                 };
                 CheckListComponent.prototype.itemListNavNext = function () {
-                    ++this.itemPage;
+                    //check for this!! tired right now!! 15, 0,1,2
+                    if (this.itemPage != (this.checkList.itemList.length / 3) - 1) {
+                        ++this.itemPage;
+                    }
                     this.updateVisibleList();
                 };
                 CheckListComponent.prototype.itemListNavPrev = function () {
-                    --this.itemPage;
+                    if (this.itemPage != 0) {
+                        --this.itemPage;
+                    }
                     this.updateVisibleList();
                 };
                 CheckListComponent.prototype.updateVisibleList = function () {

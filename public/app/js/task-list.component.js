@@ -46,6 +46,7 @@ System.register(['angular2/router', 'angular2/core', './item', './checkList', '.
                     this._service = _service;
                     this.currentPage = 0;
                     this.itemsPerPage = 5;
+                    this.alerts = [];
                 }
                 TaskListComponent.prototype.ngOnInit = function () {
                     var _this = this;
@@ -55,8 +56,21 @@ System.register(['angular2/router', 'angular2/core', './item', './checkList', '.
                         if (_this.wipList) {
                             _this.totalItems = _this.wipList.length;
                             _this.updateCurrentPageItems();
+                            if (_this.wipList.length < 5) {
+                                _this.addAlert();
+                            }
                         }
                     });
+                };
+                TaskListComponent.prototype.addAlert = function () {
+                    this.alerts.push({
+                        type: 'info',
+                        msg: "Looks like you've just started!",
+                        closable: true
+                    });
+                };
+                TaskListComponent.prototype.closeAlert = function (i) {
+                    this.alerts.splice(i, 1);
                 };
                 TaskListComponent.prototype.toggleCheckList = function (wip) {
                     if (!wip.checkList) {
@@ -84,7 +98,7 @@ System.register(['angular2/router', 'angular2/core', './item', './checkList', '.
                 TaskListComponent = __decorate([
                     core_1.Component({
                         templateUrl: 'app/templates/task-list.component.html',
-                        directives: [check_list_component_1.CheckListComponent, editable_component_1.EditableComponent, ng2_bootstrap_1.PAGINATION_DIRECTIVES]
+                        directives: [check_list_component_1.CheckListComponent, editable_component_1.EditableComponent, ng2_bootstrap_1.Alert, ng2_bootstrap_1.PAGINATION_DIRECTIVES]
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, wip_service_1.WipService])
                 ], TaskListComponent);

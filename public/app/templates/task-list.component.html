@@ -32,8 +32,16 @@
         </div>
         <pager [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [(ngModel)]="currentPage" onPageChanged="pageChanged($event)" [disabled]="currentPageItems" [hidden]="!wipList"></pager>
     </ul>
+    <alert *ngFor="#alert of alerts;#i = index" [type]="alert.type" dismissible="true" (close)="closeAlert(i)" dismissOnTimeout="5000">
+        {{ alert?.msg }}
+    </alert>
 </div>
 <style>
+.alert{
+    width:40%;
+    margin:auto;
+    text-align:center;
+}
 .progress {
     height: 1%;
     margin: 0 auto;
