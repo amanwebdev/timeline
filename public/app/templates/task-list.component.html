@@ -13,6 +13,12 @@
                 <div class="inlineBlock padLeft45">
                     <table>
                         <tr>
+                            <th>Status :</th>
+                            <td>
+                                <input [(ngModel)]="selected" [typeahead]="statusList" class="form-control">
+                            </td>
+                        </tr>
+                        <tr>
                             <th>Started At :</th>
                             <td>
                                 <editable [model]="wip.startTime"></editable>
@@ -20,11 +26,15 @@
                         </tr>
                         <tr>
                             <th>Comments :</th>
-                            <td><editable [model]="wip.comments"></editable></td>
+                            <td>
+                                <editable [model]="wip.comments"></editable>
+                            </td>
                         </tr>
                         <tr>
                             <th>Labels :</th>
-                            <td><editable [model]="wip.labels"></editable></td>
+                            <td>
+                                <editable [model]="wip.labels"></editable>
+                            </td>
                         </tr>
                     </table>
                 </div>
@@ -32,16 +42,18 @@
         </div>
         <pager [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [(ngModel)]="currentPage" onPageChanged="pageChanged($event)" [disabled]="currentPageItems" [hidden]="!wipList"></pager>
     </ul>
-    <alert *ngFor="#alert of alerts;#i = index" [type]="alert.type" dismissible="true" (close)="closeAlert(i)" dismissOnTimeout="5000">
+    <alert *ngFor="#alert of alerts;#i = index" [type]="alert.type" dismissible="true" (close)="closeAlert(i)" dismissOnTimeout="10000">
         {{ alert?.msg }}
     </alert>
 </div>
 <style>
-.alert{
-    width:40%;
-    margin:auto;
-    text-align:center;
+alert {
+    display: block;
+    width: 40%;
+    margin: auto;
+    text-align: center;
 }
+
 .progress {
     height: 1%;
     margin: 0 auto;

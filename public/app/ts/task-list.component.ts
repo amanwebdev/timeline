@@ -12,11 +12,11 @@ import { WipService } from './wip.service';
 import { CheckListComponent } from './check-list.component';
 import { EditableComponent } from './editable.component';
 
-import { Alert, PAGINATION_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
+import { Alert, PAGINATION_DIRECTIVES, TYPEAHEAD_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
 
 @Component({
 	templateUrl: 'app/templates/task-list.component.html',
-	directives: [CheckListComponent, EditableComponent,Alert, PAGINATION_DIRECTIVES]
+	directives: [CheckListComponent, EditableComponent, Alert, TYPEAHEAD_DIRECTIVES, PAGINATION_DIRECTIVES]
 })
 export class TaskListComponent {
 	public currentPageItems: Ongoing[];
@@ -25,6 +25,7 @@ export class TaskListComponent {
 	private currentPage: number = 0;
 	private itemsPerPage: number = 5;
 	private alerts: Array<Object> = [];
+	private statusList: Array<string> = ['To Do', 'In Progress', 'Review', 'Finished'];
 
 	constructor(private _router: Router, private _service: WipService) { }
 

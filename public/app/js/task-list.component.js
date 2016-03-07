@@ -47,6 +47,7 @@ System.register(['angular2/router', 'angular2/core', './item', './checkList', '.
                     this.currentPage = 0;
                     this.itemsPerPage = 5;
                     this.alerts = [];
+                    this.statusList = ['To Do', 'In Progress', 'Review', 'Finished'];
                 }
                 TaskListComponent.prototype.ngOnInit = function () {
                     var _this = this;
@@ -98,7 +99,7 @@ System.register(['angular2/router', 'angular2/core', './item', './checkList', '.
                 TaskListComponent = __decorate([
                     core_1.Component({
                         templateUrl: 'app/templates/task-list.component.html',
-                        directives: [check_list_component_1.CheckListComponent, editable_component_1.EditableComponent, ng2_bootstrap_1.Alert, ng2_bootstrap_1.PAGINATION_DIRECTIVES]
+                        directives: [check_list_component_1.CheckListComponent, editable_component_1.EditableComponent, ng2_bootstrap_1.Alert, ng2_bootstrap_1.TYPEAHEAD_DIRECTIVES, ng2_bootstrap_1.PAGINATION_DIRECTIVES]
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, wip_service_1.WipService])
                 ], TaskListComponent);
