@@ -54,13 +54,13 @@ export class TaskListComponent {
 	}
 	public toggleCheckList(wip: Ongoing): void {
 		if (!wip.checkList) {
-			wip.checkList
-				= new CheckList(wip.taskId, "Checklist...",
-					[new Item("Item...", false)]);
+			this._service.getCheckList(wip.taskId)
+				.subscribe(list => wip.checkList = list);
+			wip.hideCheckList = !wip.hideCheckList;
+			wip.taskClass = wip.hideCheckList ? "list-group-item" : "list-group-item noBottomBorder";
+			wip.checkListClass = wip.hideCheckList ? "list-group-item hidden" : "list-group-item noTopBorder";
 		}
-		wip.hideCheckList = !wip.hideCheckList;
-		wip.taskClass = wip.hideCheckList ? "list-group-item" : "list-group-item noBottomBorder";
-		wip.checkListClass = wip.hideCheckList ? "list-group-item hidden" : "list-group-item noTopBorder";
+		
 	}
 
 	public pageChanged(event: any): void {

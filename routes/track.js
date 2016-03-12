@@ -3,9 +3,10 @@
 var express = require('express');
 var router = express.Router();
 var models = require('../models');
+var moment = require('moment');
 
 router.post('/', function(request, response) {
-     console.log("create request made with body:" + JSON.stringify(request.body));
+    console.log("create request made with body:" + JSON.stringify(request.body));
     createTask(request.body, response);
 });
 router.get('/taskList', function(request, response) {
@@ -25,16 +26,16 @@ router.get('/user', function(request, reponse) {
 module.exports = router;
 
 function createTask(task, response) {
-    console.log("time estimate:"+task.timeEstimate.hours+","+task.timeEstimate.minutes);
+    console.log("time estimate:" + task.timeEstimate.hours + "," + task.timeEstimate.minutes);
     models.Task.create({
         name: task.name,
         status: task.status,
-        startTime: task.startTime,
-        finishTime: task.finishTime,
+        startTime: moment(task.startTime),
+        finishTime: moment(task.finishTime),
         comments: task.comments,
         hours: task.timeEstimate.hours,
         minutes: task.timeEstimate.minutes,
-        UserUsername: 'admin'
+        user_username: 'admin'
     }).then(function(task) {
         response.json(task);
     })
@@ -44,9 +45,9 @@ function createTask(task, response) {
 function getTaskList(response) {
     models.Task.findAll({
         where: {
-            UserUsername: 'admin'
+            user_username: 'admin'
         }
-    }).then(function(tasks){
+    }).then(function(tasks) {
         response.json(tasks);
     });
 }

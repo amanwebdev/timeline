@@ -32,11 +32,7 @@ export class WipService {
 				action();
 			});
 	}
-	getCheckList(taskId) {
-		return this.http.get('/checklist/' + taskId)
-			.map(res=> res.json())
-			.map(c=> new CheckList(c.id, taskId, c.name, c.itemList));
-	}
+	
 	getWip(id: number | string) {
 		return 0;
 	}
@@ -44,26 +40,13 @@ export class WipService {
 		task.startTime = new Date();
 		return JSON.stringify(task);
 	}
-}
 
-function parseCheckList(task: Task) {
-	var checkList: CheckList;
-	if (task.checkList) {
-
-	} else {
-		checkList = new CheckList(task.id, "Check list...", parseListItems());
+	getCheckList(task_id:number){
+		return this.http.get('/checklist/:' + task_id, { headers: contentHeaders })
+			.map(res => res.json());
 	}
-	return checkList;
-}
-function parseListItems(checkList?: CheckList) {
-	var listItems: Item[];
-	if (checkList) {
-
-	} else {
-		listItems = new Array<Item>();
-		listItems.push(new Item("Item...", false));
+	getListItems(check_list_id:number){
+		return this.http.get('/checklist/items/:' + check_list_id, { headers: contentHeaders })
+			.map(res => res.json());
 	}
-	return listItems;
 }
-
-var wipListPromise = Promise.resolve(this.taskList);
