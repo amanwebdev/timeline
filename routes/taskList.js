@@ -33,10 +33,10 @@ router.get('/:id', function(request, response) {
 });
 router.post('/items', function(request, response) {
     console.log("Saving items :" + JSON.stringify(request.body));
-    saveItemList(request.body)
+    saveItemList(request.body.items)
         .then(function(saved) {
             console.log("Saved items:" + JSON.stringify(saved));
-            getListItems(request.body.check_list_task_id)
+            getListItems(request.body.list_id)
                 .then(function(items) {
                     console.log("Sending saved items:" + items);
                     response.json(items);
@@ -67,7 +67,8 @@ router.get('/items/:id', function(request, response) {
 function getCheckList(task_id) {
     return models.CheckList.findOne({
         where: {
-            task_id: task_id
+            task_id: task_id,
+            deleted_at: null
         }
     });
 }
@@ -75,7 +76,8 @@ function getCheckList(task_id) {
 function getListItems(list_id) {
     return models.ListItem.findAll({
         where: {
-            check_list_task_id: list_id
+            check_list_task_id: list_id,
+            deleted_at: null
         }
     });
 }
@@ -109,7 +111,7 @@ function saveItem(item) {
 function deleteItem(item, clId) {
     return models.ListItem.destroy({
         where: {
-            id: item.id
+            id : item.id
         }
     });
 }

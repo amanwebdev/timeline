@@ -1,4 +1,4 @@
-import {TimeEstimateComponent} from './time-estimate.component';
+import {TimeEstimateComponent} from './components/time-estimate.component';
 import {Directive, forwardRef, Provider} from 'angular2/core';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from 'angular2/common';
 import {CONST_EXPR} from 'angular2/src/facade/lang';

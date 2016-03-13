@@ -1,0 +1,1 @@
+{"version":3,"file":"time-estimate.js","sourceRoot":"","sources":["../../../../ts/models/time-estimate.ts"],"names":["TimeEstimate","TimeEstimate.constructor"],"mappings":"AAAA,qDAAqD;;;;;;YAErD;gBAGCA,sBAAYA,KAAaA,EAAEA,OAAeA;oBACzCC,IAAIA,CAACA,KAAKA,GAAGA,KAAKA,CAACA;oBAACA,IAAIA,CAACA,OAAOA,GAAGA,OAAOA,CAACA;gBAC5CA,CAACA;gBACFD,mBAACA;YAADA,CAACA,AAND,IAMC;YAND,uCAMC,CAAA"}

@@ -1,5 +1,5 @@
-/// <reference path="../../../typings/tsd.d.ts" />
-System.register(['angular2/http', './checkList', 'angular2/core', './item', './wip.service'], function(exports_1) {
+/// <reference path="../../../../typings/tsd.d.ts" />
+System.register(['angular2/http', '../models/checkList', 'angular2/core', '../models/item', '../services/wip.service'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
         switch (arguments.length) {
@@ -53,7 +53,7 @@ System.register(['angular2/http', './checkList', 'angular2/core', './item', './w
                     var _this = this;
                     this._service.saveCheckList(this.checkList)
                         .subscribe(function (list) { return _this.checkList = list; });
-                    this._service.saveItemList(this.itemList)
+                    this._service.saveItemList(this.itemList, this.checkList.task_id)
                         .subscribe(function (items) {
                         _this.itemList = items;
                         _this.updateVisibleList();
