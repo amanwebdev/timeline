@@ -67,6 +67,21 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './o
                     return this.http.get('/checklist/items/' + check_list_id, { headers: headers_1.contentHeaders })
                         .map(function (res) { return res.json(); });
                 };
+                WipService.prototype.saveCheckList = function (checkList) {
+                    console.log("checkList value:" + JSON.stringify(checkList));
+                    return this.http.post('/checklist', JSON.stringify(checkList), { headers: headers_1.contentHeaders })
+                        .map(function (res) { return res.json(); });
+                };
+                WipService.prototype.saveItemList = function (itemList) {
+                    console.log("Saving items:" + itemList);
+                    return this.http.post('/checklist/items/', JSON.stringify(itemList), { headers: headers_1.contentHeaders })
+                        .map(function (res) { return res.json(); });
+                };
+                WipService.prototype.deleteItem = function (item) {
+                    console.log("Deleting item :" + item);
+                    return this.http.post('/checklist/items/delete', JSON.stringify(item), { headers: headers_1.contentHeaders })
+                        .map(function (res) { return res.json(); });
+                };
                 WipService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [http_1.Http])
@@ -77,4 +92,6 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './o
         }
     }
 });
+//metro card : 66360237
+//date : 05/2014 
 //# sourceMappingURL=wip.service.js.map

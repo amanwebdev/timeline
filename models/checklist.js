@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
         task_id: {
             type: DataTypes.INTEGER,
             unique: true,
-            primaryKey : true,
+            primaryKey: true,
             references: {
                 model: models.Task,
                 key: 'id',
@@ -20,8 +20,7 @@ module.exports = function(sequelize, DataTypes) {
                 CheckList.hasMany(models.ListItem);
             }
         },
-        createdAt: false,
-        updatedAt: false,
+        paranoid: true,
         underscored: true
     });
     return CheckList;

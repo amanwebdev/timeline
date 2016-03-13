@@ -1,5 +1,5 @@
 /// <reference path="../../../typings/tsd.d.ts" />
-System.register(['angular2/http', './checkList', 'angular2/core', './item', './common/arrayOp', './common/headers', './wip.service'], function(exports_1) {
+System.register(['angular2/http', './checkList', 'angular2/core', './item', './wip.service'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
         switch (arguments.length) {
@@ -11,7 +11,7 @@ System.register(['angular2/http', './checkList', 'angular2/core', './item', './c
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var http_1, checkList_1, core_1, item_1, arrayOp_1, headers_1, wip_service_1;
+    var http_1, checkList_1, core_1, item_1, wip_service_1;
     var MAX_ITEMS, CheckListComponent;
     return {
         setters:[
@@ -26,12 +26,6 @@ System.register(['angular2/http', './checkList', 'angular2/core', './item', './c
             },
             function (item_1_1) {
                 item_1 = item_1_1;
-            },
-            function (arrayOp_1_1) {
-                arrayOp_1 = arrayOp_1_1;
-            },
-            function (headers_1_1) {
-                headers_1 = headers_1_1;
             },
             function (wip_service_1_1) {
                 wip_service_1 = wip_service_1_1;
@@ -54,22 +48,26 @@ System.register(['angular2/http', './checkList', 'angular2/core', './item', './c
                         _this.updateVisibleList();
                     });
                 };
-                CheckListComponent.prototype.onSubmit = function (value) {
-                    console.log("checkList value:" + JSON.stringify(this.checkList));
-                    this.http.post('/checklist', JSON.stringify(this.checkList), { headers: headers_1.contentHeaders }).
-                        subscribe(function (res) {
-                        console.log(res.text());
-                    });
+                CheckListComponent.prototype.onSubmit = function () {
+                    var _this = this;
+                    this._service.saveCheckList(this.checkList)
+                        .subscribe(function (list) { return _this.checkList = list; });
+                    this._service.saveItemList(this.itemList)
+                        .subscribe(function (items) { return _this.itemList = items; });
+                    this.updateVisibleList();
                 };
                 CheckListComponent.prototype.addNewItem = function () {
                     this.itemList.unshift(new item_1.Item(null, "Item...", false, this.checkList.task_id));
                     this.updateVisibleList();
                 };
                 CheckListComponent.prototype.deleteItem = function (item) {
-                    arrayOp_1.ArrayOps.remove(this.itemList, item);
+                    var _this = this;
+                    //TODO: needs update in case of transient item.
+                    this._service.deleteItem(item)
+                        .subscribe(function (items) { return _this.itemList = items; });
+                    this.updateVisibleList();
                 };
                 CheckListComponent.prototype.itemListNavNext = function () {
-                    //check for this!! tired right now!! 15, 0,1,2
                     if (this.itemPage != (this.itemList.length / 3) - 1) {
                         ++this.itemPage;
                     }

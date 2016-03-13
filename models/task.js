@@ -15,8 +15,7 @@ module.exports = function(sequelize, DataTypes) {
                 Task.hasMany(models.CheckList);
             }
         },
-        createdAt: false,
-        updatedAt: false,
+        paranoid: true,
         underscored: true
     });
     return Task;

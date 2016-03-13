@@ -5,6 +5,6 @@ export class Item {
 		public id: number,
 		public text : string,
 		public done : boolean,
-		public check_list_id? : number
+		public check_list_task_id?: number
 	) {}
 }

@@ -16,8 +16,7 @@ module.exports = function(sequelize, DataTypes) {
                 User.hasMany(models.Task);
             }
         },
-        createdAt: false,
-        updatedAt: false,
+        paranoid: true,
         underscored: true
     });
     return User;

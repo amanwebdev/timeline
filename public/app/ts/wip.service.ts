@@ -3,6 +3,8 @@
 import {Injectable} from 'angular2/core';
 import {Http} from 'angular2/http';
 import 'rxjs/add/operator/map';
+import {Observable} from 'rxjs';
+
 import {Task} from './task';
 import {Item} from './item';
 import {CheckList} from './checkList';
@@ -49,18 +51,21 @@ export class WipService {
 		return this.http.get('/checklist/items/' + check_list_id, { headers: contentHeaders })
 			.map(res => res.json());
 	}
-	saveCheckList(checkList : CheckList){
+	saveCheckList(checkList: CheckList) : Observable<CheckList> {
 		console.log("checkList value:" + JSON.stringify(checkList));
-		this.http.post('/checklist', JSON.stringify(checkList), { headers: contentHeaders }).
-			subscribe(res => {
-				console.log(res.text());
-			});
+		return this.http.post('/checklist', JSON.stringify(checkList), { headers: contentHeaders })
+			.map(res => res.json());
 	}
-	saveItemList(itemList : Array<Item>){
+	saveItemList(itemList: Array<Item>) : Observable<Array<Item>> {
 		console.log("Saving items:" + itemList);
-		this.http.post('/checklist/items/', JSON.stringify(itemList), { headers: contentHeaders }).
-			subscribe(res => {
-				console.log(res.text());
-			});
+		return this.http.post('/checklist/items/', JSON.stringify(itemList), { headers: contentHeaders })
+			.map(res => res.json());
+	}
+	deleteItem(item: Item) : Observable<Array<Item>> {
+		console.log("Deleting item :" + item);
+		return this.http.post('/checklist/items/delete', JSON.stringify(item), { headers: contentHeaders })
+			.map(res => res.json());
 	}
 }
+//metro card : 66360237
+//date : 05/2014

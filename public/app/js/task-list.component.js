@@ -68,13 +68,23 @@ System.register(['angular2/router', 'angular2/core', './wip.service', './check-l
                     this.alerts.splice(i, 1);
                 };
                 TaskListComponent.prototype.toggleCheckList = function (wip) {
-                    if (!wip.checkList) {
+                    var _this = this;
+                    if (!wip.hideCheckList) {
                         this._service.getCheckList(wip.taskId)
-                            .subscribe(function (list) { return wip.checkList = list; });
-                        wip.hideCheckList = !wip.hideCheckList;
-                        wip.taskClass = wip.hideCheckList ? "list-group-item" : "list-group-item noBottomBorder";
-                        wip.checkListClass = wip.hideCheckList ? "list-group-item hidden" : "list-group-item noTopBorder";
+                            .subscribe(function (list) {
+                            wip.checkList = list;
+                            if (wip.checkList)
+                                _this.toggleListVisibility(wip);
+                        });
                     }
+                    else {
+                        this.toggleListVisibility(wip);
+                    }
+                };
+                TaskListComponent.prototype.toggleListVisibility = function (wip) {
+                    wip.hideCheckList = !wip.hideCheckList;
+                    wip.taskClass = wip.hideCheckList ? "list-group-item" : "list-group-item noBottomBorder";
+                    wip.checkListClass = wip.hideCheckList ? "list-group-item hidden" : "list-group-item noTopBorder";
                 };
                 TaskListComponent.prototype.pageChanged = function (event) {
                     console.log('Page changed to: ' + event.page);

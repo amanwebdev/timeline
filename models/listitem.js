@@ -9,8 +9,7 @@ module.exports = function(sequelize, DataTypes) {
                 ListItem.belongsTo(models.CheckList);
             }
         },
-        createdAt: false,
-        updatedAt: false,
+        paranoid: true,
         underscored: true
     });
     return ListItem;
