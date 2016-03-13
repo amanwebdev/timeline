@@ -5,10 +5,11 @@ System.register([], function(exports_1) {
         setters:[],
         execute: function() {
             Item = (function () {
-                function Item(text, done, checkListId) {
+                function Item(id, text, done, check_list_id) {
+                    this.id = id;
                     this.text = text;
                     this.done = done;
-                    this.checkListId = checkListId;
+                    this.check_list_id = check_list_id;
                 }
                 return Item;
             })();

@@ -1,5 +1,5 @@
 /// <reference path="../../../typings/tsd.d.ts" />
-System.register(['angular2/router', 'angular2/core', './item', './checkList', './wip.service', './check-list.component', './editable.component', 'ng2-bootstrap/ng2-bootstrap'], function(exports_1) {
+System.register(['angular2/router', 'angular2/core', './wip.service', './check-list.component', './editable.component', 'ng2-bootstrap/ng2-bootstrap'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
         switch (arguments.length) {
@@ -11,7 +11,7 @@ System.register(['angular2/router', 'angular2/core', './item', './checkList', '.
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var router_1, core_1, item_1, checkList_1, wip_service_1, check_list_component_1, editable_component_1, ng2_bootstrap_1;
+    var router_1, core_1, wip_service_1, check_list_component_1, editable_component_1, ng2_bootstrap_1;
     var TaskListComponent;
     return {
         setters:[
@@ -20,12 +20,6 @@ System.register(['angular2/router', 'angular2/core', './item', './checkList', '.
             },
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (item_1_1) {
-                item_1 = item_1_1;
-            },
-            function (checkList_1_1) {
-                checkList_1 = checkList_1_1;
             },
             function (wip_service_1_1) {
                 wip_service_1 = wip_service_1_1;
@@ -75,12 +69,12 @@ System.register(['angular2/router', 'angular2/core', './item', './checkList', '.
                 };
                 TaskListComponent.prototype.toggleCheckList = function (wip) {
                     if (!wip.checkList) {
-                        wip.checkList
-                            = new checkList_1.CheckList(wip.taskId, "Checklist...", [new item_1.Item("Item...", false)]);
+                        this._service.getCheckList(wip.taskId)
+                            .subscribe(function (list) { return wip.checkList = list; });
+                        wip.hideCheckList = !wip.hideCheckList;
+                        wip.taskClass = wip.hideCheckList ? "list-group-item" : "list-group-item noBottomBorder";
+                        wip.checkListClass = wip.hideCheckList ? "list-group-item hidden" : "list-group-item noTopBorder";
                     }
-                    wip.hideCheckList = !wip.hideCheckList;
-                    wip.taskClass = wip.hideCheckList ? "list-group-item" : "list-group-item noBottomBorder";
-                    wip.checkListClass = wip.hideCheckList ? "list-group-item hidden" : "list-group-item noTopBorder";
                 };
                 TaskListComponent.prototype.pageChanged = function (event) {
                     console.log('Page changed to: ' + event.page);

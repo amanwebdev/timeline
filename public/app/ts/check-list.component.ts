@@ -18,36 +18,34 @@ const MAX_ITEMS: number = 3;
 })
 export class CheckListComponent {
 	@Input() checkList : CheckList;
-	itemList : Array<Item>;
-	visibleItemList : Array<Item>;
+	itemList : Array<Item> = new Array<Item>();
+	visibleItemList : Array<Item> = new Array<Item>();
 	itemPage : number = 0;
 	
 
 	constructor(private http: Http, private _service: WipService) {}
 
 	ngOnInit() {
-		this.updateVisibleList();
-		this._service.getListItems(this.checkList.id)
-			.subscribe(items => { this.itemList = items });
-	}
-
-	onSubmit(value) {
-		console.log("checkList value:" + JSON.stringify(this.checkList));
-		this.http.post('/checklist', JSON.stringify(this.checkList) , { headers: contentHeaders }).
-			subscribe(res => {
-				console.log(res.text());
+		this._service.getListItems(this.checkList.task_id)
+			.subscribe(items => {
+				this.itemList = items;
+				this.updateVisibleList();
 			});
 	}
 
+	onSubmit() {
+		this._service.saveCheckList(this.checkList);
+		this._service.saveItemList(this.itemList);
+	}
+
 	addNewItem() : void {
-		this.itemList.unshift(new Item(null,"Item...", false,this.checkList.id));
+		this.itemList.unshift(new Item(null,"Item...", false,this.checkList.task_id));
 		this.updateVisibleList();
 	}
 	deleteItem(item) : void{
 		ArrayOps.remove(this.itemList, item);
 	}
 	itemListNavNext() : any{
-		//check for this!! tired right now!! 15, 0,1,2
 		if (this.itemPage != (this.itemList.length/3)-1) { 
 			++this.itemPage; 
 		}

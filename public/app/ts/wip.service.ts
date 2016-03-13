@@ -42,11 +42,25 @@ export class WipService {
 	}
 
 	getCheckList(task_id:number){
-		return this.http.get('/checklist/:' + task_id, { headers: contentHeaders })
+		return this.http.get('/checklist/' + task_id, { headers: contentHeaders })
 			.map(res => res.json());
 	}
 	getListItems(check_list_id:number){
-		return this.http.get('/checklist/items/:' + check_list_id, { headers: contentHeaders })
+		return this.http.get('/checklist/items/' + check_list_id, { headers: contentHeaders })
 			.map(res => res.json());
+	}
+	saveCheckList(checkList : CheckList){
+		console.log("checkList value:" + JSON.stringify(checkList));
+		this.http.post('/checklist', JSON.stringify(checkList), { headers: contentHeaders }).
+			subscribe(res => {
+				console.log(res.text());
+			});
+	}
+	saveItemList(itemList : Array<Item>){
+		console.log("Saving items:" + itemList);
+		this.http.post('/checklist/items/', JSON.stringify(itemList), { headers: contentHeaders }).
+			subscribe(res => {
+				console.log(res.text());
+			});
 	}
 }

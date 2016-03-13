@@ -1,5 +1,5 @@
 /// <reference path="../../../typings/tsd.d.ts" />
-System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './item', './checkList', './ongoing', './common/headers'], function(exports_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './ongoing', './common/headers'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
         switch (arguments.length) {
@@ -11,27 +11,8 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './i
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, item_1, checkList_1, ongoing_1, headers_1;
-    var WipService, wipListPromise;
-    function parseCheckList(task) {
-        var checkList;
-        if (task.checkList) {
-        }
-        else {
-            checkList = new checkList_1.CheckList(task.id, "Check list...", parseListItems());
-        }
-        return checkList;
-    }
-    function parseListItems(checkList) {
-        var listItems;
-        if (checkList) {
-        }
-        else {
-            listItems = new Array();
-            listItems.push(new item_1.Item("Item...", false));
-        }
-        return listItems;
-    }
+    var core_1, http_1, ongoing_1, headers_1;
+    var WipService;
     return {
         setters:[
             function (core_1_1) {
@@ -41,12 +22,6 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './i
                 http_1 = http_1_1;
             },
             function (_1) {},
-            function (item_1_1) {
-                item_1 = item_1_1;
-            },
-            function (checkList_1_1) {
-                checkList_1 = checkList_1_1;
-            },
             function (ongoing_1_1) {
                 ongoing_1 = ongoing_1_1;
             },
@@ -77,17 +52,20 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './i
                         action();
                     });
                 };
-                WipService.prototype.getCheckList = function (taskId) {
-                    return this.http.get('/checklist/' + taskId)
-                        .map(function (res) { return res.json(); })
-                        .map(function (c) { return new checkList_1.CheckList(c.id, taskId, c.name, c.itemList); });
-                };
                 WipService.prototype.getWip = function (id) {
                     return 0;
                 };
                 WipService.prototype.processBeforeSave = function (task) {
                     task.startTime = new Date();
                     return JSON.stringify(task);
+                };
+                WipService.prototype.getCheckList = function (task_id) {
+                    return this.http.get('/checklist/' + task_id, { headers: headers_1.contentHeaders })
+                        .map(function (res) { return res.json(); });
+                };
+                WipService.prototype.getListItems = function (check_list_id) {
+                    return this.http.get('/checklist/items/' + check_list_id, { headers: headers_1.contentHeaders })
+                        .map(function (res) { return res.json(); });
                 };
                 WipService = __decorate([
                     core_1.Injectable(), 
@@ -96,7 +74,6 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', './i
                 return WipService;
             })();
             exports_1("WipService", WipService);
-            wipListPromise = Promise.resolve(this.taskList);
         }
     }
 });
