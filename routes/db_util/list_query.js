@@ -1,5 +1,7 @@
+var models = require('../../models');
+var Promise = require("bluebird");
 
-function getCheckList(task_id) {
+exports.getCheckList = function(task_id) {
     return models.CheckList.findOne({
         where: {
             task_id: task_id
@@ -7,7 +9,7 @@ function getCheckList(task_id) {
     });
 }
 
-function getListItems(list_id) {
+exports.getListItems = function(list_id) {
     return models.ListItem.findAll({
         where: {
             check_list_task_id: list_id
@@ -16,7 +18,7 @@ function getListItems(list_id) {
 }
 
 
-function saveCheckList(checkList, response) {
+exports.saveCheckList = function(checkList, response) {
     return models.CheckList.upsert({
         id: checkList.id,
         name: checkList.name,
@@ -24,7 +26,7 @@ function saveCheckList(checkList, response) {
     });
 }
 
-function saveItemList(itemList) {
+exports.saveItemList = function(itemList) {
     var items = [];
     itemList.forEach(function(item) {
         items.push(saveItem(item));
@@ -32,7 +34,7 @@ function saveItemList(itemList) {
     return Promise.all(items);
 }
 
-function saveItem(item) {
+exports.saveItem = function(item) {
     return models.ListItem.upsert({
         id: item.id,
         text: item.text,
@@ -41,7 +43,7 @@ function saveItem(item) {
     });
 }
 
-function deleteItem(item, clId) {
+exports.deleteItem = function(item, clId) {
     return models.ListItem.destroy({
         where: {
             id: item.id
@@ -49,7 +51,7 @@ function deleteItem(item, clId) {
     });
 }
 
-function bulkCreateItems(itemList, clId, response) {
+exports.bulkCreateItems = function(itemList, clId, response) {
 
     models.ListItem.bulkCreate(
         itemList.map(function(item) {

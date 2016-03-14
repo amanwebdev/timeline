@@ -69,7 +69,7 @@ System.register(['angular2/router', 'angular2/core', '../services/wip.service', 
                 };
                 TaskListComponent.prototype.toggleCheckList = function (wip) {
                     var _this = this;
-                    if (!wip.hideCheckList) {
+                    if (wip.hideCheckList) {
                         this._service.getCheckList(wip.taskId)
                             .subscribe(function (list) {
                             wip.checkList = list;
@@ -82,6 +82,7 @@ System.register(['angular2/router', 'angular2/core', '../services/wip.service', 
                     }
                 };
                 TaskListComponent.prototype.toggleListVisibility = function (wip) {
+                    console.log("Toggling visibility of checklist!");
                     wip.hideCheckList = !wip.hideCheckList;
                     wip.taskClass = wip.hideCheckList ? "list-group-item" : "list-group-item noBottomBorder";
                     wip.checkListClass = wip.hideCheckList ? "list-group-item hidden" : "list-group-item noTopBorder";

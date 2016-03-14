@@ -1,5 +1,5 @@
-/// <reference path="../../../typings/tsd.d.ts" />
-System.register(['angular2/core', 'angular2/http', './common/headers'], function(exports_1) {
+/// <reference path="../../../../typings/tsd.d.ts" />
+System.register(['angular2/core', 'angular2/http', '../common/headers'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
         switch (arguments.length) {

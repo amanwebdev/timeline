@@ -16,7 +16,7 @@ export class Ongoing {
   public startTime: string = "5:00 PM";
   public comments: string = "Trivial task of fixing nothing but bunch of errors";
   public labels: string = "Project 1, Bug, Internal";
-
+  public status: string = "To Do";
   constructor(
     private task:Task
   ) {

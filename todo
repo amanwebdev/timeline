@@ -1,12 +1,12 @@
 TODO:
-
+	1.	Add typeahead feature to editable component.
 WIP Page:
-	1.	 Add status in task pane.
-	2.	 Add file attachments. If possible add google drive/dropbox link.
-	3.	 Add pagination to list items.
-	4.	 Add start/stop/delay buttons.
-	5.	 Change estimate to time worked.
-	Add message "Looks like you've just started" when tasks are few.
+	1.	Add status in task pane.
+	2.	Add file attachments. If possible add goodrive/dropbox link.
+	3.	DONE : Add pagination to list items.
+	4.	Add start/stop/delay buttons.
+	5.	Change estimate to time worked.
+	6.	Add message "Looks like you've just started" when tasks are few.
 
 History Page:
 	1.	Add history panes.
@@ -14,3 +14,11 @@ History Page:
 Task Page:
 	1. Change time range to hours estimate.
 
+Server:
+	1. Token authentication on each request.
+	2. Map URLs properly.
+
+Resources:
+	
+FAQs:
+	1. http://stackoverflow.com/questions/35763730/difference-between-constructor-and-ngoninit

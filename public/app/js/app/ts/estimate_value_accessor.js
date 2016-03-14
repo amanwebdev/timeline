@@ -1,4 +1,4 @@
-System.register(['./time-estimate.component', 'angular2/core', 'angular2/common', 'angular2/src/facade/lang'], function(exports_1) {
+System.register(['./components/time-estimate.component', 'angular2/core', 'angular2/common', 'angular2/src/facade/lang'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
         switch (arguments.length) {
@@ -45,10 +45,9 @@ System.register(['./time-estimate.component', 'angular2/core', 'angular2/common'
                         host: { '(estimateChange)': 'onChange($event)' },
                         providers: [CUSTOM_VALUE_ACCESSOR]
                     }), 
-                    __metadata('design:paramtypes', [(typeof (_a = typeof time_estimate_component_1.TimeEstimateComponent !== 'undefined' && time_estimate_component_1.TimeEstimateComponent) === 'function' && _a) || Object])
+                    __metadata('design:paramtypes', [time_estimate_component_1.TimeEstimateComponent])
                 ], EstimateValueAccessor);
                 return EstimateValueAccessor;
-                var _a;
             })();
             exports_1("EstimateValueAccessor", EstimateValueAccessor);
         }
