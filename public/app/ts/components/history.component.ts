@@ -3,29 +3,36 @@
 import { Component,OnInit }   		from 'angular2/core';
 import { Router }      				from 'angular2/router';
 import { ProgressGraphComponent } 	from './progress-graph.component';
+import { WipService } 				from '../services/wip.service';
+import { Task } 					from '../models/task';
+import { TaskDetail}				from './task-detail.component';
 
 @Component({
 	selector: 'history',
 	templateUrl: 'app/templates/history.component.html',
-	directives: [ProgressGraphComponent]
+	directives: [TaskDetail]
 })
 export class HistoryComponent {
 	public graphData:any;
-	public showChecklist:boolean = false;
+	public showChecklist:boolean = true;
+	private taskListPage: number = 0;
+	public wipList: Array<Task>;
+	public selectedWip: Task;
 
-	constructor(){
+	constructor(private _service: WipService) {
 		
 	}
 	ngOnInit() {
-		this.graphData = [
-							{date:'1-May-12',close:'1'},
-							{date:'30-Apr-12',close:'2'},
-							{date:'27-Apr-12',close:'3'},
-							{date:'26-Apr-12',close:'4'}
-						];
+		this._service.getWipListBw(1, 2)
+			.subscribe(wipList => {
+				this.wipList = wipList;
+				if(this.wipList[0]){
+					this.selectedWip = this.wipList[0];
+					console.log("selected wip:" + JSON.stringify(this.selectedWip));
+				}
+			});
 	}
-	toggleChecklist(){
-		this.showChecklist = !this.showChecklist;
-		console.log("Check list is shown :"+this.showChecklist);
+	setCurrentTask(wip : Task){
+		this.selectedWip = wip;
 	}
 }

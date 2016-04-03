@@ -51,6 +51,7 @@ export class CheckListComponent {
 		this.updateVisibleList();
 	}
 	deleteItem(item): void {
+		console.log("Deleting item:" + JSON.stringify(item));
 		//TODO: needs update in case of transient item.
 		this._service.deleteItem(item)
 			.subscribe(items => {

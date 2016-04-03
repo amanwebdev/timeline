@@ -13,6 +13,7 @@ System.register([], function(exports_1) {
                     this.startTime = "5:00 PM";
                     this.comments = "Trivial task of fixing nothing but bunch of errors";
                     this.labels = "Project 1, Bug, Internal";
+                    this.status = "To Do";
                     this.taskId = task.id;
                     this.name = task.name;
                     this.checkListProgress = 25;
@@ -24,12 +25,6 @@ System.register([], function(exports_1) {
                     //           .subscribe(checkList => this.checkList = checkList);
                 };
                 Ongoing.prototype.setProgress = function () {
-                    // var currTime = new Date();
-                    // var startTime = new Date(this.task.startTime);
-                    // var finishTime = new Date(this.task.finishTime); 
-                    // 	var usedTime = Math.floor((currTime-startTime) / 1000 / 60 / 60);
-                    // 	var estimated = Math.floor((finishTime-startTime) / 1000 / 60 / 60);
-                    // 	this.timeProgress = usedTime/estimated;
                 };
                 return Ongoing;
             })();

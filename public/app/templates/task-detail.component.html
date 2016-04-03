@@ -1,0 +1,98 @@
+
+    <div class="taskDescTable width100P">
+        <div class="taskTitle"><span class="inlineBlock width85p">{{wip.name}}</span><span class="inlineBlock posRel right0p">{{createdAt | date:"MM/dd/yy"}}</span></div>
+        <div class="mt10"><span class="descTitle">Description:</span>{{wip.comments}}</div>
+        <div class="mt5">
+            <table>
+                <tr>
+                    <th align="left" class="width20p">Started At:</th>
+                    <td>{{wip.startTime | dateFormat | date:"hh:mm MM/dd/yy"}}</td>
+                    <th align="left" class="borderLeft padLeft10 width30p">Finished At:</th>
+                    <td>{{wip.finishTime | dateFormat | date:"hh:mm MM/dd/yy"}}</td>
+                </tr>
+                <tr>
+                    <th align="left" class="width20p">Time Logged:</th>
+                    <td>2h</td>
+                    <th align="left" class="borderLeft padLeft10 width30p">Time Estimated:</th>
+                    <td>{{wip.hours + "h" +wip.minutes +"m"}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="mt10 width100P">
+            <span class="descTitle">Check list</span>
+            <button type="button" class="checklistBtn" (click)="toggleChecklist()">
+                <i [class]="checkListBtnClass"></i>
+            </button>:
+            <div class="borderBottom"></div>
+            <div class="posRel left115p ml70 width82p" [hidden]="!showChecklist">
+                <h5 class="checklistHeading bbDashed">
+                    <i class="fa fa-list-ol"></i>
+                    <span class="checklistName">loading checklist ...</span>
+                </h5>
+                <div class="checkbox">
+                    <div>
+                        <input class="styled" id="checkbox1" disabled="" type="checkbox">
+                        <label for="checkbox1">
+                            Can't check this
+                        </label>
+                    </div>
+                    <div>
+                        <input class="styled" id="checkbox2" disabled="" type="checkbox">
+                        <label for="checkbox2">
+                            Can't check this
+                        </label>
+                    </div>
+                    <div>
+                        <input class="styled" id="checkbox3" disabled="" type="checkbox">
+                        <label for="checkbox3">
+                            Can't check this
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt5">
+            <div class="descTitle">Progress Graph:</div>
+            <div class="posRel left130p">
+                <progress-graph [data]="graphData"></progress-graph>
+            </div>
+        </div>
+    </div>
+
+<style>
+.tableHeader {
+    text-align: center;
+}
+
+.taskDescTable {
+    margin: 0 auto;
+}
+
+.taskTitle {
+    border-bottom: 1px solid #ddd;
+}
+
+.descTitle {
+    font-weight: bold;
+    font-size: 16px;
+}
+.checklistName{
+    margin-left:15px;
+    padding-bottom:10px;
+    display:inline-block;
+}
+.checklistHeading{
+    position:relative;
+    left:-20px;
+    margin-top:20px;
+    margin-bottom:20px;
+    width:100%;
+}
+.checklistBtn{
+    border-color:transparent;
+    background-color:transparent;
+}
+.checklistBtn:focus{
+    outline:0px;
+}
+</style>

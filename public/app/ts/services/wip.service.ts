@@ -18,13 +18,18 @@ export class WipService {
 	getWipList() {
 		return this.http.get('/track/taskList')
 			.map(res=> res.json())
-			.map((tasks: Array<any>) => {
-				let result: Array<Ongoing> = [];
-				if (tasks) {
-					tasks.forEach(t=> result.push(new Ongoing(t)));
-				}
-				return result;
-			});
+			.map(this.taskToOngoing);
+	}
+	getWipListBw(from : number ,to : number) : Observable<Array<Task>>{
+		return this.http.get('/track/taskList/' + from + '/' + to, { headers: contentHeaders })
+			.map(res => res.json());
+	}
+	taskToOngoing(tasks: Array<any>) : Array<Ongoing> {
+		let result: Array<Ongoing> = [];
+		if (tasks) {
+			tasks.forEach(t => result.push(new Ongoing(t)));
+		}
+		return result;
 	}
 	saveWip(task,action : ()=>any){
 		console.log("stringified value:" + this.processBeforeSave(task));
@@ -65,6 +70,10 @@ export class WipService {
 	deleteItem(item: Item) : Observable<Array<Item>> {
 		console.log("Deleting item :" + item);
 		return this.http.post('/checklist/items/delete', JSON.stringify(item), { headers: contentHeaders })
+			.map(res => res.json());
+	}
+	getProgress(taskId : number){
+		return this.http.get('/checklist/progress/' + taskId, { headers: contentHeaders })
 			.map(res => res.json());
 	}
 }

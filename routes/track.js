@@ -4,6 +4,7 @@ var express = require('express');
 var router = express.Router();
 var models = require('../models');
 var moment = require('moment');
+var listQuery = require('./db_util/list_query.js');
 
 router.post('/', function(request, response) {
     console.log("create request made with body:" + JSON.stringify(request.body));
@@ -13,6 +14,13 @@ router.get('/taskList', function(request, response) {
     console.log("received get request");
     getTaskList(response);
 });
+router.get('/taskList/:from/:to',function(request,response){
+     listQuery.getTaskList(request.params.from,request.params.to)
+        .then(function(list){
+            response.json(list);
+        });
+});
+
 router.get('/user', function(request, reponse) {
     models.User.create({
         username: 'admin',

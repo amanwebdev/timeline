@@ -32,6 +32,11 @@ router.get('/:id', function(request, response) {
             response.json(list);
         });
 });
+
+//TODO:
+router.post('/item', function(request,response){
+   
+});
 router.post('/items', function(request, response) {
     console.log("Saving items :" + JSON.stringify(request.body));
     listQuery.saveItemList(request.body.items)
@@ -63,5 +68,11 @@ router.get('/items/:id', function(request, response) {
             response.json(items)
         });
 });
-
+router.get('/progress/:id',function(request, response){
+    console.log("received get request for progress:"+request.params.id);
+    listQuery.checkProgress(request.params.id)
+        .then(function(result){
+            response.json(result[0]);
+        });
+})
 module.exports = router;

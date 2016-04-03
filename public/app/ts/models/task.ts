@@ -10,10 +10,13 @@ export class Task {
 	public startTime: Date;
 	public finishTime: Date;
 	public comments: string;
+	public created_at: Date;
+	public hours: number;
+	public minutes: number;
 	public checkList: CheckList;
 	public user: User;
 	public timeEstimate: TimeEstimate;
-	constructor() { 
-		
+	constructor() {
+
 	}
 }

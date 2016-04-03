@@ -65,6 +65,7 @@ System.register(['angular2/http', '../models/checkList', 'angular2/core', '../mo
                 };
                 CheckListComponent.prototype.deleteItem = function (item) {
                     var _this = this;
+                    console.log("Deleting item:" + JSON.stringify(item));
                     //TODO: needs update in case of transient item.
                     this._service.deleteItem(item)
                         .subscribe(function (items) {

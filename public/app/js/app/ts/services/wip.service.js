@@ -36,13 +36,18 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', '../
                 WipService.prototype.getWipList = function () {
                     return this.http.get('/track/taskList')
                         .map(function (res) { return res.json(); })
-                        .map(function (tasks) {
-                        var result = [];
-                        if (tasks) {
-                            tasks.forEach(function (t) { return result.push(new ongoing_1.Ongoing(t)); });
-                        }
-                        return result;
-                    });
+                        .map(this.taskToOngoing);
+                };
+                WipService.prototype.getWipListBw = function (from, to) {
+                    return this.http.get('/track/taskList/' + from + '/' + to, { headers: headers_1.contentHeaders })
+                        .map(function (res) { return res.json(); });
+                };
+                WipService.prototype.taskToOngoing = function (tasks) {
+                    var result = [];
+                    if (tasks) {
+                        tasks.forEach(function (t) { return result.push(new ongoing_1.Ongoing(t)); });
+                    }
+                    return result;
                 };
                 WipService.prototype.saveWip = function (task, action) {
                     console.log("stringified value:" + this.processBeforeSave(task));
@@ -80,6 +85,10 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map', '../
                 WipService.prototype.deleteItem = function (item) {
                     console.log("Deleting item :" + item);
                     return this.http.post('/checklist/items/delete', JSON.stringify(item), { headers: headers_1.contentHeaders })
+                        .map(function (res) { return res.json(); });
+                };
+                WipService.prototype.getProgress = function (taskId) {
+                    return this.http.get('/checklist/progress/' + taskId, { headers: headers_1.contentHeaders })
                         .map(function (res) { return res.json(); });
                 };
                 WipService = __decorate([

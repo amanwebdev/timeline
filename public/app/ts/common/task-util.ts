@@ -7,7 +7,6 @@ export class TaskUtil {
 
 	}
 	public getProgress(wip) : number{
-		
 		return 0;
 	}
 }
