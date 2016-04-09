@@ -1,5 +1,7 @@
 /// <reference path="../../../../typings/tsd.d.ts" />
-System.register([], function(exports_1) {
+System.register([], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var Ongoing;
     return {
         setters:[],
@@ -24,10 +26,8 @@ System.register([], function(exports_1) {
                     // this._service.getCheckList(1)
                     //           .subscribe(checkList => this.checkList = checkList);
                 };
-                Ongoing.prototype.setProgress = function () {
-                };
                 return Ongoing;
-            })();
+            }());
             exports_1("Ongoing", Ongoing);
         }
     }

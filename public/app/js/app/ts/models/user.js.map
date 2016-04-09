@@ -1,1 +1,1 @@
-{"version":3,"file":"user.js","sourceRoot":"","sources":["../../../../ts/models/user.ts"],"names":["User","User.constructor"],"mappings":"AAAA,qDAAqD;;;;;;YAErD;gBACCA,cACQA,QAAgBA;oBAAhBC,aAAQA,GAARA,QAAQA,CAAQA;gBACpBA,CAACA;gBACND,WAACA;YAADA,CAACA,AAJD,IAIC;YAJD,uBAIC,CAAA"}
+{"version":3,"file":"user.js","sourceRoot":"","sources":["../../../../ts/models/user.ts"],"names":[],"mappings":"AAAA,qDAAqD;;;;;;;;YAErD;gBACC,cACQ,QAAgB;oBAAhB,aAAQ,GAAR,QAAQ,CAAQ;gBACpB,CAAC;gBACN,WAAC;YAAD,CAAC,AAJD,IAIC;YAJD,uBAIC,CAAA"}

@@ -9,7 +9,8 @@
   },
   "license": "ISC",
   "dependencies": {
-    "angular2": "2.0.0-beta.2",
+    "angular2": "2.0.0-beta.6",
+    "angular2-modal": "^0.1.1",
     "bootstrap": "^4.0.0-alpha.2",
     "d3": "^3.5.13",
     "es6-promise": "^3.0.2",

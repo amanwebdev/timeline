@@ -32,12 +32,16 @@
             },
             'ng2-bootstrap': {
                 defaultExtension: 'js'
+            },
+            'angular2-modal': {
+                defaultExtension: 'js'
             }
-        },
-        map: {
-                // place for ng2 modules mapping
-                'ng2-bootstrap': 'node_modules/ng2-bootstrap'
-        }
+    },
+    map: {
+        // place for ng2 modules mapping
+        'ng2-bootstrap': 'node_modules/ng2-bootstrap',
+         'angular2-modal': 'node_modules/angular2-modal/dist/commonjs'
+    }
     });
     System.import('app/js/app/ts/boot')
         .then(null, console.error.bind(console));
@@ -45,7 +49,7 @@
 </head>
 
 <body>
-    <time-sheet>Loading...</time-sheet>
+    <time-sheet><img src="ellipsis.svg"></time-sheet>
 </body>
 
 </html>

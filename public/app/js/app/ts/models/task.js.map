@@ -1,1 +1,1 @@
-{"version":3,"file":"task.js","sourceRoot":"","sources":["../../../../ts/models/task.ts"],"names":["Task","Task.constructor"],"mappings":";;;;;YAKA;gBAaCA;gBAEAC,CAACA;gBACFD,WAACA;YAADA,CAACA,AAhBD,IAgBC;YAhBD,uBAgBC,CAAA"}
+{"version":3,"file":"task.js","sourceRoot":"","sources":["../../../../ts/models/task.ts"],"names":[],"mappings":";;;;;;;YAKA;gBAaC;gBAEA,CAAC;gBACF,WAAC;YAAD,CAAC,AAhBD,IAgBC;YAhBD,uBAgBC,CAAA"}

@@ -79,7 +79,13 @@ exports.checkProgress = function(task_id){
 
    return models.sequelize.query(query,{ type: models.sequelize.QueryTypes.SELECT});
 }
-
+exports.getTask = function(task_id){
+  return models.Task.find({
+      where: {
+          id: task_id
+      }
+  });
+}
 exports.getTaskList = function(from,to){
     var query = "select * from Tasks order by created_at asc limit "+from+","+to+";";
     return models.sequelize.query(query, { type : models.sequelize.QueryTypes.SELECT});

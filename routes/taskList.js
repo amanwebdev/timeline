@@ -28,14 +28,14 @@ router.get('/:id', function(request, response) {
             console.log("List found:" +(list));
             if(!list){
                 list = { name : "Check list...", task_id : request.params.id };
-            }            
+            }
             response.json(list);
         });
 });
 
 //TODO:
 router.post('/item', function(request,response){
-   
+
 });
 router.post('/items', function(request, response) {
     console.log("Saving items :" + JSON.stringify(request.body));
@@ -74,5 +74,21 @@ router.get('/progress/:id',function(request, response){
         .then(function(result){
             response.json(result[0]);
         });
+})
+router.get('/time_progress/:id',function(request, response){
+    console.log("received get request for time progress:"+request.params.id);
+
+        listQuery.getTask(request.params.id).then(function(task) {
+       var startTime = task.startTime.getTime();
+       var finishTime = task.finishTime.getTime();
+
+       var difference_ms = startTime - finishTime;
+
+       var estimate = 1000 * task.hours * task.minutes * 60;
+       var progress = (difference_ms / estimate ) * 100;
+       progress = progress && progress > 0 ? progress : 0;
+       response.json({"progress":progress})
+       });
+
 })
 module.exports = router;

@@ -1,17 +1,17 @@
 /// <reference path="../../../../typings/tsd.d.ts" />
-System.register(['angular2/core', '../services/wip.service', './task-detail.component'], function(exports_1) {
+System.register(['angular2/core', '../services/wip.service', './task-detail.component', 'ng2-bootstrap/ng2-bootstrap'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
-        switch (arguments.length) {
-            case 2: return decorators.reduceRight(function(o, d) { return (d && d(o)) || o; }, target);
-            case 3: return decorators.reduceRight(function(o, d) { return (d && d(target, key)), void 0; }, void 0);
-            case 4: return decorators.reduceRight(function(o, d) { return (d && d(target, key, o)) || o; }, desc);
-        }
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, wip_service_1, task_detail_component_1;
+    var core_1, wip_service_1, task_detail_component_1, ng2_bootstrap_1;
     var HistoryComponent;
     return {
         setters:[
@@ -23,13 +23,17 @@ System.register(['angular2/core', '../services/wip.service', './task-detail.comp
             },
             function (task_detail_component_1_1) {
                 task_detail_component_1 = task_detail_component_1_1;
+            },
+            function (ng2_bootstrap_1_1) {
+                ng2_bootstrap_1 = ng2_bootstrap_1_1;
             }],
         execute: function() {
             HistoryComponent = (function () {
                 function HistoryComponent(_service) {
                     this._service = _service;
-                    this.showChecklist = false;
+                    this.showChecklist = true;
                     this.taskListPage = 0;
+                    this.itemsPerPage = 5;
                 }
                 HistoryComponent.prototype.ngOnInit = function () {
                     var _this = this;
@@ -45,16 +49,21 @@ System.register(['angular2/core', '../services/wip.service', './task-detail.comp
                 HistoryComponent.prototype.setCurrentTask = function (wip) {
                     this.selectedWip = wip;
                 };
+                HistoryComponent.prototype.pageChanged = function (event) {
+                    console.log('Page changed to: ' + event.page);
+                    console.log('Number items per page: ' + event.itemsPerPage);
+                    this.taskListPage = event.page;
+                };
                 HistoryComponent = __decorate([
                     core_1.Component({
                         selector: 'history',
                         templateUrl: 'app/templates/history.component.html',
-                        directives: [task_detail_component_1.TaskDetail]
+                        directives: [task_detail_component_1.TaskDetail, ng2_bootstrap_1.PAGINATION_DIRECTIVES]
                     }), 
                     __metadata('design:paramtypes', [wip_service_1.WipService])
                 ], HistoryComponent);
                 return HistoryComponent;
-            })();
+            }());
             exports_1("HistoryComponent", HistoryComponent);
         }
     }

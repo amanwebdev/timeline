@@ -1,17 +1,17 @@
 /// <reference path="../../../../typings/tsd.d.ts" />
-System.register(['angular2/router', 'angular2/core', '../services/wip.service', './check-list.component', './editable.component', 'ng2-bootstrap/ng2-bootstrap'], function(exports_1) {
+System.register(['angular2/router', 'angular2/core', '../services/wip.service', './check-list.component', './editable.component', './progress.component', 'ng2-bootstrap/ng2-bootstrap'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
-        switch (arguments.length) {
-            case 2: return decorators.reduceRight(function(o, d) { return (d && d(o)) || o; }, target);
-            case 3: return decorators.reduceRight(function(o, d) { return (d && d(target, key)), void 0; }, void 0);
-            case 4: return decorators.reduceRight(function(o, d) { return (d && d(target, key, o)) || o; }, desc);
-        }
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var router_1, core_1, wip_service_1, check_list_component_1, editable_component_1, ng2_bootstrap_1;
+    var router_1, core_1, wip_service_1, check_list_component_1, editable_component_1, progress_component_1, ng2_bootstrap_1;
     var TaskListComponent;
     return {
         setters:[
@@ -29,6 +29,9 @@ System.register(['angular2/router', 'angular2/core', '../services/wip.service', 
             },
             function (editable_component_1_1) {
                 editable_component_1 = editable_component_1_1;
+            },
+            function (progress_component_1_1) {
+                progress_component_1 = progress_component_1_1;
             },
             function (ng2_bootstrap_1_1) {
                 ng2_bootstrap_1 = ng2_bootstrap_1_1;
@@ -104,12 +107,12 @@ System.register(['angular2/router', 'angular2/core', '../services/wip.service', 
                 TaskListComponent = __decorate([
                     core_1.Component({
                         templateUrl: 'app/templates/task-list.component.html',
-                        directives: [check_list_component_1.CheckListComponent, editable_component_1.EditableComponent, ng2_bootstrap_1.Alert, ng2_bootstrap_1.TYPEAHEAD_DIRECTIVES, ng2_bootstrap_1.PAGINATION_DIRECTIVES]
+                        directives: [check_list_component_1.CheckListComponent, editable_component_1.EditableComponent, progress_component_1.ProgressComponent, ng2_bootstrap_1.Alert, ng2_bootstrap_1.TYPEAHEAD_DIRECTIVES, ng2_bootstrap_1.PAGINATION_DIRECTIVES]
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, wip_service_1.WipService])
                 ], TaskListComponent);
                 return TaskListComponent;
-            })();
+            }());
             exports_1("TaskListComponent", TaskListComponent);
         }
     }

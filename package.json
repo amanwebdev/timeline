@@ -11,7 +11,7 @@
     "test-integration": "mocha test/integration/*.test.js"
   },
   "dependencies": {
-    "angular2": "^2.0.0-beta.7",
+    "angular2": "^2.0.0-beta.12",
     "angular2-modal": "^0.1.1",
     "async": "^1.5.0",
     "body-parser": "^1.14.2",
@@ -21,7 +21,7 @@
     "debug": "^2.2.0",
     "dotenv": "^2.0.0",
     "es6-promise": "^3.1.2",
-    "es6-shim": "^0.33.13",
+    "es6-shim": "^0.35.0",
     "express": "^4.13.3",
     "express-jwt": "^0.3.1",
     "jsonwebtoken": "^1.1.2",
@@ -34,7 +34,7 @@
     "rxjs": "^5.0.0-beta.2",
     "sequelize": "^3.19.3",
     "sequelize-cli": "^2.2.1",
-    "zone.js": "^0.5.15"
+    "zone.js": "^0.6.10"
   },
   "devDependencies": {
     "gulp": "^3.9.0",

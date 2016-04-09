@@ -1,5 +1,7 @@
 /// <reference path="../../../../typings/tsd.d.ts" />
-System.register([], function(exports_1) {
+System.register([], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var TimeEstimate;
     return {
         setters:[],
@@ -10,7 +12,7 @@ System.register([], function(exports_1) {
                     this.minutes = minutes;
                 }
                 return TimeEstimate;
-            })();
+            }());
             exports_1("TimeEstimate", TimeEstimate);
         }
     }

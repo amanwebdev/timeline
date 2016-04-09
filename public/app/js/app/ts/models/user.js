@@ -1,5 +1,7 @@
 /// <reference path="../../../../typings/tsd.d.ts" />
-System.register([], function(exports_1) {
+System.register([], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var User;
     return {
         setters:[],
@@ -9,7 +11,7 @@ System.register([], function(exports_1) {
                     this.userName = userName;
                 }
                 return User;
-            })();
+            }());
             exports_1("User", User);
         }
     }

@@ -2,16 +2,12 @@
     <ul class="list-group taskList">
         <div *ngFor="#wip of currentPageItems">
             <li (click)="toggleCheckList(wip)" [class]="wip.taskClass">
-                <span class="taskName width45p">{{wip.name}}</span>
-                <span class="label label-success">progress</span>
-                <progress class="progress progress-success taskProgress" value="{{wip.checkListProgress}}" max="100">25%</progress>
-                <span class="label label-success">time</span>
-                <progress class="progress progress-warn taskProgress" value="{{wip.timeProgress}}" max="100">95%</progress>
+                <task-progress [wip]="wip"></task-progress>
             </li>
             <li *ngIf="wip.checkList" [class]="wip.checkListClass">
                 <checklist [checkList]="wip.checkList"></checklist>
                 <div class="inlineBlock padLeft45">
-                    <table>
+                    <table class="task-desc-table">
                         <tr>
                             <th>Status :</th>
                             <td>
@@ -54,11 +50,6 @@ alert {
     width: 40%;
     margin: auto;
     text-align: center;
-}
-
-.progress {
-    height: 1%;
-    margin: 0 auto;
 }
 
 .taskList div li:first-child:hover {

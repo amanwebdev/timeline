@@ -2,14 +2,11 @@
     <div class="col-md-3">
         <div class="taskNameList padLeft0 padRight0 top50 left50 mr50 mb50">
             <ul class="list-group mb0">
-                <li class="list-group-item taskItem" *ngFor="#wip of wipList"  (click)="setCurrentTask(wip)">{{wip.name}}</li>
+                <li class="list-group-item taskItem" *ngFor="#wip of wipList" (click)="setCurrentTask(wip)">{{wip.name}}</li>
             </ul>
         </div>
         <nav class="taskListNav top30">
-            <ul class="pager">
-                <li><a href="#">Previous</a></li>
-                <li><a href="#">Next</a></li>
-            </ul>
+            <pager [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [(ngModel)]="taskListPage" onPageChanged="pageChanged($event)"></pager>
         </nav>
     </div>
     <div class="col-md-9 taskDesc padTop20">
@@ -17,17 +14,19 @@
     </div>
 </div>
 <style>
-.taskItem:hover{
-    cursor:pointer;
+.taskItem:hover {
+    cursor: pointer;
 }
+
 .taskDesc {
     border: 4px solid rgb(221, 221, 221);
     width: 60%;
     position: relative;
     top: 50px;
     border-radius: 7px;
-    background-color:white;
+    background-color: white;
 }
+
 .taskNameList {
     position: relative;
     border: 1px solid #ddd;

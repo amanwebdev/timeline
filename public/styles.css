@@ -99,17 +99,20 @@ input.noBorder {
     width: 20%;
     margin-bottom: -3px;
 }
-.taskName{
-	width: 31%;
-	display: inline-block;
+
+.taskName {
+    width: 31%;
+    display: inline-block;
 }
-.taskList{
-	width:80%;
-	margin:auto;
+
+.taskList {
+    width: 80%;
+    margin: auto;
 }
-.taskListComp{
-	position: relative;
-	top:50px;
+
+.taskListComp {
+    position: relative;
+    top: 50px;
 }
 
 path {

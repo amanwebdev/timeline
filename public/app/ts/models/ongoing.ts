@@ -4,6 +4,7 @@ import { Task }          from './task';
 import { CheckList }     from './checkList';
 import { Item }          from './item';
 
+
 export class Ongoing {
   public taskId:number;
   public name:string;
@@ -18,7 +19,7 @@ export class Ongoing {
   public labels: string = "Project 1, Bug, Internal";
   public status: string = "To Do";
   constructor(
-    private task:Task
+    private task: Task
   ) {
     this.taskId=task.id;
     this.name=task.name;
@@ -30,7 +31,5 @@ export class Ongoing {
    // this._service.getCheckList(1)
    //           .subscribe(checkList => this.checkList = checkList);
   }
-  private setProgress(){
-    
-  }
+
 }

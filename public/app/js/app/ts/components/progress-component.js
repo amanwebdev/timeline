@@ -12,43 +12,27 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var EditableComponent;
+    var TaskListComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            EditableComponent = (function () {
-                function EditableComponent() {
-                    this.editableClass = "editable";
-                    this.editFieldClass = "editableField";
-                    this.editDisabled = true;
+            TaskListComponent = (function () {
+                function TaskListComponent() {
                 }
-                EditableComponent.prototype.editField = function (editableField) {
-                    this.editDisabled = false;
-                    this.editableClass = "editableActive";
-                    editableField.focus();
-                };
-                EditableComponent.prototype.cancelEdit = function () {
-                    this.editDisabled = true;
-                    this.editableClass = "editable";
-                };
-                __decorate([
-                    core_1.Input(), 
-                    __metadata('design:type', String)
-                ], EditableComponent.prototype, "model", void 0);
-                EditableComponent = __decorate([
+                TaskListComponent = __decorate([
                     core_1.Component({
-                        selector: 'editable',
-                        templateUrl: 'app/templates/editable.component.html',
+                        templateUrl: 'app/templates/progress.component.html',
+                        directives: []
                     }), 
                     __metadata('design:paramtypes', [])
-                ], EditableComponent);
-                return EditableComponent;
+                ], TaskListComponent);
+                return TaskListComponent;
             }());
-            exports_1("EditableComponent", EditableComponent);
+            exports_1("TaskListComponent", TaskListComponent);
         }
     }
 });
-//# sourceMappingURL=editable.component.js.map
+//# sourceMappingURL=progress-component.js.map

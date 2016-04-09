@@ -29,7 +29,7 @@
                             <a class="dropdown-item" href="#">Profile</a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">Settings</a>
+                            <a class="dropdown-item" href="#" (click)="openSettings()">Settings</a>
                         </li>
                         <li>
                             <a class="dropdown-item" href="#">Log out</a>
@@ -40,3 +40,19 @@
     </div>
 </nav>
 <router-outlet></router-outlet>
+<style>
+.navbar {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.navList {
+    position: absolute;
+    left: 15%;
+    width: 60%;
+    padding-left: 5%;
+}
+.navList li{
+    margin-left:3%;
+}
+</style>

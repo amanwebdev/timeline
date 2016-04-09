@@ -43,6 +43,9 @@
 .top25p{
 	top:25%;
 }
+.topN30{
+	top:-30px;
+}
 .left130p{
 	left:130px;
 }
@@ -60,6 +63,9 @@
 }
 .left20{
 	left:20px;
+}
+.left15{
+	left:15px;
 }
 .leftN100p{
 	left:-100px;
