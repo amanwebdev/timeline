@@ -8,7 +8,7 @@ import { WipService }      		from './services/wip.service';
 import { UserService }      	from './services/user.service';
 import { AppComponent } 		from './components/app.component';
 import {provide} from 'angular2/core';
-import {ModalConfig} from 'angular2-modal/angular2-modal';
+import {Modal, ModalConfig} from 'angular2-modal/angular2-modal';
 import {ELEMENT_PROBE_PROVIDERS} from 'angular2/platform/common_dom';
 
 bootstrap(AppComponent, [

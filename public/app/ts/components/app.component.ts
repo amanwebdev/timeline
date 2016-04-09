@@ -14,7 +14,8 @@ import {Modal} from 'angular2-modal/angular2-modal';
 @Component({
     selector: 'time-sheet',
     templateUrl: 'app/templates/app.component.html',
-    directives: [TaskComponent, TaskListComponent, DROPDOWN_DIRECTIVES, ROUTER_DIRECTIVES]
+    directives: [TaskComponent, TaskListComponent, DROPDOWN_DIRECTIVES, ROUTER_DIRECTIVES],
+    providers: [Modal]
 })
 @RouteConfig([
     { path: '/track', name: 'Track', component: TaskComponent, useAsDefault: true },
@@ -22,17 +23,17 @@ import {Modal} from 'angular2-modal/angular2-modal';
     { path: '/history', name: 'History', component: HistoryComponent }
 ])
 export class AppComponent {
-    // constructor(private modal: Modal) {
-    //
-    // }
+    constructor(private modal: Modal) {
+
+    }
     public openSettings(): void {
-        // this.modal.alert()
-        //     .size('lg')
-        //     .isBlocking(true)
-        //     .keyboard(27)
-        //     .title('Choose a theme')
-        //     .body('A Customized Modal')
-        //     .okBtn('Save')
-        //     .open();
+        this.modal.alert()
+            .size('lg')
+            .isBlocking(true)
+            .keyboard(27)
+            .title('Choose a theme')
+            .body('A Customized Modal')
+            .okBtn('Save')
+            .open();
     }
 }
