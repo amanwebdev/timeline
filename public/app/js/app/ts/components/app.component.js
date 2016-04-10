@@ -1,5 +1,5 @@
 /// <reference path="../../../../typings/tsd.d.ts" />
-System.register(['angular2/core', 'angular2/router', './task.component', './task-list.component', './history.component', 'ng2-bootstrap/ng2-bootstrap', 'angular2-modal/angular2-modal'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './components', 'ng2-bootstrap/ng2-bootstrap', 'angular2-modal/angular2-modal', '../models/user-settings'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -11,7 +11,7 @@ System.register(['angular2/core', 'angular2/router', './task.component', './task
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, task_component_1, task_list_component_1, history_component_1, ng2_bootstrap_1, angular2_modal_1;
+    var core_1, router_1, components_1, ng2_bootstrap_1, angular2_modal_1, user_settings_1;
     var AppComponent;
     return {
         setters:[
@@ -21,20 +21,17 @@ System.register(['angular2/core', 'angular2/router', './task.component', './task
             function (router_1_1) {
                 router_1 = router_1_1;
             },
-            function (task_component_1_1) {
-                task_component_1 = task_component_1_1;
-            },
-            function (task_list_component_1_1) {
-                task_list_component_1 = task_list_component_1_1;
-            },
-            function (history_component_1_1) {
-                history_component_1 = history_component_1_1;
+            function (components_1_1) {
+                components_1 = components_1_1;
             },
             function (ng2_bootstrap_1_1) {
                 ng2_bootstrap_1 = ng2_bootstrap_1_1;
             },
             function (angular2_modal_1_1) {
                 angular2_modal_1 = angular2_modal_1_1;
+            },
+            function (user_settings_1_1) {
+                user_settings_1 = user_settings_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -42,26 +39,19 @@ System.register(['angular2/core', 'angular2/router', './task.component', './task
                     this.modal = modal;
                 }
                 AppComponent.prototype.openSettings = function () {
-                    this.modal.alert()
-                        .size('lg')
-                        .isBlocking(true)
-                        .keyboard(27)
-                        .title('Choose a theme')
-                        .body('A Customized Modal')
-                        .okBtn('Save')
-                        .open();
+                    var resolvedBindings = core_1.Injector.resolve([core_1.provide(angular2_modal_1.ICustomModal, { useValue: new user_settings_1.UserSettings() })]), dialog = this.modal.open(components_1.ThemeChooser, resolvedBindings, new angular2_modal_1.ModalConfig('sm', true, 27));
                 };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'time-sheet',
                         templateUrl: 'app/templates/app.component.html',
-                        directives: [task_component_1.TaskComponent, task_list_component_1.TaskListComponent, ng2_bootstrap_1.DROPDOWN_DIRECTIVES, router_1.ROUTER_DIRECTIVES],
+                        directives: [components_1.TaskComponent, components_1.TaskListComponent, ng2_bootstrap_1.DROPDOWN_DIRECTIVES, router_1.ROUTER_DIRECTIVES],
                         providers: [angular2_modal_1.Modal]
                     }),
                     router_1.RouteConfig([
-                        { path: '/track', name: 'Track', component: task_component_1.TaskComponent, useAsDefault: true },
-                        { path: '/wip', name: 'WIP', component: task_list_component_1.TaskListComponent },
-                        { path: '/history', name: 'History', component: history_component_1.HistoryComponent }
+                        { path: '/track', name: 'Track', component: components_1.TaskComponent, useAsDefault: true },
+                        { path: '/wip', name: 'WIP', component: components_1.TaskListComponent },
+                        { path: '/history', name: 'History', component: components_1.HistoryComponent }
                     ]), 
                     __metadata('design:paramtypes', [angular2_modal_1.Modal])
                 ], AppComponent);
