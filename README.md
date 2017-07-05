@@ -1,4 +1,4 @@
-# timeline
+# Timeline
 Task Progress Tracking App
 
 
